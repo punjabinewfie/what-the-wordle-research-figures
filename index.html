@@ -594,8 +594,8 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
 <div class="page">
   <h2 class="section-title">Appendix A</h2>
   <span class="appendix-label" style="margin-bottom:20px;">Wordle 1&#8211;4 Workbook Pages</span>
-
   <div class="paper-card" style="margin-bottom:32px;">
+  <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Formatting has been adjusted for clarity.</p>
   <div class="wordle-page" style="border-bottom:none;padding-top:0;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
@@ -854,6 +854,7 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   <h2 class="section-title">Appendix C</h2>
   <span class="appendix-label" style="margin-bottom:20px;">QR Code Set for Selected Wordles</span>
   <div class="paper-card">
+  <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Formatting has been adjusted for clarity.</p>
   <p style="font-family:var(--sans);font-size:14px;color:var(--ts);line-height:1.75;">Six Wordle puzzles were selected from the 300 daily Wordles released by the New York Times before February 1st, 2026. Each participant was randomly assigned four of the six words in a randomized order. The QR codes below linked participants directly to each archived Wordle puzzle.</p>
   <div class="qr-responsive-grid">
     <div class="qr-item"><img src="QR_CODE__1___OMEGA.png" alt="QR Code #1 — OMEGA"><span>QR Code #1</span></div>
@@ -875,7 +876,7 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
         <tr><td>QR Code #6</td><td>#1442</td><td>HABIT</td><td>3.7</td><td>62%</td></tr>
       </tbody>
     </table>
-    <p class="tn"><em>Note.</em> International averages sourced from the New York Times WordleBot database (~400,000 players per word). Study solve rates reflect OD-corrected data (n = 20).</p>
+    <p class="tn"><em>Note:</em> International averages sourced from the New York Times WordleBot database (~400,000 players per word). Study solve rates reflect OD-corrected data (n = 20).</p>
   </div>
   </div>
 </div>
@@ -885,41 +886,45 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   <h2 class="section-title">Appendix D</h2>
   <span class="appendix-label" style="margin-bottom:20px;">Strategic Guidance Instruction Sheet</span>
   <div class="paper-card">
-  <p class="strategy-title">Optimal Wordle Strategy: A 3-Step Guide</p>
+    <div style="font-family:Arial,sans-serif;color:#111;">
 
-  <div class="step-block">
-    <strong class="step-head">Step 1 &#8212; The High-Information Start</strong>
-    <p>Begin your game by using words from the following statistically optimized list <strong>in order</strong>. Always type &#8220;LOOIE&#8221; for your very first guess. <strong>Your primary goal is to reveal a <span style="color:var(--teal);">green letter</span>.</strong></p>
-  </div>
+      <h1 style="font-size:26px;font-weight:700;margin:0 0 24px;color:#111;">Optimal Wordle Strategy: A 3-Step Guide</h1>
 
-  <div class="word-sequence">
-    <div class="word-item"><span class="word-num">1.</span><span class="word-badge">LOOIE</span></div>
-    <div class="word-item"><span class="word-num">2.</span><span class="word-badge">SAURY</span></div>
-    <div class="word-item"><span class="word-num">3.</span><span class="word-badge">CHANT</span></div>
-    <div class="word-item"><span class="word-num">4.</span><span class="word-badge">BIDED</span></div>
-    <div class="word-item"><span class="word-num">5.</span><span class="word-badge">PRIMP</span></div>
-  </div>
+      <p style="font-size:15px;font-weight:700;margin:0 0 4px;color:#111;">STEP 1: The high-information start</p>
+      <p style="font-size:15px;line-height:1.6;margin:0 0 10px;color:#111;">Begin your game by using words from the following statistically optimized list <strong>IN ORDER</strong>:</p>
+      <ol style="font-size:15px;font-weight:700;margin:0 0 14px 28px;color:#111;line-height:1.9;">
+        <li>LOOIE</li>
+        <li>SAURY</li>
+        <li>CHANT</li>
+        <li>BIDED</li>
+        <li>PRIMP</li>
+      </ol>
+      <p style="font-size:15px;line-height:1.6;margin:0 0 20px;color:#111;">Always type &#8220;LOOIE&#8221; for your very first guess. <strong>Your primary goal is to reveal a <span style="color:#538d4e;">green letter</span>.</strong></p>
 
-  <div class="step-block yellow-step">
-    <strong class="step-head">Step 2 &#8212; If Only Yellow(s), Exclude</strong>
-    <p>If your guess shows <strong>only <span style="color:var(--amber);">yellow letters</span></strong> (zero <span style="color:var(--teal);">green letters</span>), you must <strong>temporarily ignore them</strong>. Do not try to rearrange your yellow letters into a new word. Instead, <strong>guess the next word on the list</strong> (e.g., &#8220;SAURY&#8221;). Continue moving down the list if you continue to only receive yellow letters.</p>
-  </div>
+      <p style="font-size:15px;font-weight:700;margin:0 0 4px;color:#111;">Step 2: If only <span style="color:#b59f3b;">Yellow(s)</span>, EXCLUDE:</p>
+      <p style="font-size:15px;line-height:1.6;margin:0 0 12px;color:#111;">If your guess <strong>shows only <span style="color:#b59f3b;">yellow letters</span></strong> (zero <span style="color:#538d4e;">green letters</span>), you must <strong>temporarily ignore them.</strong> Do not try to rearrange your yellow letters into a new word.</p>
+      <p style="font-size:15px;line-height:1.6;margin:0 0 20px;color:#111;">Instead, <strong>guess the next word on the list</strong> (e.g., &#8220;SAURY&#8221;). Continue moving down the list if you continue to only receive <span style="color:#b59f3b;">yellow letters</span>.</p>
 
-  <div class="step-block" style="margin-top:12px;">
-    <strong class="step-head">Step 3 &#8212; If Green, Solve</strong>
-    <p>As soon as you reveal <strong>at least one <span style="color:var(--teal);">green letter</span></strong> (even on your first guess, and even if you have no yellows), completely abandon the list above and <strong>start solving</strong> using all accumulated information.</p>
-  </div>
+      <p style="font-size:15px;font-weight:700;margin:0 0 4px;color:#111;">Step 3: If <span style="color:#538d4e;">Green</span>, SOLVE:</p>
+      <p style="font-size:15px;line-height:1.6;margin:0 0 20px;color:#111;">As soon as you reveal <strong>at least one <span style="color:#538d4e;">green letter</span></strong> (even on your first guess, and even if you have no <span style="color:#b59f3b;">yellows</span>), completely abandon the list above and <strong>start solving.</strong></p>
 
-  <p style="font-family:var(--sans);font-size:14px;font-weight:500;margin-top:28px;margin-bottom:10px;">Common edge cases &amp; quick fixes:</p>
-  <table class="edge-table">
-    <thead><tr><th>Situation</th><th>What to do</th></tr></thead>
-    <tbody>
-      <tr><td>2&#8211;3 yellows, no green</td><td>Step 2: EXCLUDE &#8212; continue down the list</td></tr>
-      <tr><td>Green on turn 1</td><td>Step 3: SOLVE immediately</td></tr>
-      <tr><td>Green + yellow on same guess</td><td>Step 3: SOLVE</td></tr>
-      <tr><td>Exhausted list, no greens</td><td>Step 3: SOLVE using all yellow information</td></tr>
-    </tbody>
-  </table>
+      <p style="font-size:15px;font-weight:700;margin:0 0 10px;color:#111;">Common edge cases &amp; quick fixes:</p>
+      <table style="width:100%;border-collapse:collapse;font-size:14px;font-family:Arial,sans-serif;">
+        <thead>
+          <tr>
+            <th style="border:1.5px solid #111;padding:10px 16px;font-weight:700;text-align:center;">SITUATION:</th>
+            <th style="border:1.5px solid #111;padding:10px 16px;font-weight:700;text-align:center;">WHAT TO DO:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="border:1.5px solid #111;padding:10px 16px;text-align:center;">2&#8211;3 yellows, no green</td><td style="border:1.5px solid #111;padding:10px 16px;text-align:center;">Step 2: EXCLUDE</td></tr>
+          <tr><td style="border:1.5px solid #111;padding:10px 16px;text-align:center;">Green on turn 1</td><td style="border:1.5px solid #111;padding:10px 16px;text-align:center;">Step 3: SOLVE</td></tr>
+          <tr><td style="border:1.5px solid #111;padding:10px 16px;text-align:center;">Green + yellow on same guess</td><td style="border:1.5px solid #111;padding:10px 16px;text-align:center;">Step 3: SOLVE</td></tr>
+          <tr><td style="border:1.5px solid #111;padding:10px 16px;text-align:center;">Exhausted list, no greens</td><td style="border:1.5px solid #111;padding:10px 16px;text-align:center;">STEP 3: SOLVE</td></tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
 </div>
 

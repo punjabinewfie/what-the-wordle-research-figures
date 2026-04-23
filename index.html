@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What the Wordle?: — Full Paper</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>What the Wordle? — Full Paper</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   :root {
@@ -18,73 +18,96 @@
     --grid:rgba(0,0,0,0.045);
     --serif:'EB Garamond',Georgia,serif;
     --sans:'DM Sans',sans-serif;
+    --accent:#1D9E75;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--bg);color:var(--tp);font-family:var(--serif);font-size:16px;line-height:1.8;max-width:980px;margin:0 auto;}
-  .page{padding:64px 64px 80px;border-bottom:1px solid var(--border);}
-  .page:last-child{border-bottom:none;}
+  body{background:var(--bg);color:var(--tp);font-family:var(--serif);font-size:17px;line-height:1.7;max-width:880px;margin:0 auto;}
+  .page{padding:0 72px;border-bottom:none;position:relative;}
 
-  .title-page{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:80px 64px;}
-  .title-page h1{font-family:var(--serif);font-size:34px;font-weight:400;line-height:1.3;color:var(--tp);margin-bottom:8px;max-width:700px;}
-  .title-page .subtitle{font-family:var(--serif);font-size:18px;font-weight:400;font-style:normal;color:var(--ts);margin-bottom:48px;}
-  .title-page .authors{font-family:var(--serif);font-size:16px;color:var(--tp);margin-bottom:6px;}
-  .title-page .divider{width:48px;height:1px;background:var(--border);margin:36px auto;}
-  .title-page .meta{font-family:var(--sans);font-size:12px;color:var(--tt);line-height:1.9;}
+  /* ---------- NATURE HEADER BLOCK ---------- */
+  .nat-header{padding:64px 72px 36px;border-bottom:1px solid var(--border);margin-bottom:8px;}
+  .paper-meta{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);margin-bottom:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .paper-meta .tag{background:var(--tealF);color:var(--accent);padding:3px 9px;border-radius:3px;font-weight:600;letter-spacing:.08em;}
+  .paper-title{font-family:var(--serif);font-size:38px;font-weight:700;line-height:1.18;color:var(--tp);margin-bottom:8px;letter-spacing:-0.01em;}
+  .paper-subtitle{font-family:var(--serif);font-size:22px;font-weight:400;font-style:italic;color:var(--ts);line-height:1.35;margin-bottom:30px;}
+  .authors{font-family:var(--serif);font-size:16.5px;color:var(--tp);margin-bottom:8px;line-height:1.55;}
+  .authors sup{font-size:11px;color:var(--ts);font-weight:500;}
+  .affiliations{font-family:var(--sans);font-size:12.5px;color:var(--ts);margin-bottom:14px;line-height:1.55;}
+  .affiliations sup{font-size:10px;font-weight:600;}
+  .paper-meta-bottom{font-family:var(--sans);font-size:11.5px;color:var(--tt);line-height:1.6;}
 
-  .section-label{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--tt);margin-bottom:20px;display:block;}
-  .section-title{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--tp);margin-bottom:28px;}
-  .results-section-header{display:flex;align-items:baseline;gap:16px;margin:52px 0 28px;padding-bottom:12px;border-bottom:.5px solid var(--border);}
-  .results-section-header h2{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--tp);}
-  .results-section-num{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--tt);}
+  /* ---------- HEADINGS (Nature-style: left-aligned bold sans-serif) ---------- */
+  .nat-h1{font-family:var(--sans);font-size:13px;font-weight:700;text-align:left;color:var(--accent);margin:72px 0 18px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--border);}
+  .nat-h2{font-family:var(--sans);font-size:18px;font-weight:600;text-align:left;color:var(--tp);margin:36px 0 12px;line-height:1.3;letter-spacing:-0.005em;padding-left:10px;border-left:2px solid var(--accent);}
+  .nat-h3{font-family:var(--sans);font-size:13.5px;font-weight:600;font-style:normal;text-align:left;color:var(--ts);margin:26px 0 8px;line-height:1.3;letter-spacing:.04em;text-transform:uppercase;}
 
-  h3{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--tt);margin:38px 0 14px;}
-  p{margin-bottom:1.1em;}
+  /* ---------- BODY PARAGRAPHS (no indent, generous spacing) ---------- */
+  p{margin-bottom:1em;}
   em{font-style:italic;}
-  strong{font-weight:500;}
+  strong{font-weight:600;}
 
-  .placeholder{background:var(--surface);border:.5px dashed rgba(0,0,0,0.15);border-radius:8px;padding:40px 32px;text-align:center;margin:8px 0;}
-  .placeholder p{color:var(--tt);font-family:var(--sans);font-size:13px;margin:0;font-style:italic;}
-  .placeholder strong{color:var(--ts);font-weight:500;}
+  /* ---------- ABSTRACT ---------- */
+  .abstract-block{margin:8px 0 12px;}
+  .abstract-block .nat-h1{margin-top:32px;}
+  .keywords{margin-top:14px;font-family:var(--sans);font-size:13px;color:var(--ts);}
+  .keywords strong{font-weight:600;color:var(--tp);}
 
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin:28px 0 36px;}
+  /* ---------- TABLES (sans-serif throughout, matching .tab-cap title font) ---------- */
+  .tab-cap{font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--tp);margin:32px 0 10px;}
+  .tab-cap strong{font-weight:700;}
+  .tab-note{font-family:var(--sans);font-size:12px;color:var(--ts);margin-top:12px;line-height:1.6;font-style:italic;}
+
+  .apa-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13px;margin:6px 0 10px;}
+  .apa-table thead tr{border-bottom:.5px solid var(--border);}
+  .apa-table thead th{text-align:left;padding:9px 12px 9px 0;font-weight:500;color:var(--ts);font-size:11px;font-family:var(--sans);letter-spacing:.06em;text-transform:uppercase;font-style:normal;}
+  .apa-table tbody tr{border-bottom:.5px solid var(--border);}
+  .apa-table tbody tr:last-child{border-bottom:none;}
+  .apa-table tbody td{padding:10px 12px 10px 0;color:var(--tp);}
+
+  table:not(.apa-table){width:100%;border-collapse:collapse;font-family:var(--sans);font-size:12.5px;margin:18px 0 24px;}
+  table:not(.apa-table) thead tr{border-bottom:1px solid var(--border);}
+  table:not(.apa-table) thead th{text-align:left;padding:5px 9px;font-weight:500;color:var(--ts);font-size:11px;letter-spacing:.04em;text-transform:uppercase;}
+  table:not(.apa-table) tbody tr{border-bottom:.5px solid var(--border);}
+  table:not(.apa-table) tbody tr:last-child{border-bottom:none;}
+  table:not(.apa-table) tbody td{padding:6px 9px;}
+
+  .sig{color:var(--purple);font-weight:600;}
+  .ns{color:var(--tt);}
+
+  /* ---------- FIGURE CARDS (kept aesthetic, captions reformatted Nature-style) ---------- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin:24px 0 32px;}
   .duo.wide{grid-template-columns:1fr;}
   .duo.pl{grid-template-columns:55% 45%;}
   .duo.pr{grid-template-columns:45% 55%;}
   .prose{align-self:center;}
   .prose p:last-child{margin-bottom:0;}
-  .card{background:var(--surface);border:.5px solid var(--border);border-radius:10px;padding:20px 20px 15px;}
-  .ct{font-family:var(--serif);font-size:14px;font-weight:400;color:var(--tp);margin-bottom:2px;}
-  .cs{font-size:11px;color:var(--tt);font-family:var(--sans);margin-bottom:11px;}
+  .card{background:var(--surface);border:.5px solid var(--border);border-radius:10px;padding:20px 22px 16px;}
   .leg{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:11px;}
   .leg span{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ts);font-family:var(--sans);}
   .dot{width:9px;height:9px;border-radius:2px;display:inline-block;flex-shrink:0;}
   .cw{position:relative;width:100%;}
-  .cn{font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-top:9px;line-height:1.5;}
-  table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:12.5px;margin:18px 0 24px;}
-  thead tr{border-bottom:1px solid var(--border);}
-  thead th{text-align:left;padding:5px 9px;font-weight:500;color:var(--ts);font-size:11px;letter-spacing:.04em;text-transform:uppercase;}
-  tbody tr{border-bottom:.5px solid var(--border);}
-  tbody tr:last-child{border-bottom:none;}
-  tbody td{padding:6px 9px;}
-  .sig{color:var(--purple);font-weight:500;}
-  .ns{color:var(--tt);}
-  .tn{font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-top:-14px;margin-bottom:26px;line-height:1.5;}
-  .rule{border:none;border-top:.5px solid var(--border);margin:48px 0 0;}
 
-  .ref-list{list-style:none;padding:0;}
-  .ref-list li{font-size:15px;line-height:1.75;padding:7px 0 7px 2em;text-indent:-2em;border-bottom:.5px solid var(--border);}
-  .ref-list li:last-child{border-bottom:none;}
-  .ref-list a{color:var(--teal);text-decoration:none;}
-  .ref-list a:hover{text-decoration:underline;}
+  /* Figure caption — sans-serif throughout (title, subtitle, italic note) for consistency */
+  .ct{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--tp);margin-bottom:2px;line-height:1.4;}
+  .ct em{font-style:italic;}
+  .cs{font-family:var(--sans);font-size:11px;color:var(--tt);margin-bottom:11px;margin-top:4px;line-height:1.5;}
+  .cn{font-family:var(--sans);font-size:12px;color:var(--ts);margin-top:12px;line-height:1.6;font-style:italic;}
+  .cn em{font-style:italic;font-weight:500;}
 
-  .appendix-label{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--tt);margin-bottom:4px;display:block;}
-  .appendix-title{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:24px;padding-bottom:10px;border-bottom:.5px solid var(--border);}
+  /* ---------- REFERENCES ---------- */
+  .ref-list{list-style:none;padding:0;margin-top:14px;}
+  .ref-list li{font-family:var(--serif);font-size:14.5px;line-height:1.7;padding:5px 0 5px 2em;text-indent:-2em;border-bottom:none;margin-bottom:6px;color:var(--tp);}
+  .ref-list a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(29,158,117,0.25);}
+  .ref-list a:hover{border-bottom-color:var(--accent);}
+
+  /* ---------- APPENDICES (Nature-flavoured: left-aligned bold) ---------- */
+  .apx-num{font-family:var(--sans);font-size:13px;font-weight:700;text-align:left;color:var(--accent);margin:72px 0 6px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--border);}
+  .apx-title{font-family:var(--sans);font-size:18px;font-weight:600;text-align:left;color:var(--tp);margin:14px 0 28px;line-height:1.3;padding-left:10px;border-left:2px solid var(--accent);}
 
   .paper-card{background:#ffffff;border-radius:4px;padding:48px 52px 52px;box-shadow:0 1px 4px rgba(0,0,0,0.08),0 0 0 .5px rgba(0,0,0,0.06);margin-top:8px;}
   .wordle-page{margin:40px 0;padding:36px 0 32px;background:transparent;border:none;border-bottom:.5px solid rgba(0,0,0,0.1);border-radius:0;}
   .wordle-page:last-child{border-bottom:none;}
   .wordle-page+.wordle-page{margin-top:48px;}
-  .wordle-page-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:32px;}
   .wordle-number{font-family:var(--sans);font-size:28px;font-weight:500;letter-spacing:.04em;color:var(--tp);}
   .qr-block{text-align:right;}
   .qr-label{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--tt);margin-bottom:6px;}
@@ -106,23 +129,13 @@
   .instruction-block{background:transparent;border:none;padding:0;}
   .instruction-block h2{font-family:var(--sans);font-size:28px;font-weight:700;margin-bottom:16px;}
   .instruction-block p{font-family:var(--sans);font-size:14px;line-height:1.75;margin-bottom:12px;}
-  .tile-legend{display:flex;flex-direction:column;gap:10px;margin:14px 0 18px;}
-  .tile-row{display:flex;align-items:center;gap:12px;font-family:var(--sans);font-size:13px;}
-  .tile{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;color:#fff;border-radius:2px;}
-  .tile.green{background:#538d4e;}
-  .tile.yellow{background:#b59f3b;}
-  .tile.gray{background:#818384;}
-  .wordle-example{margin:18px 0;}
   .ex-row{display:flex;gap:4px;margin-bottom:4px;}
   .ex-cell{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:15px;border:2px solid rgba(0,0,0,0.15);border-radius:1px;}
   .ex-cell.g{background:#538d4e;color:#fff;border-color:#538d4e;}
   .ex-cell.y{background:#b59f3b;color:#fff;border-color:#b59f3b;}
   .ex-cell.x{background:#818384;color:#fff;border-color:#818384;}
   .ex-cell.y-a{background:#b59f3b;color:#fff;border-color:#b59f3b;}
-  .before-list{font-family:var(--sans);font-size:14px;}
-  .before-list ul{margin:8px 0 0 20px;line-height:2.1;}
 
-  .qr-grid-img{width:100%;max-width:680px;display:block;margin:20px auto 0;border-radius:6px;}
   .qr-table-wrap table{margin-top:20px;}
   .qr-responsive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:20px 0;}
   .qr-responsive-grid .qr-item{display:flex;flex-direction:column;align-items:center;gap:8px;}
@@ -131,24 +144,8 @@
   @media(max-width:600px){.qr-responsive-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:380px){.qr-responsive-grid{grid-template-columns:1fr;}}
 
-  .strategy-title{font-family:var(--sans);font-size:28px;font-weight:500;letter-spacing:.04em;margin-bottom:24px;}
-  .step-block{padding:16px 18px;margin:14px 0;border-left:3px solid var(--teal);background:rgba(29,158,117,0.04);border-radius:0 6px 6px 0;}
-  .step-block.yellow-step{border-left-color:var(--amber);background:rgba(176,109,16,0.04);}
-  .step-block strong.step-head{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:6px;}
-  .step-block.yellow-step strong.step-head{color:var(--amber);}
-  .step-block p{font-family:var(--sans);font-size:14px;line-height:1.7;margin-bottom:0;}
-  .word-sequence{display:flex;flex-direction:column;gap:5px;margin:14px 0 18px 2px;}
-  .word-item{display:flex;align-items:center;gap:10px;font-family:var(--sans);}
-  .word-num{font-size:11px;color:var(--tt);width:16px;}
-  .word-badge{font-size:14px;font-weight:500;letter-spacing:.1em;background:var(--tealF);border:1px solid var(--teal);color:var(--teal);padding:3px 12px;border-radius:3px;}
-  .edge-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;margin-top:14px;}
-  .edge-table th{background:var(--bg);padding:9px 14px;text-align:left;font-weight:500;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ts);border-bottom:1px solid var(--border);}
-  .edge-table td{padding:9px 14px;border-bottom:.5px solid var(--border);}
-  .edge-table tr:last-child td{border-bottom:none;}
-
   .guess-line{display:inline-block;border-bottom:1.5px solid #1a1917;min-width:80px;height:1.2em;vertical-align:bottom;margin-left:4px;}
 
-  /* UPDATED keyboard styles */
   .kbd-wrap{margin:18px 0 4px;}
   .kbd-row{display:flex;gap:4px;margin-bottom:4px;justify-content:center;}
   .key{width:34px;height:36px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:500;font-size:11px;background:#d3d6da;color:#1a1917;}
@@ -162,7 +159,10 @@
   .col-gray{color:#787c7e;font-weight:500;}
 
   @media(max-width:700px){
-    .page,.title-page{padding:32px 20px 48px;}
+    .page{padding:0 22px;}
+    .nat-header{padding:32px 22px 28px;}
+    .paper-title{font-size:30px;}
+    .paper-subtitle{font-size:18px;}
     .duo,.duo.pl,.duo.pr{grid-template-columns:1fr;}
     .wordle-page-header{flex-direction:column;}
   }
@@ -170,34 +170,37 @@
 </head>
 <body>
 
-<!-- TITLE PAGE -->
-<div class="title-page page">
-  <h1>What the Wordle?:</h1>
-  <p class="subtitle">The effect of strategic guidance on turn rates in phonemic word puzzles</p>
-  <p class="authors">Nihal O&#8217;Keefe, Darcy Marcus, Brielle Munz, and Rae Kalkett</p>
-  <div class="divider"></div>
-  <div class="meta">
-    <p>Department of Psychology, Kwantlen Polytechnic University</p>
-    <p>PSYC 2400: Research Methods in Psychology</p>
-    <p>Supervisor: Dr. Richard Le Grand</p>
-    <p style="margin-top:10px;">Ethics ID: KPU REB #2024-36</p>
-    <p>April 17th, 2026</p>
+<!-- ===== NATURE-STYLE HEADER BLOCK ===== -->
+<header class="nat-header">
+  <p class="paper-meta">
+    <span class="tag">Research Paper</span>
+    <span>PSYC 2400 &middot; Kwantlen Polytechnic University</span>
+    <span>&middot;</span>
+    <span>April 17, 2026</span>
+  </p>
+  <h1 class="paper-title">What the Wordle?:</h1>
+  <p class="paper-subtitle">The effect of strategic guidance on turn rates in phonemic word puzzles</p>
+  <p class="authors">
+    Nihal O&#8217;Keefe<sup>1</sup>, Darcy Marcus<sup>1</sup>, Brielle Munz<sup>1</sup> &amp; Rae Kalkett<sup>1</sup>
+  </p>
+  <p class="affiliations"><sup>1</sup>&nbsp;Department of Psychology, Kwantlen Polytechnic University, Langley, British Columbia, Canada</p>
+  <p class="paper-meta-bottom">Supervisor: Dr. Richard Le Grand &nbsp;&middot;&nbsp; Ethics ID: KPU REB #2024-36 &nbsp;&middot;&nbsp; Course: PSYC 2400 Research Methods in Psychology</p>
+</header>
+
+<!-- ===== ABSTRACT ===== -->
+<div class="page">
+  <div class="abstract-block">
+    <h2 class="nat-h1">Abstract</h2>
+    <p>The recency of Wordle&#8217;s publication as a language game means there is little research on its cognitive properties. Previous research suggests that different types of language games require proficiency in varied cognitive skills. The purpose of this study was to establish a precedent as to whether Wordle could serve as a useful measurement of fluid reasoning. This was a repeated measures experiment using an initial sample of 23 psychology research methods students, with 20 retained after applying operational definitions, who completed two Wordles without strategic guidance and two with, followed by a questionnaire. Turns taken, time taken, participant strategy, and perceptions of guidance usefulness were measured via survey. A pre-established optimal human strategy, which was provided to participants in the form of written and visual guidance, served as a proxy for fluid reasoning. We found that strategic guidance significantly increased turn rate as hypothesized, and that compliance with the prescribed strategy significantly predicted solve success (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005), though guidance did not reduce completion time. Participants reported mixed perceptions on the usefulness of the guidance. These results suggest that while Wordle performance may be restructured by strategic guidance &#8212; improving solve accuracy at the cost of efficiency &#8212; the cognitive demands of applying an externally provided strategy may offset its benefits in the short term. Alternatively, addressing the methodological concerns of our study in future replications may yield different results. Future research may find usefulness in Wordle as a measure of other cognitive abilities, such as general knowledge or vocabulary.</p>
+    <p class="keywords"><strong>Keywords:</strong> Wordle &middot; fluid reasoning &middot; strategic guidance &middot; verbal fluency &middot; problem-solving &middot; cognitive load</p>
   </div>
-</div>
 
-<!-- ABSTRACT -->
-<div class="page">
-  <h2 class="section-title">Abstract</h2>
-  <p>The recency of Wordle&#8217;s publication as a language game means there is little research on its cognitive properties. Previous research suggests that different types of language games require proficiency in varied cognitive skills. The purpose of this study was to establish a precedent as to whether Wordle could serve as a useful measurement of fluid reasoning. This was a repeated measures experiment using an initial sample of 23 psychology research methods students, with 20 retained after applying operational definitions, who completed two Wordles without strategic guidance and two with, followed by a questionnaire. Turns taken, time taken, participant strategy, and perceptions of guidance usefulness were measured via survey. A pre-established optimal human strategy, which was provided to participants in the form of written and visual guidance, served as a proxy for fluid reasoning. We found that strategic guidance significantly increased turn rate as hypothesized, and that compliance with the prescribed strategy significantly predicted solve success (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005), though guidance did not reduce completion time. Participants reported mixed perceptions on the usefulness of the guidance. These results suggest that while Wordle performance may be restructured by strategic guidance &#8212; improving solve accuracy at the cost of efficiency &#8212; the cognitive demands of applying an externally provided strategy may offset its benefits in the short term. Alternatively, addressing the methodological concerns of our study in future replications may yield different results. Future research may find usefulness in Wordle as a measure of other cognitive abilities, such as general knowledge or vocabulary.</p>
-</div>
-
-<!-- INTRODUCTION -->
-<div class="page">
-  <h2 class="section-title">Introduction</h2>
+<!-- ===== INTRODUCTION ===== -->
+  <h2 class="nat-h1">Introduction</h2>
 
   <p>Word games and puzzles are important in psychology for four major reasons: they are widely enjoyed by people and can provide large sample sizes for studies; they can reflect or represent specific cognitive constructs; they can be used to gamify testing situations that may otherwise be tedious; and they can be used to practice and improve different dimensions of verbal fluency and cognitive reserve. Word games vary in structure, which is important because some of these differences appear to be associated with the types of cognitive functions that correlate with puzzle proficiency. Studies on older word games, such as crosswords, focus heavily on human cognition, with explorations of how their relationship to cognitive reserves may be used to combat cognitive decline and dementia. Wordle, published in 2021 (Tracy, 2022), has recently been introduced to the academic literature in psychology and machine learning. These new studies tend to have a different focus, exploring how the game functions and optimized play for both machines and humans. We wish to explore this gap in the research using the available academic resources on Wordle.</p>
 
-  <h3>Cognitive Domains and Puzzle Structure</h3>
+  <h3 class="nat-h2">Cognitive domains and puzzle structure</h3>
 
   <p>Crossword puzzles are a very commonly researched form of word games, but results from a study by Hambrick et al. (1999) on correlations between crossword proficiency and various cognitive domains seem to indicate an unexpected lack of connection with abstract and analytical reasoning abilities. Hambrick et al. conducted four correlational studies measuring scores on various cognitive tests in areas such as general knowledge, reasoning, and vocabulary against their crossword proficiency construct, defined as the number of target words identified out of a 54&#8211;66 word puzzle within five minutes. The correlations they found with puzzle proficiency were strong for general knowledge, moderate for word retrieval and transformation performance, and not present for reasoning abilities. One interpretation they offered was that &#8220;most clues in crossword puzzles are straightforward factual references that require only knowledge to solve&#8221; (Hambrick et al., 1999, p. 155), and that these findings regarding reasoning may be different for other types of word puzzles.</p>
 
@@ -205,7 +208,7 @@
 
   <p>Murphy et al. (2016), through their intervention study of semantic/thematic and structural word tasks on different types of verbal fluency, give us a framework with which to understand different kinds of word games and their potential to reflect certain cognitive constructs. Verbal fluency requires an ability referred to as clustering &#8212; recalling words within a specific category, moving both within and between clusters, and hierarchically organizing information. Verbal fluency can be semantic (SVF) when the categories are based on meaning, or phonemic (PVF) when they are based on letter cues. Murphy et al. elected to use crossword puzzles as their basis because their clues could be both semantic/thematic or structural. They found a significant improvement with a large effect size on PVF performance for the structural group, with no significant interaction for SVF. Overall, these findings suggest that different types of word puzzles can improve performance in different cognitive domains. We suggest that the use of Wordle, which we argue is a purely structural and phonemic type of word puzzle, may be ideal for further exploration.</p>
 
-  <h3>Wordle and Fluid Reasoning</h3>
+  <h3 class="nat-h2">Wordle and fluid reasoning</h3>
 
   <p>The sole resource we located on the cognitive functions underlying Wordle performance was a Stage 1 Registered Report by Achaa-Amankwaa et al. (2025). These authors hypothesize that Wordle is a reflection of crystallized intelligence, retrieval ability, and &#8212; what in our opinion separates this from crosswords as a potentially ideal game-based cognitive assessment &#8212; fluid reasoning. They argue that because Wordle provides real-time feedback, performance depends heavily on strategy efficiency: how well a player uses guesses to eliminate possibilities (maximize entropy reduction) rather than guessing randomly (Achaa-Amankwaa et al., 2025, pp. 14&#8211;15).</p>
 
@@ -214,320 +217,315 @@
   <p>Anderson and Meyer (2022) demonstrated that an optimal Wordle strategy using maximum green letter probabilities and reinforcement learning could reduce turn rates significantly. Their analysis revealed that a mathematically optimized path through the limited problem-solving space &#8212; one that does not require complex calculations beyond human capacity &#8212; was achievable. Evans and Turrini (2023) further support the viability of strategic guidance in sequential games, demonstrating that exploiting positional similarity can significantly improve decision-making in games with limited action spaces.</p>
 
   <p>Our goal is to design a preliminary test on the potential of Wordle as a structural puzzle measuring fluid reasoning ability. If logical, strategic guidance increases Wordle turn-rate as we hypothesize, while simultaneously improving solve success, this would suggest that Wordle is more similar to cryptic crosswords than simple crosswords in that it is a quasi-algebraic game likely to require fluid reasoning. While this is not a definitive conclusion, it may provide a jumping-off point for future research on Wordle&#8217;s efficacy for cognitive testing and intervention.</p>
-</div>
 
-<!-- METHODOLOGY -->
-<div class="page">
-  <h2 class="section-title">Methodology</h2>
+<!-- ===== METHOD ===== -->
+  <h2 class="nat-h1">Methodology</h2>
 
-  <h3>Design</h3>
+  <h3 class="nat-h2">Design</h3>
   <p>This study employed a quasi-experimental within-groups design. It is considered quasi-experimental because participants were not randomly assigned to conditions; rather, all participants completed both conditions in a fixed order by design. The independent variable was strategic guidance condition (non-guided vs. guided). The dependent variable was participants&#8217; performance on the Wordle tasks, operationalized primarily as turn-rate (the number of guesses required per puzzle) and secondarily as solve success (whether the target word was correctly identified within six guesses).</p>
 
-  <h3>Participants</h3>
+  <h3 class="nat-h2">Participants</h3>
   <p>We anticipated between 20 and 25 participants in this study. The group studied consisted of psychology students taking the course PSYC 2400 Research Methods in Psychology at the Langley campus of Kwantlen Polytechnic University. All participants were at least 18 years of age and were selected through convenience sampling. A final sample of <em>n</em> = 20 was retained after applying operational definitions (see Data Analysis below).</p>
 
-  <h3>Materials</h3>
+  <h3 class="nat-h2">Materials</h3>
   <p>Participants were expected to use an electronic device &#8212; either their phone or laptop &#8212; and were provided a testing booklet (Appendix A) to fill out and complete the tasks. Those without a device available were provided one. The testing booklet consisted of four QR codes, four Wordle tables, and four question sheets. The six secret words selected for the study were drawn from 300 daily Wordles released by the New York Times before February 1st, 2026: Wordle #1501 (OMEGA), #1625 (RATTY), #1525 (PITCH), #1389 (SPARE), #1430 (MUGGY), and #1442 (HABIT), attached in Appendix C. Strategic guidance materials are attached in Appendix B (Wordle instruction sheet) and Appendix D (strategic guidance instruction sheet).</p>
 
-  <h3>Procedure</h3>
+  <h3 class="nat-h2">Procedure</h3>
   <p>The order of events began with participants reading and signing informed consent forms. Once forms were collected, researchers explained the task to all participants, including a verbal explanation of what Wordle is and how the experiment would proceed. All participants were instructed to turn off any settings they may have previously changed &#8212; specifically the &#8220;hard mode&#8221; feature &#8212; to ensure all participants worked in the same environment. To reduce practice effects and beginners&#8217; luck, all participants completed the New York Times daily Wordle on March 11th, 2026 (that day&#8217;s word: <strong>TEDDY</strong>) as a mandatory warm-up before beginning any study tasks.</p>
 
   <p>Participants were then provided their questionnaire booklet. For the first two Wordles (W1 and W2), participants were instructed only to complete their assigned tasks and fill out the corresponding questionnaire pages &#8212; no strategic guidance was provided in this control condition. Participants were not permitted to share their answers with one another to control for confounds. Through random assignment, each participant received four of the six available words in a randomized order. The randomization of word order served to reduce order effects that may arise from receiving easy words before hard words and vice versa.</p>
 
   <p>Once participants had completed W1 and W2, the independent variable was introduced. Participants were permitted to collect a strategic guidance sheet from the front of the room (Appendix D) and also received a verbal explanation of the guidance to reduce information overload. The guidance instructed participants to: (1) start with high-information words from a statistically optimized list in order (LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP); (2) if only yellow letters are revealed, temporarily ignore them and continue down the list to exclude more letters; and (3) once a green letter appears, abandon the list and begin solving. After receiving guidance, participants completed W3 and W4. After all four sessions, questionnaires were collected and a debrief form was distributed to all participants.</p>
 
-  <h3>Measures</h3>
+  <h3 class="nat-h2">Measures</h3>
   <p>A fixed-choice questionnaire (Appendix A) was administered after each Wordle session, capturing: whether the Wordle was successfully completed (yes/no); the number of guesses taken (1&#8211;6); perceived difficulty (1 = Very Easy to 5 = Very Difficult); natural strategy questions for W2 (rated on a 1&#8211;5 Likert scale); and for W3 and W4, guidance compliance (1&#8211;4 scale) and perceived usefulness of the guidance (1&#8211;5 scale). Participant start and end times were recorded manually on each questionnaire sheet.</p>
 
-  <h3>Controls for Threats to Validity</h3>
-  <p>Several steps were taken to address threats to internal validity. <strong>Order effects</strong> were reduced by randomizing word assignment and session order across participants. <strong>Practice effects</strong> were mitigated by randomizing word assignment and order, and by administering the daily Wordle as a mandatory warm-up so that any improvement from familiarity with the interface would manifest before study tasks began. <strong>Regression to the mean</strong> was addressed by including the warm-up Wordle to bring participants closer to their average performance before data collection commenced. <strong>Beginner&#8217;s luck</strong> was similarly reduced by the warm-up task.</p>
+  <h3 class="nat-h2">Controls for threats to validity</h3>
+  <p>Several steps were taken to address threats to internal validity. <em>Order effects</em> were reduced by randomizing word assignment and session order across participants. <em>Practice effects</em> were mitigated by randomizing word assignment and order, and by administering the daily Wordle as a mandatory warm-up so that any improvement from familiarity with the interface would manifest before study tasks began. <em>Regression to the mean</em> was addressed by including the warm-up Wordle to bring participants closer to their average performance before data collection commenced. <em>Beginner&#8217;s luck</em> was similarly reduced by the warm-up task.</p>
 
-  <h3>Data Analysis</h3>
-  <p>Two operational definitions were applied before analysis to ensure data quality. <strong>OD1</strong> (guidance compliance) retained only participants who used LOOIE as their first guess in both W3 and W4, reducing the sample from <em>n</em> = 23 to <em>n</em> = 20 (P2, P11, and P19 excluded). <strong>OD2</strong> (correct answer scoring) coded a Wordle as solved only if the participant&#8217;s final guess exactly matched the secret word, overriding any self-reported solve status contradicted by the raw guess record. The primary statistical analysis was a series of one-sided paired-samples <em>t</em>-tests comparing turn-rate between non-guided and guided sessions. Effect sizes were computed using Cohen&#8217;s <em>d</em>. Secondary analyses included point-biserial correlations and independent-samples <em>t</em>-tests for questionnaire data. Performance was also compared against New York Times WordleBot global averages from a population of approximately 400,000 players.</p>
+  <h3 class="nat-h2">Data analysis</h3>
+  <p>Two operational definitions were applied before analysis to ensure data quality. <em>OD1</em> (guidance compliance) retained only participants who used LOOIE as their first guess in both W3 and W4, reducing the sample from <em>n</em> = 23 to <em>n</em> = 20 (P2, P11, and P19 excluded). <em>OD2</em> (correct answer scoring) coded a Wordle as solved only if the participant&#8217;s final guess exactly matched the secret word, overriding any self-reported solve status contradicted by the raw guess record. The primary statistical analysis was a series of one-sided paired-samples <em>t</em>-tests comparing turn-rate between non-guided and guided sessions. Effect sizes were computed using Cohen&#8217;s <em>d</em>. Secondary analyses included point-biserial correlations and independent-samples <em>t</em>-tests for questionnaire data. Performance was also compared against New York Times WordleBot global averages from a population of approximately 400,000 players.</p>
 
-  <h3>Pilot Testing</h3>
-  <p>A pilot test was conducted to verify the methods that were to be employed in this experiment. Researchers developed focus groups of 2 participants each for the purposes of verifying the likely success of the proposed methodology. A total of 8 participants participated in the pilot test with ages ranging from the 20s to 60s. Older participants took more time to complete the Wordles they attempted and also discontinued play before attempting strategically guided Wordles. The older participant time data from pilot testing was disregarded for the experiment due to the proposed experiment sample being of a much younger demographic; the younger pilot testing participants successfully completed the experiment in the final allotted time. The desertion rate of older participants attributed to frustration and stress was also disregarded due to the differences in age; it was assumed that differences in fluid and crystallized intelligence in the experiment sample compared to the pilot group were responsible for this.</p>
+  <h3 class="nat-h2">Pilot testing</h3>
+  <p>A pilot test was conducted to verify the methods that were to be employed in this experiment. Researchers developed focus groups of two participants each for the purposes of verifying the likely success of the proposed methodology. A total of eight participants participated in the pilot test, with ages ranging from the 20s to 60s. Older participants took more time to complete the Wordles they attempted and also discontinued play before attempting strategically guided Wordles. The older participant time data from pilot testing was disregarded for the experiment due to the proposed experiment sample being of a much younger demographic; the younger pilot testing participants successfully completed the experiment in the final allotted time. The desertion rate of older participants attributed to frustration and stress was also disregarded due to the differences in age; it was assumed that differences in fluid and crystallized intelligence in the experiment sample compared to the pilot group were responsible for this.</p>
   <p>Additionally, participants that were similar in age and background to the sample group reported repetitiveness in the provided questionnaire; this feedback was taken into consideration and resulted in the questions being changed to reduce redundancy and increase participant engagement. A variety of participants reported a lack of usefulness regarding the guidance words, specifically LOOIE; they did not find strategic guidance helpful or compatible with the task at hand. This opinion was carefully considered, but did not lead to the methodology being changed due to increased efficiency and accuracy for word guesses observed during pilot testing. In a similar vein, participants reported a lack of enjoyment while playing Wordle with strategic guidance and stated that the guidance took the fun out of the game. Although these opinions were valid, they were ultimately considered inconsequential to the outcome of this study. This experiment was focused primarily on the efficiency and accuracy of participants; participants, despite their repeated complaints, were solving more efficiently and accurately, which suggested that the proposed methodology for the experiment would prove successful.</p>
-</div>
 
-<!-- RESULTS -->
-<div class="page">
-  <h2 class="section-title">Results</h2>
+<!-- ===== RESULTS ===== -->
+  <h2 class="nat-h1">Results</h2>
 
-<div class="results-section-header"><span class="results-section-num">01</span><h2>Statistical Analysis</h2></div>
+  <p>The primary statistical analysis used in this study was a series of one-sided paired-samples <em>t</em>-tests. Because this was a within-groups design &#8212; all participants completed both the non-guided (control) and guided (experimental) conditions &#8212; paired <em>t</em>-tests were appropriate for directly comparing each participant&#8217;s performance across conditions while controlling for individual differences. A one-sided test was specified because our hypothesis was directional: we predicted that the guided condition would produce <em>more</em> turns (higher turn-rate) than the non-guided condition, as the prescribed strategy sequence (LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP) was hypothesized to restructure the problem-solving process rather than shortcut it. Effect sizes were calculated using Cohen&#8217;s <em>d</em> to assess practical significance alongside statistical significance.</p>
 
-<p>The primary statistical analysis used in this study was a series of one-sided paired-samples <em>t</em>-tests. Because this was a within-groups design — all participants completed both the non-guided (control) and guided (experimental) conditions — paired <em>t</em>-tests were appropriate for directly comparing each participant's performance across conditions while controlling for individual differences. A one-sided test was specified because our hypothesis was directional: we predicted that the guided condition would produce <em>more</em> turns (higher turn-rate) than the non-guided condition, as the prescribed strategy sequence (LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP) was hypothesized to restructure the problem-solving process rather than shortcut it. Effect sizes were calculated using Cohen's <em>d</em> to assess practical significance alongside statistical significance.</p>
+  <h3 class="nat-h2">Statistical analysis</h3>
 
-<h3>Methodology &amp; Hypothesis</h3>
+  <h4 class="nat-h3">Methodology and hypothesis</h4>
+  <p>This study employed a quasi-experimental within-groups design. Twenty-three psychology students at Kwantlen Polytechnic University (PSYC 2400, Langley campus) completed four Wordle puzzles in sequence: two in the non-guided condition (W1 and W2, free strategy) followed by two in the guided condition (W3 and W4, prescribed starter sequence). The independent variable was strategic guidance condition; the dependent variable was turn-rate and solve success. To contextualize performance, study results were compared against New York Times WordleBot global averages drawn from a population of approximately 400,000 players in the most recent available year. The hypothesis was: <em>if logical, strategic guidance is applied, Wordle turn-rate will increase relative to the non-guided condition</em>. To reduce practice effects and beginners&#8217; luck, all participants completed the New York Times daily Wordle on March 11th, 2026 &#8212; that day&#8217;s word being <strong>TEDDY</strong> &#8212; as a mandatory warm-up before beginning any study tasks. Word assignments across the four study sessions were also randomized across participants to reduce order effects.</p>
 
-<p>This study employed a quasi-experimental within-groups design. Twenty-three psychology students at Kwantlen Polytechnic University (PSYC 2400, Langley campus) completed four Wordle puzzles in sequence: two in the non-guided condition (W1 and W2, free strategy) followed by two in the guided condition (W3 and W4, prescribed starter sequence). It is considered quasi-experimental because participants were not randomly assigned to conditions; rather, all participants completed both conditions in a fixed order by design. The independent variable was strategic guidance condition; the dependent variable was turn-rate and solve success. To contextualize performance, study results were compared against New York Times WordleBot global averages drawn from a population of approximately 400,000 players in the most recent available year. The hypothesis was: <em>if logical, strategic guidance is applied, Wordle turn-rate will increase relative to the non-guided condition</em>. To reduce practice effects and beginners&#8217; luck, all participants completed the New York Times daily Wordle on March 11th, 2026 &#8212; that day&#8217;s word being <strong>TEDDY</strong> &#8212; as a mandatory warm-up before beginning any study tasks. Word assignments across the four study sessions were also randomized across participants to reduce order effects.</p>
+  <h4 class="nat-h3">From raw data to analyzable data</h4>
+  <p>Raw data were collected on paper questionnaire booklets and transcribed into a master spreadsheet. Two operational definitions were applied before analysis. OD1 (guidance compliance) retained only participants who used LOOIE as their first guess in both W3 and W4, reducing the sample from <em>n</em> = 23 to <em>n</em> = 20. Three participants were excluded: P2 opened W4 with YOLUS, P11 reversed the sequence order, and P19&#8217;s notes explicitly stated non-compliance. OD2 (correct answer scoring) coded a Wordle as solved only if the participant&#8217;s final guess exactly matched the secret word &#8212; overriding any self-reported solve status contradicted by the raw record. Seven corrections were made in total; the most consequential was P17, who self-reported solving both W3 and W4 but whose final guesses (GOALS, CRAMP) did not match the target words (RATTY, HABIT).</p>
 
-<h3>From Raw Data to Analyzable Data</h3>
+  <h4 class="nat-h3">Descriptive statistics: turn rate and elapsed time</h4>
 
-<p>Raw data were collected on paper questionnaire booklets and transcribed into a master spreadsheet. Two operational definitions were applied before analysis. <strong>OD1</strong> (guidance compliance) retained only participants who used LOOIE as their first guess in both W3 and W4, reducing the sample from <em>n</em> = 23 to <em>n</em> = 20. Three participants were excluded: P2 opened W4 with YOLUS, P11 reversed the sequence order, and P19&#8217;s notes explicitly stated non-compliance. <strong>OD2</strong> (correct answer scoring) coded a Wordle as solved only if the participant&#8217;s final guess exactly matched the secret word &#8212; overriding any self-reported solve status contradicted by the raw record. Seven corrections were made in total; the most consequential was P17, who self-reported solving both W3 and W4 but whose final guesses (GOALS, CRAMP) did not match the target words (RATTY, HABIT).</p>
-
-<h3>Descriptive Statistics &#8212; Turn Rate &amp; Elapsed Time</h3>
-
-<div class="duo">
-  <div class="card">
-    <p class="ct">Figure 1. Mean turns taken per Wordle</p>
-    <p class="cs">W1&#8211;W2 non-guided &middot; W3&#8211;W4 guided &middot; n = 20 &middot; 95% CI shown</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
-      <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+  <div class="duo">
+    <div class="card">
+      <p class="ct">Figure 1. Mean turns taken per Wordle</p>
+      <p class="cs">W1&#8211;W2 non-guided &middot; W3&#8211;W4 guided &middot; n = 20 &middot; 95% CI shown</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
+        <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+      </div>
+      <div class="cw" style="height:200px"><canvas id="c1"></canvas></div>
+      <p class="cn">W3 had the highest mean (5.60) with the lowest SD (0.50) &#8212; guidance standardized behaviour. W2 was the most efficient session (4.60 turns).</p>
     </div>
-    <div class="cw" style="height:200px"><canvas id="c1"></canvas></div>
-    <p class="cn">W3 had the highest mean (5.60) with the lowest SD (0.50) &#8212; guidance standardized behaviour. W2 was the most efficient session (4.60 turns).</p>
-  </div>
-  <div class="card">
-    <p class="ct">Figure 2. Mean elapsed minutes per Wordle</p>
-    <p class="cs">95% CI shown &middot; n varies (W4: n = 14 due to missing timestamps)</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
-      <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+    <div class="card">
+      <p class="ct">Figure 2. Mean elapsed minutes per Wordle</p>
+      <p class="cs">95% CI shown &middot; n varies (W4: n = 14 due to missing timestamps)</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
+        <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+      </div>
+      <div class="cw" style="height:200px"><canvas id="c2"></canvas></div>
+      <p class="cn">Consistent downward trend (5.16 &#8594; 3.53 min). No paired comparison reached significance; reduced n in W4 limits statistical power for time analyses.</p>
     </div>
-    <div class="cw" style="height:200px"><canvas id="c2"></canvas></div>
-    <p class="cn">Consistent downward trend (5.16 &#8594; 3.53 min). No paired comparison reached significance; reduced n in W4 limits statistical power for time analyses.</p>
   </div>
-</div>
 
-<p>With operational definitions applied, all 20 participants completed all four Wordle sessions. The non-guided sessions averaged 5.05 (<em>SD</em> = 1.28) and 4.60 (<em>SD</em> = 1.50) turns for W1 and W2 respectively; the guided sessions averaged 5.60 (<em>SD</em> = 0.50) and 5.20 (<em>SD</em> = 1.28) turns for W3 and W4. W3&#8217;s markedly compressed standard deviation reflects how the prescribed sequence constrained all participants to a near-identical guess count. Elapsed time showed a consistent downward trend (5.16 &#8594; 4.45 &#8594; 4.17 &#8594; 3.53 min), though no paired time comparison reached significance.</p>
+  <p>With operational definitions applied, all 20 participants completed all four Wordle sessions. The non-guided sessions averaged 5.05 (<em>SD</em> = 1.28) and 4.60 (<em>SD</em> = 1.50) turns for W1 and W2 respectively; the guided sessions averaged 5.60 (<em>SD</em> = 0.50) and 5.20 (<em>SD</em> = 1.28) turns for W3 and W4. W3&#8217;s markedly compressed standard deviation reflects how the prescribed sequence constrained all participants to a near-identical guess count. Elapsed time showed a consistent downward trend (5.16 &#8594; 4.45 &#8594; 4.17 &#8594; 3.53 min), though no paired time comparison reached significance.</p>
 
-<table>
-  <thead><tr><th>Wordle</th><th>Condition</th><th><em>M</em> turns</th><th><em>SD</em></th><th>95% CI</th><th><em>M</em> time (min)</th><th><em>n</em></th></tr></thead>
-  <tbody>
-    <tr><td>W1</td><td>Non-Guided</td><td>5.05</td><td>1.28</td><td>[4.45, 5.65]</td><td>5.16</td><td>20</td></tr>
-    <tr><td>W2</td><td>Non-Guided</td><td>4.60</td><td>1.50</td><td>[3.90, 5.30]</td><td>4.45</td><td>20</td></tr>
-    <tr><td>W3</td><td>Guided</td><td>5.60</td><td>0.50</td><td>[5.36, 5.84]</td><td>4.17</td><td>20</td></tr>
-    <tr><td>W4</td><td>Guided</td><td>5.20</td><td>1.28</td><td>[4.60, 5.80]</td><td>3.53</td><td>20</td></tr>
-  </tbody>
-</table>
-<p class="tn"><em>Table 1.</em> Mean turns and elapsed time per session with 95% CIs for turns. W3 shows the highest mean turns and lowest SD; elapsed time declined monotonically across sessions.</p>
+  <p class="tab-cap"><strong>Table 1. Mean turns and elapsed time per session.</strong> 95% confidence intervals shown for turn counts.</p>
+  <table class="apa-table">
+    <thead><tr><th>Wordle</th><th>Condition</th><th><em>M</em> turns</th><th><em>SD</em></th><th>95% CI</th><th><em>M</em> time (min)</th><th><em>n</em></th></tr></thead>
+    <tbody>
+      <tr><td>W1</td><td>Non-Guided</td><td>5.05</td><td>1.28</td><td>[4.45, 5.65]</td><td>5.16</td><td>20</td></tr>
+      <tr><td>W2</td><td>Non-Guided</td><td>4.60</td><td>1.50</td><td>[3.90, 5.30]</td><td>4.45</td><td>20</td></tr>
+      <tr><td>W3</td><td>Guided</td><td>5.60</td><td>0.50</td><td>[5.36, 5.84]</td><td>4.17</td><td>20</td></tr>
+      <tr><td>W4</td><td>Guided</td><td>5.20</td><td>1.28</td><td>[4.60, 5.80]</td><td>3.53</td><td>20</td></tr>
+    </tbody>
+  </table>
+  <p class="tab-note">W3 shows the highest mean turns and lowest SD; elapsed time declined monotonically across sessions.</p>
 
-<div class="duo wide">
-  <div class="card">
-    <p class="ct">Figure 3. Average completion time &#8212; solved vs. not solved</p>
-    <p class="cs">95% CI shown &middot; overall and by session</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--teal)"></span>Solved</span>
-      <span><span class="dot" style="background:var(--coral)"></span>Not solved</span>
+  <div class="duo wide">
+    <div class="card">
+      <p class="ct">Figure 3. Average completion time: solved vs. not solved</p>
+      <p class="cs">95% CI shown &middot; overall and by session</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--teal)"></span>Solved</span>
+        <span><span class="dot" style="background:var(--coral)"></span>Not solved</span>
+      </div>
+      <div class="cw" style="height:210px"><canvas id="c5"></canvas></div>
+      <p class="cn">Solved participants were 1.63 min faster overall (3.71 vs. 5.34 min). The gap narrowed substantially in W3&#8211;W4, suggesting the prescribed starter sequence levelled opening behaviour regardless of outcome.</p>
     </div>
-    <div class="cw" style="height:210px"><canvas id="c5"></canvas></div>
-    <p class="cn">Solved participants were 1.63 min faster overall (3.71 vs. 5.34 min). The gap narrowed substantially in W3&#8211;W4, suggesting the prescribed starter sequence levelled opening behaviour regardless of outcome.</p>
   </div>
-</div>
 
-<p>Participants who solved their Wordle completed it faster overall (<em>M</em> = 3.71 min) than those who did not (<em>M</em> = 5.34 min). This gap was most pronounced in the unguided sessions and narrowed considerably once guidance was introduced &#8212; consistent with the prescribed starter words constraining everyone to a similar early-game pattern, reducing the time advantage that competent solvers typically hold.</p>
+  <p>Participants who solved their Wordle completed it faster overall (<em>M</em> = 3.71 min) than those who did not (<em>M</em> = 5.34 min). This gap was most pronounced in the unguided sessions and narrowed considerably once guidance was introduced &#8212; consistent with the prescribed starter words constraining everyone to a similar early-game pattern, reducing the time advantage that competent solvers typically hold.</p>
 
-<h3>Comparison to the New York Times WordleBot International Database</h3>
+  <h4 class="nat-h3">Comparison to the New York Times WordleBot international database</h4>
 
-<div class="duo pr">
-  <div class="card">
-    <p class="ct">Figure 4. Turn rate by condition across secret words</p>
-    <p class="cs">Guided vs. non-guided &middot; max 6 turns</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
-      <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+  <div class="duo pr">
+    <div class="card">
+      <p class="ct">Figure 4. Turn rate by condition across secret words</p>
+      <p class="cs">Guided vs. non-guided &middot; max 6 turns</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
+        <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+      </div>
+      <div class="cw" style="height:220px"><canvas id="c7"></canvas></div>
+      <p class="cn">OMEGA guided mean = 6.0 (ceiling). MUGGY is the sole word where non-guided outperformed guided on turns.</p>
     </div>
-    <div class="cw" style="height:220px"><canvas id="c7"></canvas></div>
-    <p class="cn">OMEGA guided mean = 6.0 (ceiling). MUGGY is the sole word where non-guided outperformed guided on turns.</p>
-  </div>
-  <div class="prose">
-    <p>Study turn rates were compared against the New York Times WordleBot international database, aggregating approximately 400,000 players per word. The non-guided condition (<em>M</em> = 4.83) tracked international benchmarks more closely than the guided condition (<em>M</em> = 5.40), suggesting natural strategies more closely resemble typical global play. This is consistent with the hypothesis: guidance restructured the approach in ways that initially raised turn use while improving solve likelihood.</p>
-    <table>
-      <thead><tr><th>Word</th><th>NG</th><th>G</th><th>Intl. avg</th><th>Intl. <em>n</em></th></tr></thead>
-      <tbody>
-        <tr><td>OMEGA</td><td>5.17</td><td>6.00</td><td>4.1</td><td>401,341</td></tr>
-        <tr><td>RATTY</td><td>3.86</td><td>5.00</td><td>3.9</td><td>380,406</td></tr>
-        <tr><td>PITCH</td><td>5.14</td><td>5.71</td><td>3.9</td><td>453,537</td></tr>
-        <tr><td>SPARE</td><td>4.14</td><td>5.17</td><td>4.1</td><td>467,646</td></tr>
-        <tr><td>MUGGY</td><td>5.62</td><td>5.20</td><td>4.6</td><td>417,240</td></tr>
-        <tr><td>HABIT</td><td>5.00</td><td>5.00</td><td>3.7</td><td>418,409</td></tr>
-      </tbody>
-    </table>
-    <p class="tn"><em>Table 2.</em> Study means vs. New York Times WordleBot international averages. Source: Wordle Data Set.</p>
-  </div>
-</div>
-
-<h3>Paired <em>t</em>-Test Findings</h3>
-
-<p>To test the directional hypothesis, four one-sided paired <em>t</em>-tests compared each session combination. Results are in Table 3 and visualized in Figures 5 and 6.</p>
-
-<div class="duo">
-  <div class="card">
-    <p class="ct">Figure 5. Cohen&#8217;s <em>d</em> effect sizes with 95% CI</p>
-    <p class="cs">Paired turn comparisons &middot; n = 20 pairs</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--teal)"></span>Positive <em>d</em></span>
-      <span><span class="dot" style="background:var(--coral)"></span>Negative <em>d</em></span>
+    <div class="prose">
+      <p>Study turn rates were compared against the New York Times WordleBot international database, aggregating approximately 400,000 players per word. The non-guided condition (<em>M</em> = 4.83) tracked international benchmarks more closely than the guided condition (<em>M</em> = 5.40), suggesting natural strategies more closely resemble typical global play. This is consistent with the hypothesis: guidance restructured the approach in ways that initially raised turn use while improving solve likelihood.</p>
+      <p class="tab-cap"><strong>Table 2. Study means vs. New York Times WordleBot international averages.</strong></p>
+      <table class="apa-table">
+        <thead><tr><th>Word</th><th>NG</th><th>G</th><th>Intl. avg</th><th>Intl. <em>n</em></th></tr></thead>
+        <tbody>
+          <tr><td>OMEGA</td><td>5.17</td><td>6.00</td><td>4.1</td><td>401,341</td></tr>
+          <tr><td>RATTY</td><td>3.86</td><td>5.00</td><td>3.9</td><td>380,406</td></tr>
+          <tr><td>PITCH</td><td>5.14</td><td>5.71</td><td>3.9</td><td>453,537</td></tr>
+          <tr><td>SPARE</td><td>4.14</td><td>5.17</td><td>4.1</td><td>467,646</td></tr>
+          <tr><td>MUGGY</td><td>5.62</td><td>5.20</td><td>4.6</td><td>417,240</td></tr>
+          <tr><td>HABIT</td><td>5.00</td><td>5.00</td><td>3.7</td><td>418,409</td></tr>
+        </tbody>
+      </table>
+      <p class="tab-note">NG = Non-Guided; G = Guided. Source: Wordle Data Set.</p>
     </div>
-    <div class="cw" style="height:195px"><canvas id="c3"></canvas></div>
-    <p class="cn">W2&#8211;W3 yielded the largest effect (d = &#8722;0.69, medium). W1&#8211;W2 is the only positive d (0.34), reflecting marginal improvement between unguided sessions.</p>
   </div>
-  <div class="card">
-    <p class="ct">Figure 6. Mean turn difference &#8212; paired comparisons</p>
-    <p class="cs">One-sided &middot; hypothesis: guided &gt; non-guided</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--purple)"></span>Significant</span>
-      <span><span class="dot" style="background:rgba(100,99,96,0.3)"></span>n.s.</span>
+
+  <h4 class="nat-h3">Paired t-test findings</h4>
+
+  <p>To test the directional hypothesis, four one-sided paired <em>t</em>-tests compared each session combination. Results are in Table 3 and visualized in Figs. 5 and 6.</p>
+
+  <div class="duo">
+    <div class="card">
+      <p class="ct">Figure 5. Cohen&#8217;s <em>d</em> effect sizes with 95% CI</p>
+      <p class="cs">Paired turn comparisons &middot; n = 20 pairs</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--teal)"></span>Positive <em>d</em></span>
+        <span><span class="dot" style="background:var(--coral)"></span>Negative <em>d</em></span>
+      </div>
+      <div class="cw" style="height:195px"><canvas id="c3"></canvas></div>
+      <p class="cn">W2&#8211;W3 yielded the largest effect (d = &#8722;0.69, medium). W1&#8211;W2 is the only positive d (0.34), reflecting marginal improvement between unguided sessions.</p>
     </div>
-    <div class="cw" style="height:195px"><canvas id="c4"></canvas></div>
-    <p class="cn">W2&#8211;W3 was highly significant (p = .003**); W1&#8211;W3 reached p = .039*. W1&#8211;W2 and W2&#8211;W4 did not reach significance.</p>
-  </div>
-</div>
-
-<table>
-  <thead><tr><th>Pair</th><th><em>M</em> Diff</th><th><em>SD</em></th><th><em>t</em>(19)</th><th><em>p</em> (one-sided)</th><th>Cohen&#8217;s <em>d</em></th><th>95% CI (<em>d</em>)</th><th>Sig.</th></tr></thead>
-  <tbody>
-    <tr><td>W1 &#8722; W2</td><td>+0.45</td><td>1.32</td><td>1.528</td><td>.929</td><td>0.342</td><td>[&#8722;0.11, 0.79]</td><td class="ns">n.s.</td></tr>
-    <tr><td>W1 &#8722; W3</td><td>&#8722;0.55</td><td>1.32</td><td>&#8722;1.868</td><td>.039</td><td>&#8722;0.418</td><td>[&#8722;0.87, 0.04]</td><td class="sig">* <em>p</em> &lt; .05</td></tr>
-    <tr><td>W2 &#8722; W3</td><td>&#8722;1.00</td><td>1.45</td><td>&#8722;3.082</td><td>.003</td><td>&#8722;0.689</td><td>[&#8722;1.18, &#8722;0.20]</td><td class="sig">** <em>p</em> &lt; .01</td></tr>
-    <tr><td>W2 &#8722; W4</td><td>&#8722;0.60</td><td>1.79</td><td>&#8722;1.500</td><td>.075</td><td>&#8722;0.335</td><td>[&#8722;0.79, 0.12]</td><td class="ns">n.s.</td></tr>
-  </tbody>
-</table>
-<p class="tn"><em>Table 3.</em> One-sided paired <em>t</em>-test results. Negative mean differences indicate guided sessions required more turns. df = 19 for all comparisons.</p>
-
-<p>The W1 vs. W2 comparison was non-significant (<em>p</em> = .929), confirming stable baseline performance and that word randomization successfully minimized order effects. The W1 vs. W3 comparison reached significance (<em>p</em> = .039, <em>d</em> = &#8722;0.42), and W2 vs. W3 was highly significant (<em>p</em> = .003, <em>d</em> = &#8722;0.69, a medium effect) &#8212; both confirming that participants required significantly more turns in the first guided session. The W2 vs. W4 comparison did not reach significance (<em>p</em> = .075), suggesting participants were beginning to adapt to the guidance strategy by the fourth session.</p>
-
-<hr class="rule">
-<div class="results-section-header"><span class="results-section-num">02</span><h2>Questionnaire Analysis</h2></div>
-
-<p>A fixed-choice questionnaire was administered after each Wordle session to capture perceived difficulty, natural strategy use (W2 only), and &#8212; during guided sessions &#8212; compliance with and perceived usefulness of the prescribed strategy. All scale items used a 1&#8211;5 Likert format. Questionnaire analyses use the same OD-compliant sample (<em>n</em> = 20), except difficulty by session where W1 <em>n</em> = 19 (P3 reported N/A).</p>
-
-<h3>Perceived Difficulty</h3>
-
-<div class="duo">
-  <div class="card">
-    <p class="ct">Figure 7. Perceived difficulty by session</p>
-    <p class="cs">1 = very easy &#8594; 5 = very difficult &middot; 95% CI shown</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
-      <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+    <div class="card">
+      <p class="ct">Figure 6. Mean turn difference: paired comparisons</p>
+      <p class="cs">One-sided &middot; hypothesis: guided &gt; non-guided</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--purple)"></span>Significant</span>
+        <span><span class="dot" style="background:rgba(100,99,96,0.3)"></span>n.s.</span>
+      </div>
+      <div class="cw" style="height:195px"><canvas id="c4"></canvas></div>
+      <p class="cn">W2&#8211;W3 was highly significant (p = .003**); W1&#8211;W3 reached p = .039*. W1&#8211;W2 and W2&#8211;W4 did not reach significance.</p>
     </div>
-    <div class="cw" style="height:190px"><canvas id="q1"></canvas></div>
-    <p class="cn">Difficulty was stable across all four sessions (range: 3.15&#8211;3.32). Guided sessions were not perceived as notably easier or harder.</p>
   </div>
-  <div class="card">
-    <p class="ct">Figure 8. Perceived difficulty by secret word</p>
-    <p class="cs">Sorted hardest &#8594; easiest &middot; 95% CI shown</p>
-    <div class="cw" style="height:190px"><canvas id="q2"></canvas></div>
-    <p class="cn">MUGGY was rated hardest (4.17) with the second-lowest solve rate. PITCH and SPARE were rated easiest and had the highest solve rates.</p>
-  </div>
-</div>
 
-<div class="duo wide" style="margin-top:16px;">
-  <div class="card">
-    <p class="ct">Figure 8b. Solve rate &amp; perceived difficulty by secret word</p>
-    <p class="cs">Bars = overall solve rate (%) &middot; Line = mean difficulty (1&#8211;5) &middot; sorted easiest &#8594; hardest solve</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--purple)"></span>Solve rate (%)</span>
-      <span><span class="dot" style="background:var(--amber);border-radius:50%"></span>Mean difficulty</span>
+  <p class="tab-cap"><strong>Table 3. One-sided paired t-test results for turn rate comparisons.</strong></p>
+  <table class="apa-table">
+    <thead><tr><th>Pair</th><th><em>M</em> Diff</th><th><em>SD</em></th><th><em>t</em>(19)</th><th><em>p</em> (one-sided)</th><th>Cohen&#8217;s <em>d</em></th><th>95% CI (<em>d</em>)</th><th>Sig.</th></tr></thead>
+    <tbody>
+      <tr><td>W1 &#8722; W2</td><td>+0.45</td><td>1.32</td><td>1.528</td><td>.929</td><td>0.342</td><td>[&#8722;0.11, 0.79]</td><td class="ns">n.s.</td></tr>
+      <tr><td>W1 &#8722; W3</td><td>&#8722;0.55</td><td>1.32</td><td>&#8722;1.868</td><td>.039</td><td>&#8722;0.418</td><td>[&#8722;0.87, 0.04]</td><td class="sig">* <em>p</em> &lt; .05</td></tr>
+      <tr><td>W2 &#8722; W3</td><td>&#8722;1.00</td><td>1.45</td><td>&#8722;3.082</td><td>.003</td><td>&#8722;0.689</td><td>[&#8722;1.18, &#8722;0.20]</td><td class="sig">** <em>p</em> &lt; .01</td></tr>
+      <tr><td>W2 &#8722; W4</td><td>&#8722;0.60</td><td>1.79</td><td>&#8722;1.500</td><td>.075</td><td>&#8722;0.335</td><td>[&#8722;0.79, 0.12]</td><td class="ns">n.s.</td></tr>
+    </tbody>
+  </table>
+  <p class="tab-note">All tests are one-sided. Negative mean differences indicate guided sessions required more turns. df = 19 for all comparisons.</p>
+
+  <p>The W1 vs. W2 comparison was non-significant (<em>p</em> = .929), confirming stable baseline performance and that word randomization successfully minimized order effects. The W1 vs. W3 comparison reached significance (<em>p</em> = .039, <em>d</em> = &#8722;0.42), and W2 vs. W3 was highly significant (<em>p</em> = .003, <em>d</em> = &#8722;0.69, a medium effect) &#8212; both confirming that participants required significantly more turns in the first guided session. The W2 vs. W4 comparison did not reach significance (<em>p</em> = .075), suggesting participants were beginning to adapt to the guidance strategy by the fourth session.</p>
+
+  <h3 class="nat-h2">Questionnaire analysis</h3>
+
+  <p>A fixed-choice questionnaire was administered after each Wordle session to capture perceived difficulty, natural strategy use (W2 only), and &#8212; during guided sessions &#8212; compliance with and perceived usefulness of the prescribed strategy. All scale items used a 1&#8211;5 Likert format. Questionnaire analyses use the same OD-compliant sample (<em>n</em> = 20), except difficulty by session where W1 <em>n</em> = 19 (P3 reported N/A).</p>
+
+  <h4 class="nat-h3">Perceived difficulty</h4>
+
+  <div class="duo">
+    <div class="card">
+      <p class="ct">Figure 7. Perceived difficulty by session</p>
+      <p class="cs">1 = very easy &#8594; 5 = very difficult &middot; 95% CI shown</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
+        <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+      </div>
+      <div class="cw" style="height:190px"><canvas id="q1"></canvas></div>
+      <p class="cn">Difficulty was stable across all four sessions (range: 3.15&#8211;3.32). Guided sessions were not perceived as notably easier or harder.</p>
     </div>
-    <div class="cw" style="height:220px"><canvas id="c6"></canvas></div>
-    <p class="cn">RATTY had the highest solve rate (83%) despite an above-average difficulty rating (3.50). OMEGA had the lowest solve rate (20%) and high difficulty (3.87). MUGGY showed the strongest alignment between perceived difficulty and poor solve rate.</p>
-  </div>
-</div>
-
-<div class="duo" style="grid-template-columns:1fr 1fr;align-items:start;">
-  <div class="prose" style="align-self:center;">
-    <p>Perceived difficulty was broadly stable across all four sessions (range: 3.15&#8211;3.32), with wide overlapping confidence intervals confirming no meaningful difference attributable to the guidance condition (Figure 7). This is methodologically important: any performance differences between conditions cannot be explained by participants finding guided puzzles objectively easier or harder. At the word level (Figure 8), difficulty generally aligned with solve rates &#8212; OMEGA and MUGGY were rated hardest and had the lowest solve rates, while PITCH and SPARE were rated easiest and solved most often. RATTY was a notable exception, carrying an above-average difficulty rating (3.50) yet the highest solve rate (83%).</p>
-    <p>Participants who solved their Wordle rated it significantly easier (<em>M</em> = 2.93, <em>SD</em> = 1.10) than those who did not (<em>M</em> = 3.65, <em>SD</em> = 0.73), <em>t</em>(77) = &#8722;3.28, <em>p</em> = .002 &#8212; a significant difference of 0.72 points (Figure 9).</p>
-  </div>
-  <div class="card" style="width:100%;box-sizing:border-box;">
-    <p class="ct">Figure 9. Perceived difficulty &#8212; solved vs. not solved</p>
-    <p class="cs">t(77) = &#8722;3.28, p = .002** &middot; 95% CI shown</p>
-    <div class="leg">
-      <span><span class="dot" style="background:var(--teal)"></span>Solved</span>
-      <span><span class="dot" style="background:var(--coral)"></span>Not solved</span>
+    <div class="card">
+      <p class="ct">Figure 8. Perceived difficulty by secret word</p>
+      <p class="cs">Sorted hardest &#8594; easiest &middot; 95% CI shown</p>
+      <div class="cw" style="height:190px"><canvas id="q2"></canvas></div>
+      <p class="cn">MUGGY was rated hardest (4.17) with the second-lowest solve rate. PITCH and SPARE were rated easiest and had the highest solve rates.</p>
     </div>
-    <div class="cw" style="height:175px"><canvas id="q3"></canvas></div>
-    <p class="cn">Solvers rated their puzzle 0.72 points easier on average (2.93 vs. 3.65).</p>
   </div>
-</div>
 
-<h3>Natural Strategy (W2)</h3>
-
-<div class="duo" style="grid-template-columns:1fr 1fr;align-items:start;">
-  <div class="prose" style="align-self:center;">
-    <p>To establish whether participants were already using strategic approaches before receiving guidance, three strategy questions were included in the W2 questionnaire. Participants rated agreement with each statement on a 1&#8211;5 scale. Relying on colour feedback from previous guesses was the dominant natural strategy (<em>M</em> = 3.95; 80% agreed), considerably above the neutral midpoint (Figure 10). Minimizing letter overlap between guesses (<em>M</em> = 3.05) and starting with vowel-rich or common-letter words (<em>M</em> = 3.20) were more evenly spread near neutral. Figure 11 below shows the full response distributions: colour feedback had a strong right-skew (16 of 20 agreed or strongly agreed), while the other two strategies attracted substantially more disagreement &#8212; confirming that feedback-driven iteration was the primary natural approach before any guided instruction was introduced.</p>
-  </div>
-  <div class="card" style="width:100%;box-sizing:border-box;">
-    <p class="ct">Figure 10. W2 natural strategy &#8212; mean agreement</p>
-    <p class="cs">1 = strongly disagree &#8594; 5 = strongly agree &middot; 95% CI shown</p>
-    <div class="cw" style="height:175px"><canvas id="q4"></canvas></div>
-    <p class="cn">Colour feedback was dominant (M = 3.95). Overlap minimisation and vowel-rich starts were both near neutral.</p>
-  </div>
-</div>
-
-<div class="duo wide" style="margin-top:16px;">
-  <div class="card">
-    <p class="ct">Figure 11. W2 strategy &#8212; full response distributions</p>
-    <p class="cs">Count per rating level (1&#8211;5) for each strategy question</p>
-    <div class="leg">
-      <span><span class="dot" style="background:#C84B28"></span>1 &#8211; Strongly disagree</span>
-      <span><span class="dot" style="background:#E8956D"></span>2 &#8211; Disagree</span>
-      <span><span class="dot" style="background:#9e9d98"></span>3 &#8211; Neutral</span>
-      <span><span class="dot" style="background:#6EC4A7"></span>4 &#8211; Agree</span>
-      <span><span class="dot" style="background:#1D9E75"></span>5 &#8211; Strongly agree</span>
+  <div class="duo wide" style="margin-top:16px;">
+    <div class="card">
+      <p class="ct">Figure 9. Solve rate and perceived difficulty by secret word</p>
+      <p class="cs">Bars = overall solve rate (%) &middot; Line = mean difficulty (1&#8211;5) &middot; sorted easiest &#8594; hardest solve</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--purple)"></span>Solve rate (%)</span>
+        <span><span class="dot" style="background:var(--amber);border-radius:50%"></span>Mean difficulty</span>
+      </div>
+      <div class="cw" style="height:220px"><canvas id="c6"></canvas></div>
+      <p class="cn">RATTY had the highest solve rate (83%) despite an above-average difficulty rating (3.50). OMEGA had the lowest solve rate (20%) and high difficulty (3.87). MUGGY showed the strongest alignment between perceived difficulty and poor solve rate.</p>
     </div>
-    <div class="cw" style="height:175px"><canvas id="q5"></canvas></div>
-    <p class="cn">Colour feedback shows strong right-skew (16/20 agreed or strongly agreed). Letter overlap had the most disagreement (7 rated 2); vowel-rich starts were evenly spread across all five ratings.</p>
   </div>
-</div>
 
-<h3>Guidance Compliance and Perceived Usefulness</h3>
-
-<div class="duo">
-  <div class="card">
-    <p class="ct">Figure 12. Guidance compliance &#8212; W3 &amp; W4</p>
-    <p class="cs">1 = did not follow &#8594; 4 = fully followed &middot; 95% CI shown</p>
-    <div class="leg"><span><span class="dot" style="background:var(--teal)"></span>W3 &amp; W4</span></div>
-    <div class="cw" style="height:185px"><canvas id="q6"></canvas></div>
-    <p class="cn">Compliance was high and identical across both sessions (M = 3.55; 70% fully followed).</p>
-  </div>
-  <div class="card">
-    <p class="ct">Figure 13. Perceived usefulness &#8212; W3 &amp; W4</p>
-    <p class="cs">1 = very unhelpful &#8594; 5 = very helpful &middot; 95% CI shown</p>
-    <div class="leg"><span><span class="dot" style="background:var(--teal)"></span>Guided sessions</span></div>
-    <div class="cw" style="height:185px"><canvas id="q7"></canvas></div>
-    <p class="cn">Usefulness rose from W3 (M = 2.95, 40% helpful) to W4 (M = 3.40, 60% helpful), indicating a learning effect.</p>
-  </div>
-</div>
-
-<p>Guidance compliance was high and identical in both guided sessions (<em>M</em> = 3.55 on the 1&#8211;4 scale; 70% fully followed). Crucially, compliance was a significant positive predictor of solve success: <em>r</em><sub>pb</sub> = .436, <em>p</em> = .005. Perceived usefulness improved from W3 to W4 (2.95 &#8594; 3.40), consistent with participants finding the strategy more intuitive after a practice session. Figure 14 shows how the distribution of usefulness ratings shifted toward the positive end from W3 to W4.</p>
-
-<div class="duo wide">
-  <div class="card">
-    <p class="ct">Figure 14. Usefulness rating distributions &#8212; W3 vs. W4</p>
-    <p class="cs">Count per rating level (1&#8211;5)</p>
-    <div class="leg">
-      <span><span class="dot" style="background:#C84B28"></span>1 &#8211; Very unhelpful</span>
-      <span><span class="dot" style="background:#E8956D"></span>2 &#8211; Unhelpful</span>
-      <span><span class="dot" style="background:#9e9d98"></span>3 &#8211; Neutral</span>
-      <span><span class="dot" style="background:#6EC4A7"></span>4 &#8211; Helpful</span>
-      <span><span class="dot" style="background:#1D9E75"></span>5 &#8211; Very helpful</span>
+  <div class="duo" style="grid-template-columns:1fr 1fr;align-items:start;">
+    <div class="prose" style="align-self:center;">
+      <p>Perceived difficulty was broadly stable across all four sessions (range: 3.15&#8211;3.32), with wide overlapping confidence intervals confirming no meaningful difference attributable to the guidance condition (Fig. 7). This is methodologically important: any performance differences between conditions cannot be explained by participants finding guided puzzles objectively easier or harder. At the word level (Fig. 8), difficulty generally aligned with solve rates &#8212; OMEGA and MUGGY were rated hardest and had the lowest solve rates, while PITCH and SPARE were rated easiest and solved most often. RATTY was a notable exception, carrying an above-average difficulty rating (3.50) yet the highest solve rate (83%).</p>
+      <p>Participants who solved their Wordle rated it significantly easier (<em>M</em> = 2.93, <em>SD</em> = 1.10) than those who did not (<em>M</em> = 3.65, <em>SD</em> = 0.73), <em>t</em>(77) = &#8722;3.28, <em>p</em> = .002 &#8212; a significant difference of 0.72 points (Fig. 10).</p>
     </div>
-    <div class="cw" style="height:195px"><canvas id="q8"></canvas></div>
-    <p class="cn">W4 shows a clear shift toward helpful ratings: those rating 4 or 5 rose from 40% (W3) to 60% (W4), while ratings of 1 dropped from 4 to 3.</p>
+    <div class="card" style="width:100%;box-sizing:border-box;">
+      <p class="ct">Figure 10. Perceived difficulty: solved vs. not solved</p>
+      <p class="cs">t(77) = &#8722;3.28, p = .002** &middot; 95% CI shown</p>
+      <div class="leg">
+        <span><span class="dot" style="background:var(--teal)"></span>Solved</span>
+        <span><span class="dot" style="background:var(--coral)"></span>Not solved</span>
+      </div>
+      <div class="cw" style="height:175px"><canvas id="q3"></canvas></div>
+      <p class="cn">Solvers rated their puzzle 0.72 points easier on average (2.93 vs. 3.65).</p>
+    </div>
   </div>
-</div>
 
-<div class="duo wide" style="margin-top:16px;">
-  <div class="card">
-    <p class="ct">Figure 15. Guidance &amp; usefulness correlations with outcomes</p>
-    <p class="cs">W3 and W4 pooled (n = 40) &middot; teal = significant &middot; gray = n.s.</p>
-    <div class="cw" style="height:185px"><canvas id="q9"></canvas></div>
-    <p class="cn">Compliance &#8594; solved is the only significant correlation (r<sub>pb</sub> = .436, p = .005**). Usefulness &#8594; guesses showed a non-significant trend (p = .079).</p>
+  <h4 class="nat-h3">Natural strategy (W2)</h4>
+
+  <div class="duo" style="grid-template-columns:1fr 1fr;align-items:start;">
+    <div class="prose" style="align-self:center;">
+      <p>To establish whether participants were already using strategic approaches before receiving guidance, three strategy questions were included in the W2 questionnaire. Participants rated agreement with each statement on a 1&#8211;5 scale. Relying on colour feedback from previous guesses was the dominant natural strategy (<em>M</em> = 3.95; 80% agreed), considerably above the neutral midpoint (Fig. 11). Minimizing letter overlap between guesses (<em>M</em> = 3.05) and starting with vowel-rich or common-letter words (<em>M</em> = 3.20) were more evenly spread near neutral. Fig. 12 below shows the full response distributions: colour feedback had a strong right-skew (16 of 20 agreed or strongly agreed), while the other two strategies attracted substantially more disagreement &#8212; confirming that feedback-driven iteration was the primary natural approach before any guided instruction was introduced.</p>
+    </div>
+    <div class="card" style="width:100%;box-sizing:border-box;">
+      <p class="ct">Figure 11. W2 natural strategy: mean agreement</p>
+      <p class="cs">1 = strongly disagree &#8594; 5 = strongly agree &middot; 95% CI shown</p>
+      <div class="cw" style="height:175px"><canvas id="q4"></canvas></div>
+      <p class="cn">Colour feedback was dominant (M = 3.95). Overlap minimisation and vowel-rich starts were both near neutral.</p>
+    </div>
   </div>
-</div>
 
-<p>The correlation dot plot (Figure 15) confirms that compliance with the prescribed guidance sequence was the single strongest predictor of solve success (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005). Perceived usefulness showed a directional but non-significant association with guess count (<em>r</em> = &#8722;.281, <em>p</em> = .079), suggesting participants who found the guidance more helpful used slightly fewer guesses on average, though this did not reach statistical significance. Together, the questionnaire findings indicate that the benefit of guidance operated primarily through whether a puzzle was ultimately solved rather than through fine-grained turn efficiency within individual attempts.</p>
+  <div class="duo wide" style="margin-top:16px;">
+    <div class="card">
+      <p class="ct">Figure 12. W2 strategy: full response distributions</p>
+      <p class="cs">Count per rating level (1&#8211;5) for each strategy question</p>
+      <div class="leg">
+        <span><span class="dot" style="background:#C84B28"></span>1 &#8211; Strongly disagree</span>
+        <span><span class="dot" style="background:#E8956D"></span>2 &#8211; Disagree</span>
+        <span><span class="dot" style="background:#9e9d98"></span>3 &#8211; Neutral</span>
+        <span><span class="dot" style="background:#6EC4A7"></span>4 &#8211; Agree</span>
+        <span><span class="dot" style="background:#1D9E75"></span>5 &#8211; Strongly agree</span>
+      </div>
+      <div class="cw" style="height:175px"><canvas id="q5"></canvas></div>
+      <p class="cn">Colour feedback shows strong right-skew (16/20 agreed or strongly agreed). Letter overlap had the most disagreement (7 rated 2); vowel-rich starts were evenly spread across all five ratings.</p>
+    </div>
+  </div>
+
+  <h4 class="nat-h3">Guidance compliance and perceived usefulness</h4>
+
+  <div class="duo">
+    <div class="card">
+      <p class="ct">Figure 13. Guidance compliance: W3 and W4</p>
+      <p class="cs">1 = did not follow &#8594; 4 = fully followed &middot; 95% CI shown</p>
+      <div class="leg"><span><span class="dot" style="background:var(--teal)"></span>W3 &amp; W4</span></div>
+      <div class="cw" style="height:185px"><canvas id="q6"></canvas></div>
+      <p class="cn">Compliance was high and identical across both sessions (M = 3.55; 70% fully followed).</p>
+    </div>
+    <div class="card">
+      <p class="ct">Figure 14. Perceived usefulness: W3 and W4</p>
+      <p class="cs">1 = very unhelpful &#8594; 5 = very helpful &middot; 95% CI shown</p>
+      <div class="leg"><span><span class="dot" style="background:var(--teal)"></span>Guided sessions</span></div>
+      <div class="cw" style="height:185px"><canvas id="q7"></canvas></div>
+      <p class="cn">Usefulness rose from W3 (M = 2.95, 40% helpful) to W4 (M = 3.40, 60% helpful), indicating a learning effect.</p>
+    </div>
+  </div>
+
+  <p>Guidance compliance was high and identical in both guided sessions (<em>M</em> = 3.55 on the 1&#8211;4 scale; 70% fully followed). Crucially, compliance was a significant positive predictor of solve success: <em>r</em><sub>pb</sub> = .436, <em>p</em> = .005. Perceived usefulness improved from W3 to W4 (2.95 &#8594; 3.40), consistent with participants finding the strategy more intuitive after a practice session. Fig. 15 shows how the distribution of usefulness ratings shifted toward the positive end from W3 to W4.</p>
+
+  <div class="duo wide">
+    <div class="card">
+      <p class="ct">Figure 15. Usefulness rating distributions: W3 vs. W4</p>
+      <p class="cs">Count per rating level (1&#8211;5)</p>
+      <div class="leg">
+        <span><span class="dot" style="background:#C84B28"></span>1 &#8211; Very unhelpful</span>
+        <span><span class="dot" style="background:#E8956D"></span>2 &#8211; Unhelpful</span>
+        <span><span class="dot" style="background:#9e9d98"></span>3 &#8211; Neutral</span>
+        <span><span class="dot" style="background:#6EC4A7"></span>4 &#8211; Helpful</span>
+        <span><span class="dot" style="background:#1D9E75"></span>5 &#8211; Very helpful</span>
+      </div>
+      <div class="cw" style="height:195px"><canvas id="q8"></canvas></div>
+      <p class="cn">W4 shows a clear shift toward helpful ratings: those rating 4 or 5 rose from 40% (W3) to 60% (W4), while ratings of 1 dropped from 4 to 3.</p>
+    </div>
+  </div>
+
+  <div class="duo wide" style="margin-top:16px;">
+    <div class="card">
+      <p class="ct">Figure 16. Guidance and usefulness correlations with outcomes</p>
+      <p class="cs">W3 and W4 pooled (n = 40) &middot; teal = significant &middot; gray = n.s.</p>
+      <div class="cw" style="height:185px"><canvas id="q9"></canvas></div>
+      <p class="cn">Compliance &#8594; solved is the only significant correlation (r<sub>pb</sub> = .436, p = .005**). Usefulness &#8594; guesses showed a non-significant trend (p = .079).</p>
+    </div>
+  </div>
+
+  <p>The correlation dot plot (Fig. 16) confirms that compliance with the prescribed guidance sequence was the single strongest predictor of solve success (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005). Perceived usefulness showed a directional but non-significant association with guess count (<em>r</em> = &#8722;.281, <em>p</em> = .079), suggesting participants who found the guidance more helpful used slightly fewer guesses on average, though this did not reach statistical significance. Together, the questionnaire findings indicate that the benefit of guidance operated primarily through whether a puzzle was ultimately solved rather than through fine-grained turn efficiency within individual attempts.</p>
 
 <script>
 const C={teal:'#1D9E75',tealF:'rgba(29,158,117,0.12)',purple:'#6B5ED6',purpleF:'rgba(107,94,214,0.12)',coral:'#C84B28',coralF:'rgba(200,75,40,0.12)',amber:'#B06D10',amberF:'rgba(176,109,16,0.15)',gray:'#888780',grayF:'rgba(100,99,96,0.10)',text:'#6b6a66',grid:'rgba(0,0,0,0.045)'};
 function base(yL,xL){return{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',borderColor:'rgba(0,0,0,0.08)',borderWidth:.5,titleColor:'#1a1917',bodyColor:'#6b6a66',padding:10,cornerRadius:6}},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},title:xL?{display:true,text:xL,color:C.text,font:{size:11}}:{display:false}},y:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},title:yL?{display:true,text:yL,color:C.text,font:{size:11}}:{display:false}}}};}
 function ciV(dci){return{id:'ciV'+Math.random(),afterDatasetsDraw(chart){const ctx=chart.ctx;dci.forEach(({di,cis,color})=>{const meta=chart.getDatasetMeta(di);cis.forEach((ci,i)=>{if(!ci||!meta.data[i])return;const x=meta.data[i].x,yT=chart.scales.y.getPixelForValue(ci[1]),yB=chart.scales.y.getPixelForValue(ci[0]);ctx.save();ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x,yT);ctx.lineTo(x,yB);ctx.stroke();[yT,yB].forEach(yy=>{ctx.beginPath();ctx.moveTo(x-4,yy);ctx.lineTo(x+4,yy);ctx.stroke();});ctx.restore();});});}}}
-function ciH(dci){return{id:'ciH'+Math.random(),afterDatasetsDraw(chart){const ctx=chart.ctx;dci.forEach(({di,cis,color})=>{const meta=chart.getDatasetMeta(di);cis.forEach((ci,i)=>{if(!ci||!meta.data[i])return;const y=meta.data[i].y,xL=chart.scales.x.getPixelForValue(ci[0]),xR=chart.scales.x.getPixelForValue(ci[1]);ctx.save();ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(xL,y);ctx.lineTo(xR,y);ctx.stroke();[xL,xR].forEach(xx=>{ctx.beginPath();ctx.moveTo(xx,y-4);ctx.lineTo(xx,y+4);ctx.stroke();});ctx.restore();});});}}}
 new Chart(document.getElementById('c1'),{type:'bar',data:{labels:['W1','W2','W3','W4'],datasets:[{data:[5.05,4.6,5.6,5.2],backgroundColor:[C.purpleF,C.purpleF,C.tealF,C.tealF],borderColor:[C.purple,C.purple,C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[4.45,5.65],[3.90,5.30],[5.36,5.84],[4.60,5.80]],color:C.gray}])],options:{...base('Mean turns'),scales:{...base().scales,y:{...base().scales.y,min:3,max:6,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11},stepSize:1}}}}});
 new Chart(document.getElementById('c2'),{type:'bar',data:{labels:['W1','W2','W3','W4'],datasets:[{data:[5.16,4.45,4.17,3.53],backgroundColor:[C.purpleF,C.purpleF,C.tealF,C.tealF],borderColor:[C.purple,C.purple,C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[3.94,6.38],[2.98,5.91],[2.81,5.54],[2.53,4.52]],color:C.gray}])],options:{...base('Minutes'),scales:{...base().scales,y:{...base().scales.y,min:0,max:8,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
 const sv=[3.71,4.19,2.79,4.11,3.25],nsv=[5.34,6.50,5.93,4.39,3.80],svCI=[[3.04,4.37],[2.95,5.44],[1.35,4.22],[2.51,5.70],[2.18,4.32]],nsvCI=[[4.24,6.44],[4.13,8.86],[3.70,8.16],[0,9.37],[1.75,5.85]];
@@ -556,49 +554,47 @@ new Chart(document.getElementById('c6'),{type:'bar',data:{labels:['OMEGA','MUGGY
 const corrLabels=['Compliance → solved (r_pb = .436)','Usefulness → guesses','Compliance → guesses','Usefulness → solved (Y/N)'],corrVals=[0.436,-0.281,-0.063,0.176],corrSig=[true,false,false,false],corrPVals=['p = .005**','p = .079','p = .701','p = .278'];
 new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,datasets:[{data:corrVals,backgroundColor:corrVals.map((_,i)=>corrSig[i]?C.tealF:C.grayF),borderColor:corrVals.map((_,i)=>corrSig[i]?C.teal:C.gray),borderWidth:1.5,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...base().plugins.tooltip,callbacks:{afterLabel:ctx=>corrPVals[ctx.dataIndex]}}},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:-0.6,max:0.7,title:{display:true,text:'r / r_pb',color:C.text,font:{size:11}}},y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
 </script>
-</div>
 
-<!-- DISCUSSION -->
-<div class="page">
-  <h2 class="section-title">Discussion</h2>
+<!-- ===== DISCUSSION ===== -->
+  <h2 class="nat-h1">Discussion</h2>
 
-  <p>The present study examined whether strategic guidance derived from Anderson and Meyer&#8217;s (2022) reinforcement learning model would increase Wordle turn rates among university students while improving solve success. Across most performance metrics, guidance significantly increased turn rate in the first guided session but did not produce consistent improvements in efficiency across both guided sessions. A consistent downward trend in completion time was observed across W1&#8211;W4 (5.16 &#8594; 4.45 &#8594; 4.17 &#8594; 3.53 min; see Figures 2&#8211;3), though no individual paired <em>t</em>-test reached significance. These results are not without meaning. Taken together with the questionnaire data, they surface a set of unanswered questions and important qualifications to the existing literature examined in the introduction.</p>
+  <p>The present study examined whether strategic guidance derived from Anderson and Meyer&#8217;s (2022) reinforcement learning model would increase Wordle turn rates among university students while improving solve success. Across most performance metrics, guidance significantly increased turn rate in the first guided session but did not produce consistent improvements in efficiency across both guided sessions. A consistent downward trend in completion time was observed across W1&#8211;W4 (5.16 &#8594; 4.45 &#8594; 4.17 &#8594; 3.53 min; see Figs. 2&#8211;3), though no individual paired <em>t</em>-test reached significance. These results are not without meaning. Taken together with the questionnaire data, they surface a set of unanswered questions and important qualifications to the existing literature examined in the introduction.</p>
 
-  <h3>Anderson and Meyer (2022): From Computers to Humans</h3>
+  <h3 class="nat-h2">Anderson and Meyer (2022): from computers to humans</h3>
 
-  <p>Anderson and Meyer&#8217;s strategy was generated across 10,000 simulated trials, producing an optimal, computationally derived heuristic. The three-step rule &#8212; start with high-information words, exclude on yellow, solve on green &#8212; is theoretically elegant, but our results suggest that elegance in simulation does not straightforwardly transfer to performance in humans under real-time conditions. Guidance compliance significantly predicted whether participants solved the puzzle at all (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005; see Figure 15), indicating the strategy was not inert. It helped participants complete the puzzle: solve rate improved by 12.5 percentage points (50.0% &#8594; 62.5%), though guided sessions averaged 0.58 more turns overall (4.83 non-guided vs. 5.40 guided; see Figure 1), meaning the strategy traded efficiency for completion.</p>
+  <p>Anderson and Meyer&#8217;s strategy was generated across 10,000 simulated trials, producing an optimal, computationally derived heuristic. The three-step rule &#8212; start with high-information words, exclude on yellow, solve on green &#8212; is theoretically elegant, but our results suggest that elegance in simulation does not straightforwardly transfer to performance in humans under real-time conditions. Guidance compliance significantly predicted whether participants solved the puzzle at all (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005; see Fig. 16), indicating the strategy was not inert. It helped participants complete the puzzle: solve rate improved by 12.5 percentage points (50.0% &#8594; 62.5%), though guided sessions averaged 0.58 more turns overall (4.83 non-guided vs. 5.40 guided; see Fig. 1), meaning the strategy traded efficiency for completion.</p>
 
   <p>One plausible explanation concerns the nature of the prescribed starter words themselves. Words like LOOIE and SAURY are statistically powerful within Anderson and Meyer&#8217;s reinforcement learning framework but are lexically unusual in everyday English. Participants familiar with common vocabulary may have found these words cognitively disruptive rather than orienting &#8212; an intuition consistent with anecdotal feedback from P19 and a pilot-test participant, where LOOIE was described as counterproductive precisely because of its double-O overlap. Additionally, several of Anderson and Meyer&#8217;s highest-entropy openers (e.g., BOWNE, SOOEY, SALET) are not accepted by the official New York Times&#8217; Wordle word validator, meaning the list deployed in practice may have been suboptimal even by the standard of their own model. Anderson and Meyer themselves acknowledge that humans cannot perform the complex calculations their agent performs; our data extend that acknowledgment by suggesting that even when humans are told the output of those calculations, translating a prescribed list into a dynamic, adaptive game strategy remains cognitively demanding.</p>
 
   <p>The guidance may therefore have introduced a secondary cognitive load &#8212; managing the rules themselves &#8212; that partially offset any entropy-related benefit. This connects directly to Loibl and Rummel&#8217;s (2014) framework, addressed further below.</p>
 
-  <h3>Achaa-Amankwaa et al. (2025): Natural Strategy and Its Limits</h3>
+  <h3 class="nat-h2">Achaa-Amankwaa et al. (2025): natural strategy and its limits</h3>
 
-  <p>The questionnaire data from Wordle 2 (unguided) reveal that participants already exhibited behaviours broadly consistent with Achaa-Amankwaa and colleagues&#8217; entropy framework. Colour feedback from previous guesses was the dominant natural strategy (<em>M</em> = 3.95, <em>SD</em> = 1.05; 80% agreement; see Figures 10&#8211;11), while starting with vowel-rich words and minimizing letter overlap were more evenly split near neutral (40% and 30% agreement respectively; see Figure 11). Without any instruction, university-level participants were already partially applying information-efficient strategies &#8212; the very behaviours Achaa-Amankwaa et al. associate with higher Wordle proficiency.</p>
+  <p>The questionnaire data from Wordle 2 (unguided) reveal that participants already exhibited behaviours broadly consistent with Achaa-Amankwaa and colleagues&#8217; entropy framework. Colour feedback from previous guesses was the dominant natural strategy (<em>M</em> = 3.95, <em>SD</em> = 1.05; 80% agreement; see Figs. 11&#8211;12), while starting with vowel-rich words and minimizing letter overlap were more evenly split near neutral (40% and 30% agreement respectively; see Fig. 12). Without any instruction, university-level participants were already partially applying information-efficient strategies &#8212; the very behaviours Achaa-Amankwaa et al. associate with higher Wordle proficiency.</p>
 
-  <p>The puzzle is why participants who reported minimizing overlap did not perform notably better. In fact, the positive trend for overlap-minimization (see Figure 10) suggests that those who claimed to avoid overlap may have paradoxically used more guesses, possibly by over-eliminating. Why, then, did imposing a formal entropy-maximizing strategy through guidance not produce the expected gains? Part of the answer may lie in cultural and linguistic context. Achaa-Amankwaa et al.&#8217;s study is grounded entirely in a German-language Wordle, with German entropy examples and a German-speaking adult pilot sample. The distribution of common letters, vowel positions, and consonant cluster patterns differs substantially between German and English. Our participants were predominantly English-speaking Canadian university students playing a New York Times English Wordle with words like MUGGY, PITCH, and RATTY &#8212; words that reflect English phonotactic constraints. Whether entropy-based thinking as a cognitive behaviour is scaffolded by one&#8217;s native linguistic intuitions about a specific language remains an open empirical question.</p>
+  <p>The puzzle is why participants who reported minimizing overlap did not perform notably better. In fact, the positive trend for overlap-minimization (see Fig. 11) suggests that those who claimed to avoid overlap may have paradoxically used more guesses, possibly by over-eliminating. Why, then, did imposing a formal entropy-maximizing strategy through guidance not produce the expected gains? Part of the answer may lie in cultural and linguistic context. Achaa-Amankwaa et al.&#8217;s study is grounded entirely in a German-language Wordle, with German entropy examples and a German-speaking adult pilot sample. The distribution of common letters, vowel positions, and consonant cluster patterns differs substantially between German and English. Our participants were predominantly English-speaking Canadian university students playing a New York Times English Wordle with words like MUGGY, PITCH, and RATTY &#8212; words that reflect English phonotactic constraints. Whether entropy-based thinking as a cognitive behaviour is scaffolded by one&#8217;s native linguistic intuitions about a specific language remains an open empirical question.</p>
 
-  <p>Achaa-Amankwaa et al. predict that Wordle proficiency loads primarily on crystallized intelligence (Gc) and retrieval ability (Gr), with a moderate contribution from fluid intelligence (Gf). A useful way to conceptualize this: Gc is the library &#8212; the larger it is, the more words and linguistic rules a player has available to draw on. Gr is the search engine &#8212; how quickly information is retrieved. Gf is processing power &#8212; capacity to run complex conditional logic in real time. Our participant pool likely brought moderate Gc in English but limited strategic Gf scaffolding. Guidance was designed to compensate by providing Gf-equivalent output externally. That this intervention failed to produce consistent turn-rate reductions suggests the interface between an external rule and a player&#8217;s crystallized linguistic knowledge is more fraught than anticipated. Participants who reported complying with guidance were significantly more likely to solve the puzzle (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005; see Figure 15), but high self-reported compliance (<em>M</em> = 3.55, 70% fully followed; see Figure 12) did not translate into fewer guesses. Compliance as reported and compliance as enacted may have diverged: participants followed the starter words but were unable to execute the branching logic adaptively in the game. Gf played a role &#8212; but in how well participants could interpret the rule, not simply in whether they tried to follow it.</p>
+  <p>Achaa-Amankwaa et al. predict that Wordle proficiency loads primarily on crystallized intelligence (Gc) and retrieval ability (Gr), with a moderate contribution from fluid intelligence (Gf). A useful way to conceptualize this: Gc is the library &#8212; the larger it is, the more words and linguistic rules a player has available to draw on. Gr is the search engine &#8212; how quickly information is retrieved. Gf is processing power &#8212; capacity to run complex conditional logic in real time. Our participant pool likely brought moderate Gc in English but limited strategic Gf scaffolding. Guidance was designed to compensate by providing Gf-equivalent output externally. That this intervention failed to produce consistent turn-rate reductions suggests the interface between an external rule and a player&#8217;s crystallized linguistic knowledge is more fraught than anticipated. Participants who reported complying with guidance were significantly more likely to solve the puzzle (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005; see Fig. 16), but high self-reported compliance (<em>M</em> = 3.55, 70% fully followed; see Fig. 13) did not translate into fewer guesses. Compliance as reported and compliance as enacted may have diverged: participants followed the starter words but were unable to execute the branching logic adaptively in the game. Gf played a role &#8212; but in how well participants could interpret the rule, not simply in whether they tried to follow it.</p>
 
-  <h3>Loibl and Rummel (2014): The &#8220;Problem-Solving Space&#8221; Problem</h3>
+  <h3 class="nat-h2">Loibl and Rummel (2014): the &#8220;problem-solving space&#8221; problem</h3>
 
-  <p>Loibl and Rummel found that guidance through contrast cases narrowed the problem-solving space and improved the immediate quality of students&#8217; solutions &#8212; yet this did not translate into better posttest performance than the unguided condition. In the present study, the guided condition produced significantly <em>more</em> turns than the unguided condition (W2 vs. W3: <em>p</em> = .003, <em>d</em> = &#8722;0.69; see Figure 6), meaning the basic precondition of Loibl and Rummel&#8217;s framework &#8212; that guidance improves immediate performance &#8212; was not met. Furthermore, rather than improving immediate performance, our guidance appeared to interfere with it, at least initially.</p>
+  <p>Loibl and Rummel found that guidance through contrast cases narrowed the problem-solving space and improved the immediate quality of students&#8217; solutions &#8212; yet this did not translate into better posttest performance than the unguided condition. In the present study, the guided condition produced significantly <em>more</em> turns than the unguided condition (W2 vs. W3: <em>p</em> = .003, <em>d</em> = &#8722;0.69; see Fig. 6), meaning the basic precondition of Loibl and Rummel&#8217;s framework &#8212; that guidance improves immediate performance &#8212; was not met. Furthermore, rather than improving immediate performance, our guidance appeared to interfere with it, at least initially.</p>
 
   <p>Our study was premised on Anderson and Meyer&#8217;s (2022) mechanism: start with high-entropy words (LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP) in sequence, with a conditional decision tree intended to dramatically constrain participants&#8217; search space. However, examining Appendix D reveals an intervention considerably more complex than a simple constraint. Participants received a five-word ordered list, a three-step conditional rule with branching logic, a table of edge cases, and colour-coded instructions, all on top of a verbal explanation delivered mid-experiment. Rather than narrowing the problem-solving space, this effectively widened it by adding a parallel task: reading, remembering, and applying a novel procedural rule while simultaneously playing a fast-paced word game.</p>
 
   <p>This connects back to Achaa-Amankwaa et al.&#8217;s (2025) framework: guidance was premised on the assumption that participants would lack sufficient Gf to play optimally. But by delivering that scaffold as a dense written sheet mid-session, we may have demanded the very Gf capacity we were trying to replace. Loibl and Rummel&#8217;s guidance worked through contrast cases &#8212; a format that highlights one key structural difference at a time. Ours presented multiple decision points simultaneously, which may have produced something closer to cognitive overload than productive constraint.</p>
 
-  <p>The fact that perceived usefulness was only 2.95 out of 5 in Wordle 3 (40% rating it helpful or very helpful) and improved to 3.40 in Wordle 4 (60% helpful; see Figures 13&#8211;14) supports this interpretation: participants were still processing the guidance during Wordle 3 and only began to internalize it by Wordle 4.</p>
+  <p>The fact that perceived usefulness was only 2.95 out of 5 in Wordle 3 (40% rating it helpful or very helpful) and improved to 3.40 in Wordle 4 (60% helpful; see Figs. 14&#8211;15) supports this interpretation: participants were still processing the guidance during Wordle 3 and only began to internalize it by Wordle 4.</p>
 
-  <h3>Dixon et al. (2024): Participant 19 and the Goal-Gradient Dilemma</h3>
+  <h3 class="nat-h2">Dixon et al. (2024): Participant 19 and the goal-gradient dilemma</h3>
 
   <p>Dixon and colleagues demonstrate that Wordle is not merely a cognitive task but an emotionally driven one, where approach and thwarted outcomes produce measurable differences in motivation, positive affect, and frustration. Our study indirectly observed this dynamic between Wordle 3 and Wordle 4. Of note, P19 &#8212; excluded under OD1 &#8212; left an explicit written note on their raw data sheet: <em>&#8220;First guess being one with a double &#8216;O&#8217; seems unhelpful.&#8221;</em> This mirrors the experience of a pilot-test participant who shared the same anecdote and similarly rejected the prescribed starting word, directly illustrating purposeful non-compliance driven by intuitive resistance to the guidance.</p>
 
   <p>This finding ties directly onto Dixon et al.&#8217;s goal-gradient framework. The &#8220;if only yellows, EXCLUDE&#8221; step (Appendix D) requires players to deliberately ignore yellow tiles they have just guessed until a green tile appears. From a goal-gradient perspective, this is quite counterintuitive: participants are being asked to act as though they are moving away from their goal at the very moment they can see they are approaching it. Dixon et al. show that approach outcomes &#8212; new coloured tiles &#8212; trigger significantly higher positive affect and motivation, while thwarted outcomes produce frustration and motivational drops. Our strategic guidance prescribed precisely that: a sequence of deliberate thwart-like moves as the core mechanism, instructing participants to continue down the five-word list until a green letter registers, even when yellow and repeat letters are being revealed. This is especially evident with OMEGA, for which the full prescribed list &#8212; LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP &#8212; coincidentally yielded all yellow and gray letters.</p>
 
-  <p>Taken together with the Loibl and Rummel (2014) analysis and P19&#8217;s written refusal, the guidance was not only cognitively demanding &#8212; it was also emotionally aversive. This is consistent with the perceived usefulness rating in Wordle 3 (<em>M</em> = 2.95; see Figure 13), which is below the neutral midpoint.</p>
+  <p>Taken together with the Loibl and Rummel (2014) analysis and P19&#8217;s written refusal, the guidance was not only cognitively demanding &#8212; it was also emotionally aversive. This is consistent with the perceived usefulness rating in Wordle 3 (<em>M</em> = 2.95; see Fig. 14), which is below the neutral midpoint.</p>
 
-  <h3>Limitations</h3>
+  <h3 class="nat-h2">Limitations</h3>
 
   <p>This study has potential limits that stem from the methodology of the experiment. First, the methodological choice of using convenience sampling resulted in a smaller sample size than initially predicted. The sample size was further reduced due to participant availability on the day of the experiment and due to OD1 exclusions. Furthermore, the data collected from participants was entirely self-report, and some discrepancies existed in the answers provided. Participants may have felt overwhelmed due to the high cognitive load required during the experiment, resulting in an inability to correctly comprehend and answer the questions.</p>
 
@@ -615,23 +611,19 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   <p>Minor methodological revisions could address several of these limitations in future replications. With the removal of the custom Wordle tool by the New York Times, participants could use the originally selected guidance words adapted from Anderson and Meyer (2022), eliminating complaints regarding the usefulness of the guidance words and the WordleBot word bank constraint. The issue of bombardment, undue stress, and the time limit could be reduced through the restructuring of experimental materials and instruction delivery. An interactive visual representation for both how to play Wordle and how to employ the strategic guidance &#8212; replacing Appendices B and D &#8212; would reduce reading demands and provide more time for gameplay. Ideally, an alternative Wordle in the primary language of multilingual participants would have been made available; in lieu of that, an additional self-report question would help control for confounds associated with second language skills and performance.</p>
 
   <p>Further research on this topic is essential, not only because there is limited empirical data surrounding Wordle, but because some questions still remain unanswered. A study currently under review by Achaa-Amankwaa et al. (2025) attempts to observe whether Wordle functions as a reliable measure of verbal ability and seeks answers to whether a primary form of intelligence or retrieval ability drives performance. A key aspect that came to light upon reviewing raw data was the intensity of emotions during gameplay. Emotions, although important in the context of Wordle through the use of coloured feedback and goal gradients (Dixon et al., 2024), were not the primary focus of this study. A future study with a revised questionnaire targeting participant emotions and internal mechanisms rather than perceived performance would add meaningfully to the existing literature.</p>
-</div>
 
-<!-- CONCLUSION -->
-<div class="page">
-  <h2 class="section-title">Conclusion</h2>
+<!-- ===== CONCLUSION ===== -->
+  <h2 class="nat-h1">Conclusion</h2>
 
-  <p>The goal of this study was to design a preliminary test on the potential of Wordle as a structural puzzle measuring fluid reasoning ability. It was hypothesized that strategic guidance would increase Wordle turn-rate while improving solve success, suggesting that Wordle is more similar to cryptic crosswords than simple crosswords in that it was more likely to require fluid reasoning rather than crystallized intelligence. Taking inspiration from studies conducted by Loibl and Rummel (2014) and Achaa-Amankwaa et al. (2025), this experiment used a high probability word list by Anderson and Meyer (2022) to test the effects of strategic guidance on performance by assessing verbal ability. A conveniently sampled group of university students were instructed to perform two unguided Wordles before being provided with written and verbal instructions for strategic guidance words that were used to help with the remaining two Wordles. The data was collected through the use of self-report surveys and was subsequently analysed following data restriction using the following operational definitions: 1) the participant correctly used strategic guidance; and 2) the participant&#8217;s final guess matched the target word.</p>
+  <p>The goal of this study was to design a preliminary test on the potential of Wordle as a structural puzzle measuring fluid reasoning ability. It was hypothesized that strategic guidance would increase Wordle turn-rate while improving solve success, suggesting that Wordle is more similar to cryptic crosswords than simple crosswords in that it was more likely to require fluid reasoning rather than crystallized intelligence. Taking inspiration from studies conducted by Loibl and Rummel (2014) and Achaa-Amankwaa et al. (2025), this experiment used a high probability word list by Anderson and Meyer (2022) to test the effects of strategic guidance on performance by assessing verbal ability. A conveniently sampled group of university students were instructed to perform two unguided Wordles before being provided with written and verbal instructions for strategic guidance words that were used to help with the remaining two Wordles. The data was collected through the use of self-report surveys and was subsequently analysed following data restriction using the following operational definitions: (1) the participant correctly used strategic guidance; and (2) the participant&#8217;s final guess matched the target word.</p>
 
-  <p>Ultimately, strategic guidance significantly increased turn rate in the first guided session (W2 vs. W3: <em>p</em> = .003, <em>d</em> = &#8722;0.69) and compliance with the prescribed strategy significantly predicted solve success (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005). However, guidance did not significantly reduce completion time, and the effect on turn rate did not persist into the second guided session (W2 vs. W4: <em>p</em> = .075). While guidance did increase turn rate as predicted, it did not improve overall efficiency, suggesting that the cognitive demands of applying the prescribed strategy may have offset its practical benefits. Many factors, including but not limited to sampling error, time constraints, a bombardment of information, and structural limitations, may have served as confounds for this study. Promising ongoing research studies awaiting publication may fill gaps in the current literature while future studies may serve to address the unanswered questions that arose from this study; specifically, whether Wordle functions as a reliable measure of verbal ability and is primarily a form of fluid intelligence, crystallized intelligence, or retrieval ability. The key takeaway from this study is that guidance negatively impacted efficiency while positively impacting accuracy. Although the results are not uniformly statistically significant across all comparisons, they serve to further discussion regarding whether the sacrifice of efficiency is worth the increase in accuracy.</p>
-</div>
+  <p>Ultimately, strategic guidance significantly increased turn rate in the first guided session (W2 vs. W3: <em>p</em> = .003, <em>d</em> = &#8722;0.69) and compliance with the prescribed strategy significantly predicted solve success (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005). However, guidance did not significantly reduce completion time, and the effect on turn rate did not persist into the second guided session (W2 vs. W4: <em>p</em> = .075). While guidance did increase turn rate as predicted, it did not improve overall efficiency, suggesting that the cognitive demands of applying the prescribed strategy may have offset its practical benefits. Many factors, including but not limited to sampling error, time constraints, a bombardment of information, and structural limitations, may have served as confounds for this study. Promising ongoing research studies awaiting publication may fill gaps in the current literature, while future studies may serve to address the unanswered questions that arose from this study; specifically, whether Wordle functions as a reliable measure of verbal ability and is primarily a form of fluid intelligence, crystallized intelligence, or retrieval ability. The key takeaway from this study is that guidance negatively impacted efficiency while positively impacting accuracy. Although the results are not uniformly statistically significant across all comparisons, they serve to further discussion regarding whether the sacrifice of efficiency is worth the increase in accuracy.</p>
 
-<!-- REFERENCES -->
-<div class="page">
-  <h2 class="section-title">References</h2>
+<!-- ===== REFERENCES ===== -->
+  <h2 class="nat-h1">References</h2>
   <ul class="ref-list">
-    <li>Achaa-Amankwaa, P., Walter, J., &amp; Schroeders, U. (2025). Wordle: A game-based assessment of verbal ability? <em>PsyArXiv.</em> <a href="https://osf.io/preprints/psyarxiv/pa89m_v3">https://osf.io/preprints/psyarxiv/pa89m_v3</a></li>
-    <li>Anderson, B. J., &amp; Meyer, J. G. (2022, February 1st). Finding the optimal human strategy for Wordle using maximum correct letter probabilities and reinforcement learning. <em>arXiv.</em> <a href="http://arxiv.org/abs/2202.00557">http://arxiv.org/abs/2202.00557</a></li>
+    <li>Achaa-Amankwaa, P., Walter, J., &amp; Schroeders, U. (2025). <em>Wordle: A game-based assessment of verbal ability?</em> PsyArXiv. <a href="https://osf.io/preprints/psyarxiv/pa89m_v3">https://osf.io/preprints/psyarxiv/pa89m_v3</a></li>
+    <li>Anderson, B. J., &amp; Meyer, J. G. (2022, February 1). <em>Finding the optimal human strategy for Wordle using maximum correct letter probabilities and reinforcement learning.</em> arXiv. <a href="http://arxiv.org/abs/2202.00557">http://arxiv.org/abs/2202.00557</a></li>
     <li>Blumenfeld, H. K., Sanabria, A. A., &amp; Nip, I. S. B. (2021). Native language and second language convergence and second language instruction shape speech-language performance in adult learners. <em>Journal of Speech, Language, and Hearing Research, 65,</em> 970&#8211;981. <a href="https://doi.org/10.1044/2021_JSLHR-21-00382">https://doi.org/10.1044/2021_JSLHR-21-00382</a></li>
     <li>Dixon, M. J., Gunpat, B. S., Boucher, I. A., Tsang, M., Ahmed, S., Shaikevich, G., Dhode, I., Leung, J., &amp; Kruger, T. B. (2024). Using &#8220;Wordle&#8221; to assess the effects of goal gradients and near-misses. <em>Scientific Reports, 14</em>(1), 24336. <a href="https://doi.org/10.1038/s41598-024-74450-0">https://doi.org/10.1038/s41598-024-74450-0</a></li>
     <li>Evans, S., &amp; Turrini, P. (2023). Improving strategic decisions in sequential games by exploiting positional similarity. <em>Games, 14</em>(36), 1&#8211;13. <a href="https://doi.org/10.3390/g14030036">https://doi.org/10.3390/g14030036</a></li>
@@ -642,24 +634,22 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     <li>Loibl, K., &amp; Rummel, N. (2014). The impact of guidance during problem-solving prior to instruction on students&#8217; inventions and learning outcomes. <em>Instructional Science, 42</em>(3), 305&#8211;326. <a href="https://doi.org/10.1007/s11251-013-9282-5">https://doi.org/10.1007/s11251-013-9282-5</a></li>
     <li>McLaren, M. (2023, March 27). Today&#8217;s Wordle marks the start of a new era for the game &#8212; here&#8217;s why. <em>TechRadar.</em> <a href="https://www.techradar.com/news/todays-wordle-marks-the-start-of-a-new-era-for-the-game-heres-why">https://www.techradar.com/news/todays-wordle-marks-the-start-of-a-new-era-for-the-game-heres-why</a></li>
     <li>Murphy, M., Spillane, K., Cully, J., Navarro-Pardo, E., &amp; Moret-Tatay, C. (2016). Can word puzzles be tailored to improve different dimensions of verbal fluency? A report of an intervention study. <em>Journal of Psychology, 150</em>(6), 743&#8211;754. <a href="https://doi.org/10.1080/00223980.2016.1182887">https://doi.org/10.1080/00223980.2016.1182887</a></li>
-    <li>New York Times Wordle Bot F.A.Q. (n.d.). <a href="https://www.nytimes.com/interactive/2024/02/16/upshot/wordlebot-faq.html">https://www.nytimes.com/interactive/2024/02/16/upshot/wordlebot-faq.html</a></li>
+    <li>New York Times. (n.d.). <em>Wordle Bot F.A.Q.</em> <a href="https://www.nytimes.com/interactive/2024/02/16/upshot/wordlebot-faq.html">https://www.nytimes.com/interactive/2024/02/16/upshot/wordlebot-faq.html</a></li>
     <li>Tracy, M. (2022, January 31). The New York Times buys Wordle. <em>The New York Times.</em> <a href="https://www.nytimes.com/2022/01/31/business/media/new-york-times-wordle.html">https://www.nytimes.com/2022/01/31/business/media/new-york-times-wordle.html</a></li>
     <li>Victor, D. (2022, January 3). Wordle is a love story. <em>The New York Times.</em> <a href="https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html">https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html</a></li>
     <li>Yin, O. (2022, January 16). Here lies Wordle: 2021&#8211;2027 (full answer list). <em>Medium.</em> <a href="https://medium.com/@owenyin/here-lies-wordle-2021-2027-full-answer-list-52017ee99e86">https://medium.com/@owenyin/here-lies-wordle-2021-2027-full-answer-list-52017ee99e86</a></li>
   </ul>
-</div>
 
-<!-- APPENDIX A -->
-<div class="page">
-  <h2 class="section-title">Appendix A</h2>
-  <span class="appendix-label" style="margin-bottom:20px;">Wordle 1&#8211;4 Workbook Pages</span>
+<!-- ===== APPENDIX A ===== -->
+  <h2 class="apx-num">Appendix A</h2>
+  <p class="apx-title">Wordle 1&#8211;4 workbook pages</p>
+
   <div class="paper-card" style="margin-bottom:32px;">
-  <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Formatting has been adjusted for clarity.</p>
+  <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-bottom:20px;"><em>Note.</em> Formatting has been adjusted for clarity.</p>
   <div class="wordle-page" style="border-bottom:none;padding-top:0;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
         <div class="wordle-number" style="margin-bottom:10px;">WORDLE #1</div>
-
         <div class="wordle-grid-wrap">
         <div class="wordle-grid">
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
@@ -693,7 +683,7 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   </div>
 
   <div class="paper-card" style="margin-bottom:32px;">
-  <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Formatting has been adjusted for clarity.</p>
+  <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-bottom:20px;"><em>Note.</em> Formatting has been adjusted for clarity.</p>
   <div class="wordle-page" style="border-bottom:none;padding-top:0;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
@@ -745,7 +735,7 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   </div>
 
   <div class="paper-card" style="margin-bottom:32px;">
-  <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Formatting has been adjusted for clarity.</p>
+  <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-bottom:20px;"><em>Note.</em> Formatting has been adjusted for clarity.</p>
   <div class="wordle-page" style="border-bottom:none;padding-top:0;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
@@ -792,7 +782,7 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   </div>
 
   <div class="paper-card" style="margin-bottom:0;">
-  <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Formatting has been adjusted for clarity.</p>
+  <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-bottom:20px;"><em>Note.</em> Formatting has been adjusted for clarity.</p>
   <div class="wordle-page" style="border-bottom:none;padding-top:0;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
@@ -837,21 +827,18 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     </div>
   </div>
   </div>
-</div>
 
-<!-- APPENDIX B -->
-<div class="page">
-  <h2 class="section-title">Appendix B</h2>
-  <span class="appendix-label" style="margin-bottom:20px;">Wordle Instruction Sheet</span>
+<!-- ===== APPENDIX B ===== -->
+  <h2 class="apx-num">Appendix B</h2>
+  <p class="apx-title">Wordle instruction sheet</p>
   <div class="paper-card">
-  <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Font has been adjusted for consistency.</p>
+  <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-bottom:20px;"><em>Note.</em> Font has been adjusted for consistency.</p>
   <div class="instruction-block">
     <h2>How to Play Wordle</h2>
     <p><strong>The goal of the game is to guess the secret word within 6 attempts.</strong> Start with any five-letter English word that is found in a standard English dictionary. After each attempt, you will receive feedback based on which letters are in the secret word.</p>
     <p style="font-family:var(--sans);font-size:14px;font-weight:500;margin-bottom:12px;"><strong>Below is an example of how Wordle works:</strong></p>
 
     <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
-
       <div style="display:flex;align-items:center;gap:16px;">
         <div class="ex-row" style="margin:0;flex-shrink:0;">
           <div class="ex-cell x">Q</div><div class="ex-cell x">U</div><div class="ex-cell x">I</div><div class="ex-cell x">C</div><div class="ex-cell x">K</div>
@@ -860,7 +847,6 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
           &#8592; <span class="col-gray">QUICK</span> has <span class="col-gray">all grey letters</span> which are not apart of the secret word
         </span>
       </div>
-
       <div style="display:flex;align-items:center;gap:16px;">
         <div class="ex-row" style="margin:0;flex-shrink:0;">
           <div class="ex-cell y-a">L</div><div class="ex-cell x">U</div><div class="ex-cell x">M</div><div class="ex-cell x">P</div><div class="ex-cell y-a">S</div>
@@ -869,7 +855,6 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
           &#8592; <span class="col-yellow">L</span><span class="col-gray">UMP</span><span class="col-yellow">S</span> has <span class="col-yellow">two yellow letters</span> which are in the secret word, but in the wrong position
         </span>
       </div>
-
       <div style="display:flex;align-items:center;gap:16px;">
         <div class="ex-row" style="margin:0;flex-shrink:0;">
           <div class="ex-cell g">S</div><div class="ex-cell y-a">A</div><div class="ex-cell y-a">L</div><div class="ex-cell g">T</div><div class="ex-cell x">Y</div>
@@ -878,7 +863,6 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
           &#8592; <span class="col-green">S</span><span class="col-yellow">AL</span><span class="col-green">T</span><span class="col-gray">Y</span> has <span class="col-green">two green letters</span> which are in the secret word <em>AND</em> in the correct position
         </span>
       </div>
-
       <div style="display:flex;align-items:center;gap:16px;">
         <div class="ex-row" style="margin:0;flex-shrink:0;">
           <div class="ex-cell g">S</div><div class="ex-cell g">L</div><div class="ex-cell g">A</div><div class="ex-cell g">T</div><div class="ex-cell g">E</div>
@@ -887,7 +871,6 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
           &#8592; <span class="col-green">SLATE</span> is the secret word, guessed in 4/6 attempts
         </span>
       </div>
-
     </div>
 
     <div style="display:flex;flex-direction:row;gap:32px;align-items:center;">
@@ -906,17 +889,14 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
         <p><strong>Wordle</strong> uses an on-screen keyboard to enter guesses and give feedback. It shows which letters you&#8217;ve used, which are in the word (<span class="col-yellow">yellow</span> or <span class="col-green">green</span>), and which are not (<span class="col-gray">grey</span>).</p>
       </div>
     </div>
-
   </div>
   </div>
-</div>
 
-<!-- APPENDIX C -->
-<div class="page">
-  <h2 class="section-title">Appendix C</h2>
-  <span class="appendix-label" style="margin-bottom:20px;">QR Code Set for Selected Wordles</span>
+<!-- ===== APPENDIX C ===== -->
+  <h2 class="apx-num">Appendix C</h2>
+  <p class="apx-title">QR code set for selected Wordles</p>
   <div class="paper-card">
-  <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Formatting has been adjusted for clarity.</p>
+  <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-bottom:20px;"><em>Note.</em> Formatting has been adjusted for clarity.</p>
   <p style="font-family:var(--sans);font-size:14px;color:var(--ts);line-height:1.75;">Six Wordle puzzles were selected from the 300 daily Wordles released by the New York Times before February 1st, 2026. Each participant was randomly assigned four of the six words in a randomized order. The QR codes below linked participants directly to each archived Wordle puzzle.</p>
   <div class="qr-responsive-grid">
     <div class="qr-item"><img src="QR_CODE__1___OMEGA.png" alt="QR Code #1 — OMEGA"><span>QR Code #1</span></div>
@@ -938,19 +918,16 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
         <tr><td>QR Code #6</td><td>#1442</td><td>HABIT</td><td>3.7</td><td>62%</td></tr>
       </tbody>
     </table>
-    <p class="tn"><em>Note:</em> International averages sourced from the New York Times WordleBot database (~400,000 players per word). Study solve rates reflect OD-corrected data (n = 20).</p>
+    <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-top:8px;line-height:1.5;"><em>Note.</em> International averages sourced from the New York Times WordleBot database (~400,000 players per word). Study solve rates reflect OD-corrected data (n = 20).</p>
   </div>
   </div>
-</div>
 
-<!-- APPENDIX D -->
-<div class="page">
-  <h2 class="section-title">Appendix D</h2>
-  <span class="appendix-label" style="margin-bottom:20px;">Strategic Guidance Instruction Sheet</span>
-  <div class="paper-card">
-    <p class="tn" style="margin-bottom:20px;"><em>Note:</em> Font has been adjusted for consistency.</p>
+<!-- ===== APPENDIX D ===== -->
+  <h2 class="apx-num">Appendix D</h2>
+  <p class="apx-title">Strategic guidance instruction sheet</p>
+  <div class="paper-card" style="margin-bottom:88px;">
+    <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-bottom:20px;"><em>Note.</em> Font has been adjusted for consistency.</p>
     <div style="font-family:var(--sans);color:var(--tp);">
-
       <h1 style="font-family:var(--sans);font-size:26px;font-weight:700;margin:0 0 24px;color:var(--tp);">Optimal Wordle Strategy: A 3-Step Guide</h1>
 
       <p style="font-size:15px;font-weight:700;margin:0 0 4px;color:var(--tp);">STEP 1: The high-information start</p>
@@ -986,10 +963,10 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
           <tr><td style="border:1.5px solid var(--tp);padding:10px 16px;text-align:center;">Exhausted list, no greens</td><td style="border:1.5px solid var(--tp);padding:10px 16px;text-align:center;">STEP 3: SOLVE</td></tr>
         </tbody>
       </table>
-
     </div>
   </div>
-</div>
+
+</div><!-- /.page -->
 
 </body>
 </html>

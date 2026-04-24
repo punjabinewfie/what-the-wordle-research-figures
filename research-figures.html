@@ -4,571 +4,639 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What the Wordle? — Research Figures</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   :root {
-    --bg: #faf9f7;
-    --surface: #ffffff;
-    --border: rgba(0,0,0,0.08);
-    --text-primary: #1a1917;
-    --text-secondary: #6b6a66;
-    --text-tertiary: #9e9d98;
-    --teal: #1D9E75;
-    --teal-fill: rgba(29,158,117,0.12);
-    --purple: #6B5ED6;
-    --purple-fill: rgba(107,94,214,0.12);
-    --coral: #C84B28;
-    --coral-fill: rgba(200,75,40,0.12);
-    --amber: #B06D10;
-    --amber-fill: rgba(176,109,16,0.12);
-    --gray-fill: rgba(100,99,96,0.10);
-    --grid: rgba(0,0,0,0.045);
-    --font-serif: 'EB Garamond', Georgia, serif;
-    --font-sans: 'DM Sans', sans-serif;
+    --bg:#faf9f7; --surface:#ffffff; --border:rgba(0,0,0,0.08);
+    --tp:#1a1917; --ts:#6b6a66; --tt:#9e9d98;
+    --teal:#1D9E75; --tealF:rgba(29,158,117,0.12);
+    --purple:#6B5ED6; --purpleF:rgba(107,94,214,0.12);
+    --coral:#C84B28; --coralF:rgba(200,75,40,0.12);
+    --amber:#B06D10; --amberF:rgba(176,109,16,0.15);
+    --gray:#888780; --grayF:rgba(100,99,96,0.10);
+    --grid:rgba(0,0,0,0.045);
+    --serif:'EB Garamond',Georgia,serif;
+    --sans:'DM Sans',sans-serif;
+    --accent:#1D9E75;
   }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--tp);font-family:var(--serif);font-size:17px;line-height:1.7;max-width:960px;margin:0 auto;}
+  .page{padding:0 72px 80px;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* ── HEADER ── */
+  .nat-header{padding:64px 72px 36px;border-bottom:1px solid var(--border);margin-bottom:8px;}
+  .paper-meta{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);margin-bottom:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .paper-meta .tag{background:var(--tealF);color:var(--accent);padding:3px 9px;border-radius:3px;font-weight:600;letter-spacing:.08em;}
+  .paper-title{font-family:var(--serif);font-size:38px;font-weight:700;line-height:1.18;color:var(--tp);margin-bottom:8px;letter-spacing:-0.01em;}
+  .paper-subtitle{font-family:var(--serif);font-size:22px;font-weight:400;font-style:italic;color:var(--ts);line-height:1.35;margin-bottom:30px;}
+  .authors{font-family:var(--serif);font-size:16.5px;color:var(--tp);margin-bottom:8px;line-height:1.55;}
+  .authors sup{font-size:11px;color:var(--ts);font-weight:500;}
+  .affiliations{font-family:var(--sans);font-size:12.5px;color:var(--ts);margin-bottom:14px;line-height:1.55;}
+  .affiliations sup{font-size:10px;font-weight:600;}
+  .paper-meta-bottom{font-family:var(--sans);font-size:11.5px;color:var(--tt);line-height:1.6;}
 
-  body {
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    font-size: 14px;
-    line-height: 1.6;
-    padding: 60px 40px 80px;
-    max-width: 960px;
-    margin: 0 auto;
-  }
+  /* ── OD BLOCK ── */
+  .od-block{margin-top:22px;padding:18px 20px;background:rgba(29,158,117,0.05);border:0.5px solid rgba(29,158,117,0.18);border-radius:8px;font-family:var(--sans);font-size:12px;color:var(--ts);line-height:1.75;}
+  .od-block strong{color:var(--tp);font-weight:600;}
+  .od-block .od-label{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .od-pill{display:inline-flex;align-items:center;gap:5px;background:var(--tealF);border:0.5px solid rgba(29,158,117,0.25);border-radius:4px;padding:2px 7px;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:.03em;margin-right:6px;}
 
-  header {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 32px;
-    margin-bottom: 20px;
-  }
+  /* ── SECTION HEADERS ── */
+  .nat-h1{font-family:var(--sans);font-size:13px;font-weight:700;text-align:left;color:var(--accent);margin:64px 0 18px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--border);}
+  .nat-h1:first-of-type{margin-top:44px;}
+  .nat-h2{font-family:var(--sans);font-size:16px;font-weight:600;text-align:left;color:var(--tp);margin:32px 0 10px;line-height:1.3;letter-spacing:-0.005em;padding-left:10px;border-left:2px solid var(--accent);}
 
-  header .eyebrow {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin-bottom: 12px;
-  }
+  /* ── FIGURE CARDS ── */
+  p{margin-bottom:1em;}
+  em{font-style:italic;}
+  strong{font-weight:600;}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin:0 0 24px;}
+  .duo.wide{grid-template-columns:1fr;}
+  .duo.three{grid-template-columns:1fr 1fr 1fr;}
+  .card{background:var(--surface);border:.5px solid var(--border);border-radius:10px;padding:20px 22px 16px;}
+  .leg{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:11px;}
+  .leg span{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ts);font-family:var(--sans);}
+  .dot{width:9px;height:9px;border-radius:2px;display:inline-block;flex-shrink:0;}
+  .cw{position:relative;width:100%;}
+  .ct{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--tp);margin-bottom:2px;line-height:1.4;}
+  .ct em{font-style:italic;}
+  .cs{font-family:var(--sans);font-size:11px;color:var(--tt);margin-bottom:11px;margin-top:4px;line-height:1.5;}
+  .cn{font-family:var(--sans);font-size:12px;color:var(--ts);margin-top:12px;line-height:1.6;font-style:italic;}
+  .cn em{font-style:italic;font-weight:500;}
+  .fig-num{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
 
-  header h1 {
-    font-family: var(--font-serif);
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1.25;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-  }
+  /* ── TABLES ── */
+  .tab-wrap{margin:24px 0 28px;}
+  .tab-cap{font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--tp);margin-bottom:10px;}
+  .tab-cap strong{font-weight:700;}
+  .tab-note{font-family:var(--sans);font-size:12px;color:var(--ts);margin-top:10px;line-height:1.6;font-style:italic;}
+  .apa-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13px;margin:6px 0 0;}
+  .apa-table thead tr{border-bottom:.5px solid var(--border);}
+  .apa-table thead th{text-align:left;padding:9px 12px 9px 0;font-weight:500;color:var(--ts);font-size:11px;letter-spacing:.06em;text-transform:uppercase;}
+  .apa-table tbody tr{border-bottom:.5px solid var(--border);}
+  .apa-table tbody tr:last-child{border-bottom:none;}
+  .apa-table tbody td{padding:10px 12px 10px 0;color:var(--tp);}
+  .apa-table tbody td.sig{color:var(--purple);font-weight:600;}
+  .apa-table tbody td.ns{color:var(--tt);}
 
-  header p {
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
+  /* ── FIGURE 17 — OMEGA BOARD ── */
+  .fig17-board{margin:8px auto 12px;}
+  .fig17-row{display:flex;gap:4px;margin-bottom:4px;justify-content:center;}
+  .fig17-row:last-child{margin-bottom:0;}
+  .fig17-cell{width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;font-size:18px;color:#fff;border-radius:2px;}
+  .fig17-cell.empty{background:#fff;border:1.5px solid rgba(0,0,0,0.15);}
+  .fig17-cell.gray{background:#818384;}
+  .fig17-cell.yellow{background:#b59f3b;}
+  .fig17-cell.green{background:#538d4e;}
+  .fig17-kbd{margin:16px auto 0;max-width:320px;}
+  .fig17-kbd-row{display:flex;gap:3px;margin-bottom:3px;justify-content:center;}
+  .fig17-key{width:28px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:11px;background:#d3d6da;color:#1a1917;}
+  .fig17-key.wide{width:44px;font-size:9px;}
+  .fig17-key.used{background:#787c7e;color:#fff;}
+  .fig17-key.yellow{background:#b59f3b;color:#fff;}
+  .fig17-board-wrap{display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;}
+  .fig17-prose{flex:1;min-width:260px;font-family:var(--sans);font-size:13px;color:var(--ts);line-height:1.65;}
+  .fig17-prose p{margin-bottom:10px;font-style:italic;}
+  .fig17-prose p:last-child{margin-bottom:0;}
 
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin: 0 0 20px;
-    padding-bottom: 12px;
-    border-bottom: 0.5px solid var(--border);
-  }
+  /* ── SEQUENCE BADGE ── */
+  .seq-badge{display:inline-flex;gap:6px;flex-wrap:wrap;margin:8px 0;}
+  .seq-word{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.08em;background:#f0f0ec;border:.5px solid var(--border);border-radius:3px;padding:3px 7px;color:var(--tp);}
+  .seq-word.active{background:var(--tealF);border-color:rgba(29,158,117,0.3);color:var(--accent);}
 
-  .section-spacer {
-    margin-top: 36px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 0.5px solid var(--border);
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-  }
+  /* ── DIVIDER ── */
+  .rule{border:none;border-top:.5px solid var(--border);margin:48px 0;}
 
-  .section-spacer h2 {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--text-primary);
-  }
-
-  .section-spacer .section-num {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-  }
-
-  .section-header h2 {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--text-primary);
-  }
-
-  .section-header .section-num {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-  }
-
-  .chart-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .chart-grid.single {
-    grid-template-columns: 1fr;
-  }
-
-  .chart-card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 10px;
-    padding: 24px 24px 20px;
-  }
-
-  .chart-card.wide {
-    grid-column: 1 / -1;
-  }
-
-  .chart-meta {
-    margin-bottom: 16px;
-  }
-
-  .chart-title {
-    font-family: var(--font-serif);
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--text-primary);
-    margin-bottom: 3px;
-  }
-
-  .chart-sub {
-    font-size: 11.5px;
-    color: var(--text-tertiary);
-  }
-
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 14px;
-  }
-
-  .legend span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11.5px;
-    color: var(--text-secondary);
-  }
-
-  .legend-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 2px;
-    display: inline-block;
-    flex-shrink: 0;
-  }
-
-  .chart-wrap {
-    position: relative;
-    width: 100%;
-  }
-
-  .fig-label {
-    font-family: var(--font-sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin-bottom: 4px;
-  }
-
-  .note {
-    font-size: 11px;
-    color: var(--text-tertiary);
-    margin-top: 10px;
-  }
-
-  @media (max-width: 680px) {
-    body { padding: 32px 20px 60px; }
-    .chart-grid { grid-template-columns: 1fr; }
-    .chart-card.wide { grid-column: 1; }
-    header h1 { font-size: 24px; }
+  @media(max-width:720px){
+    .page{padding:0 22px 60px;}
+    .nat-header{padding:32px 22px 28px;}
+    .paper-title{font-size:28px;}
+    .paper-subtitle{font-size:17px;}
+    .duo,.duo.three{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
 
-<header>
-  <p style="font-family:var(--font-sans); font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:12px;">Research Figures</p>
-  <p style="font-family:var(--font-serif); font-size:28px; font-weight:400; line-height:1.25; color:var(--text-primary); margin-bottom:10px;">What the Wordle?: The effect of strategic guidance on turn rates in phonemic word puzzles</p>
-  <p style="margin: 10px 0 4px; font-size:13px; color:var(--text-primary);">Nihal O'Keefe, Darcy Marcus, Brielle Munz, and Rae Kalkett</p>
-  <p style="font-size:12px; color:var(--text-secondary);">PSYC 2400: Research Methods in Psychology &nbsp;·&nbsp; Kwantlen Polytechnic University &nbsp;·&nbsp; Dr. Richard Le Grand</p>
-  <p style="margin-top:14px; padding-top:14px; border-top:0.5px solid var(--border); font-size:12px; color:var(--text-tertiary); line-height:1.7;">OD-corrected analysis &nbsp;·&nbsp; N = 20 (P2, P11, P19 excluded for violating OD1) &nbsp;·&nbsp; <span style="color:var(--text-secondary);">OD1</span> — Guided sessions (W3 &amp; W4) required LOOIE as the first guess; participants who opened with a different word were excluded. &nbsp;·&nbsp; <span style="color:var(--text-secondary);">OD2</span> — A Wordle was counted as solved only when the participant's final guess exactly matched the secret word; self-reported solves contradicted by the raw guess record were corrected to not-solved.</p>
+<!-- ═══════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════ -->
+<header class="nat-header">
+  <p class="paper-meta">
+    <span class="tag">Research Figures</span>
+    <span>PSYC 2400 &middot; Kwantlen Polytechnic University</span>
+    <span>&middot;</span>
+    <span>April 17, 2026</span>
+  </p>
+  <h1 class="paper-title">What the Wordle?:</h1>
+  <p class="paper-subtitle">The effect of strategic guidance on turn rates in phonemic word puzzles</p>
+  <p class="authors">
+    Nihal O&#8217;Keefe<sup>1</sup>, Darcy Marcus<sup>1</sup>, Brielle Munz<sup>1</sup> &amp; Rae Kalkett<sup>1</sup>
+  </p>
+  <p class="affiliations"><sup>1</sup>&nbsp;Department of Psychology, Kwantlen Polytechnic University, Langley, British Columbia, Canada</p>
+  <p class="paper-meta-bottom">Supervisor: Dr. Richard Le Grand &nbsp;&middot;&nbsp; Ethics ID: KPU REB #2024-36 &nbsp;&middot;&nbsp; Course: PSYC 2400 Research Methods in Psychology</p>
+
+  <div class="od-block">
+    <p class="od-label">OD-Corrected Analysis</p>
+    <p>
+      <strong>N = 20</strong> &nbsp;(P2, P11, P19 excluded for violating OD1) &nbsp;&nbsp;
+      <span class="od-pill">OD1</span> Guided sessions (W3 &amp; W4) required LOOIE as the first guess; participants who opened with a different word were excluded. &nbsp;&nbsp;
+      <span class="od-pill">OD2</span> A Wordle was counted as solved only when the participant&#8217;s final guess exactly matched the secret word; self-reported solves contradicted by the raw guess record were corrected to not-solved.
+    </p>
+  </div>
 </header>
 
-<!-- ======================================================
-     SECTION 1 — STATISTICAL ANALYSIS
-     ====================================================== -->
+<!-- ═══════════════════════════════════════════
+     PAGE
+═══════════════════════════════════════════ -->
+<div class="page">
 
-<div class="section-header">
-  <span class="section-num">01</span>
-  <h2>Statistical Analysis <span style="font-size:13px; color:var(--text-tertiary); font-family:var(--font-sans);">Figures 1–6</span></h2>
-</div>
+<!-- ═══════════════════════════════════════════
+     SECTION 01 — STATISTICAL ANALYSIS
+     Figures 1–6 + Tables 1–3
+═══════════════════════════════════════════ -->
+<h2 class="nat-h1">01 &nbsp;— &nbsp;Statistical Analysis &nbsp;<span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:12px;color:var(--tt);">Figures 1–6 &nbsp;· &nbsp;Tables 1–3</span></h2>
 
-<!-- Row 1: Turn performance + Elapsed minutes -->
-<div class="chart-grid">
-
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 1</p>
-      <p class="chart-title">Mean turns taken per Wordle session</p>
-      <p class="chart-sub">W1–W2 = non-guided &nbsp;·&nbsp; W3–W4 = guided &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20 per session</p>
+<!-- ── Figures 1 & 2 ── -->
+<div class="duo">
+  <div class="card">
+    <p class="fig-num">Figure 1</p>
+    <p class="ct">Mean turns taken per Wordle session</p>
+    <p class="cs">W1–W2 non-guided &nbsp;·&nbsp; W3–W4 guided &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
+      <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
     </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--purple);"></span>Non-guided</span>
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Guided</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="c1"></canvas></div>
-    <p class="note">W3 had the highest mean (5.60) with the lowest SD (0.50) — guidance standardised participant behaviour. W2 was the most efficient session (4.60 turns).</p>
+    <div class="cw" style="height:200px"><canvas id="c1"></canvas></div>
+    <p class="cn">W3 had the highest mean (5.60) with the lowest SD (0.50) — guidance standardised participant behaviour. W2 was the most efficient session (4.60 turns).</p>
   </div>
-
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 2</p>
-      <p class="chart-title">Mean elapsed minutes per Wordle session</p>
-      <p class="chart-sub">W1–W2 = non-guided &nbsp;·&nbsp; W3–W4 = guided &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n varies (W4: n = 14)</p>
+  <div class="card">
+    <p class="fig-num">Figure 2</p>
+    <p class="ct">Mean elapsed minutes per Wordle session</p>
+    <p class="cs">95% CI shown &nbsp;·&nbsp; n varies (W4: n = 14 due to missing timestamps)</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
+      <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
     </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--purple);"></span>Non-guided</span>
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Guided</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="c2"></canvas></div>
-    <p class="note">Consistent downward trend (5.16 → 3.53 min). No paired comparison reached significance; reduced n in W4 limits statistical power for time analyses.</p>
-  </div>
-
-</div>
-
-<!-- Row 2: Solved vs Not Solved time (wide) -->
-<div class="chart-grid single" style="margin-top:20px;">
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 3</p>
-      <p class="chart-title">Mean elapsed minutes by solve outcome, overall and by session</p>
-      <p class="chart-sub">Solved vs. not solved &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; overall: n = 39 solved, 28 not solved</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Solved</span>
-      <span><span class="legend-dot" style="background:var(--coral);"></span>Not solved</span>
-    </div>
-    <div class="chart-wrap" style="height:220px;"><canvas id="c5"></canvas></div>
-    <p class="note">Solved participants were 1.63 min faster overall (3.71 vs. 5.34 min). The gap was most pronounced in W1 and W2 (unguided); it narrowed substantially in W3 and W4, suggesting the prescribed starter sequence levelled opening behaviour regardless of outcome.</p>
+    <div class="cw" style="height:200px"><canvas id="c2"></canvas></div>
+    <p class="cn">Consistent downward trend (5.16 → 3.53 min). No paired comparison reached significance; reduced n in W4 limits statistical power for time analyses.</p>
   </div>
 </div>
 
-<!-- Row 3: Turn rate by group + Cohen's d -->
-<div class="chart-grid" style="margin-top:20px;">
-
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 4</p>
-      <p class="chart-title">Mean turns by group across secret words</p>
-      <p class="chart-sub">Non-guided (W1–W2) vs. guided (W3–W4) &nbsp;·&nbsp; scale max = 6 turns &nbsp;·&nbsp; overall: NG = 4.82, G = 5.40</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--purple);"></span>Non-guided</span>
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Guided</span>
-    </div>
-    <div class="chart-wrap" style="height:220px;"><canvas id="c7"></canvas></div>
-    <p class="note">Guided participants used more turns than non-guided for five of six words. OMEGA (guided M = 6.0) represents a ceiling effect — all guided participants reached the maximum six turns. MUGGY is the sole exception where non-guided used more turns than guided.</p>
-  </div>
-
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 5</p>
-      <p class="chart-title">Cohen's <em>d</em> effect sizes for paired turn comparisons</p>
-      <p class="chart-sub">One-sided paired comparisons &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20 pairs</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Positive <em>d</em></span>
-      <span><span class="legend-dot" style="background:var(--coral);"></span>Negative <em>d</em></span>
-    </div>
-    <div class="chart-wrap" style="height:220px;"><canvas id="c3"></canvas></div>
-    <p class="note">W2–W3 yielded the largest effect (d = −0.69, medium), indicating notably more turns in the first guided session than the second unguided. W1–W2 is the only positive d (0.34), reflecting marginal improvement between unguided sessions.</p>
-  </div>
-
+<!-- ── Table 1 ── -->
+<div class="tab-wrap">
+  <p class="tab-cap"><strong>Table 1.</strong> Mean turns and elapsed time per session. 95% confidence intervals shown for turn counts.</p>
+  <table class="apa-table">
+    <thead>
+      <tr>
+        <th>Wordle</th><th>Condition</th><th><em>M</em> turns</th><th><em>SD</em></th><th>95% CI</th><th><em>M</em> time (min)</th><th><em>n</em></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>W1</td><td>Non-guided</td><td>5.05</td><td>1.28</td><td>[4.45, 5.65]</td><td>5.16</td><td>20</td></tr>
+      <tr><td>W2</td><td>Non-guided</td><td>4.60</td><td>1.50</td><td>[3.90, 5.30]</td><td>4.45</td><td>20</td></tr>
+      <tr><td>W3</td><td>Guided</td><td>5.60</td><td>0.50</td><td>[5.36, 5.84]</td><td>4.17</td><td>20</td></tr>
+      <tr><td>W4</td><td>Guided</td><td>5.20</td><td>1.28</td><td>[4.60, 5.80]</td><td>3.53</td><td>20</td></tr>
+    </tbody>
+  </table>
+  <p class="tab-note"><em>Note.</em> W3 shows the highest mean turns and lowest SD; elapsed time declined monotonically across sessions. W4 elapsed time based on n = 14 (6 participants did not record end time).</p>
 </div>
 
-<!-- Row 4: t-test (wide) -->
-<div class="chart-grid single" style="margin-top:20px;">
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 6</p>
-      <p class="chart-title">Paired <em>t</em>-test results for mean turn differences</p>
-      <p class="chart-sub">One-sided hypothesis: guided > non-guided &nbsp;·&nbsp; n = 20 pairs</p>
+<!-- ── Figure 3 ── -->
+<div class="duo wide">
+  <div class="card">
+    <p class="fig-num">Figure 3</p>
+    <p class="ct">Average completion time by solve outcome — overall and by session</p>
+    <p class="cs">95% CI shown &nbsp;·&nbsp; overall and per session &nbsp;·&nbsp; solved: n = 45, not solved: n = 34</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--teal)"></span>Solved</span>
+      <span><span class="dot" style="background:var(--coral)"></span>Not solved</span>
     </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--purple);"></span>Significant (p &lt; .05)</span>
-      <span><span class="legend-dot" style="background:rgba(100,99,96,0.3);"></span>Non-significant</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="c4"></canvas></div>
-    <p class="note">W2–W3 was highly significant (p = .003**); W1–W3 reached p = .039*. W1–W2 and W2–W4 did not reach significance, confirming stable baseline performance and early adaptation to guidance by W4.</p>
+    <div class="cw" style="height:220px"><canvas id="c5"></canvas></div>
+    <p class="cn">Solved participants were 1.63 min faster overall (3.71 vs. 5.34 min). The gap was most pronounced in W1 and W2 (unguided) and narrowed substantially in W3–W4, suggesting the prescribed starter sequence levelled opening behaviour regardless of outcome.</p>
   </div>
 </div>
 
-
-<!-- ======================================================
-     SECTION 2 — QUESTIONNAIRE ANALYSIS
-     ====================================================== -->
-
-<div class="section-spacer">
-  <span class="section-num">02</span>
-  <h2>Questionnaire Analysis <span style="font-size:13px; color:var(--text-tertiary); font-family:var(--font-sans);">Figures 7–15</span></h2>
-</div>
-
-<!-- Q Row 1: Difficulty by session + by word -->
-<div class="chart-grid">
-
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 7</p>
-      <p class="chart-title">Perceived difficulty by Wordle session</p>
-      <p class="chart-sub">Scale: 1 = very easy → 5 = very difficult &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; W1–W2 = non-guided, W3–W4 = guided</p>
+<!-- ── Figures 4 & 5 ── -->
+<div class="duo">
+  <div class="card">
+    <p class="fig-num">Figure 4</p>
+    <p class="ct">Turn rate by condition across secret words</p>
+    <p class="cs">Guided vs. non-guided &nbsp;·&nbsp; max 6 turns &nbsp;·&nbsp; overall: NG = 4.83, G = 5.40</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
+      <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
     </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--purple);"></span>Non-guided</span>
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Guided</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="q1"></canvas></div>
-    <p class="note">Difficulty was stable across all four sessions (range: 3.15–3.32), with wide overlapping CIs. Guided sessions (W3–W4) were not perceived as notably easier or harder than unguided ones.</p>
+    <div class="cw" style="height:230px"><canvas id="c7"></canvas></div>
+    <p class="cn">OMEGA guided mean = 6.0 (ceiling effect — all guided participants reached the maximum). MUGGY is the sole word where non-guided outperformed guided on turns.</p>
   </div>
-
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 8</p>
-      <p class="chart-title">Perceived difficulty by secret word</p>
-      <p class="chart-sub">Scale: 1 = very easy → 5 = very difficult &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; sorted hardest → easiest</p>
+  <div class="card">
+    <p class="fig-num">Figure 5</p>
+    <p class="ct">Cohen&#8217;s <em>d</em> effect sizes with 95% CI</p>
+    <p class="cs">Paired turn comparisons &nbsp;·&nbsp; n = 20 pairs</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--teal)"></span>Positive <em>d</em></span>
+      <span><span class="dot" style="background:var(--coral)"></span>Negative <em>d</em></span>
     </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="q2"></canvas></div>
-    <p class="note">MUGGY was rated hardest (4.17) and had the second-lowest solve rate. PITCH and SPARE were rated easiest and had the highest solve rates.</p>
-  </div>
-
-</div>
-
-<!-- Q Row 1b: Solve rate & difficulty combined (wide) -->
-<div class="chart-grid single" style="margin-top:20px;">
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 8b</p>
-      <p class="chart-title">Solve rate and perceived difficulty by secret word</p>
-      <p class="chart-sub">Bars = overall solve rate (%) &nbsp;·&nbsp; Line = mean perceived difficulty (1–5 scale) &nbsp;·&nbsp; sorted easiest → hardest solve</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--purple);"></span>Solve rate (%)</span>
-      <span><span class="legend-dot" style="background:var(--amber); border-radius:50%;"></span>Mean difficulty</span>
-    </div>
-    <div class="chart-wrap" style="height:220px;"><canvas id="c6"></canvas></div>
-    <p class="note">RATTY had the highest solve rate (83%) despite an above-average difficulty rating (3.50). OMEGA had the lowest solve rate (20%) and high difficulty (3.87). MUGGY showed the strongest alignment between high perceived difficulty and poor solve rate.</p>
+    <div class="cw" style="height:230px"><canvas id="c3"></canvas></div>
+    <p class="cn">W2–W3 yielded the largest effect (d = &#8722;0.69, medium). W1–W2 is the only positive d (0.34), reflecting marginal improvement between unguided sessions.</p>
   </div>
 </div>
 
-<!-- Q Row 2: Solved vs Not Solved difficulty -->
-<div class="chart-grid single" style="margin-top:20px;">
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 9</p>
-      <p class="chart-title">Perceived difficulty by solve outcome</p>
-      <p class="chart-sub">Scale: 1 = very easy → 5 = very difficult &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; solved: n = 45, not solved: n = 34</p>
+<!-- ── Table 2 ── -->
+<div class="tab-wrap">
+  <p class="tab-cap"><strong>Table 2.</strong> Study means vs. New York Times Wordle Bot international averages.</p>
+  <table class="apa-table">
+    <thead>
+      <tr>
+        <th>Word</th><th>NG mean</th><th>G mean</th><th>Intl. avg</th><th>Intl. <em>n</em></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>OMEGA</td><td>5.17</td><td>6.00</td><td>4.1</td><td>401,341</td></tr>
+      <tr><td>RATTY</td><td>3.86</td><td>5.00</td><td>3.9</td><td>380,406</td></tr>
+      <tr><td>PITCH</td><td>5.14</td><td>5.71</td><td>3.9</td><td>453,537</td></tr>
+      <tr><td>SPARE</td><td>4.14</td><td>5.17</td><td>4.1</td><td>467,646</td></tr>
+      <tr><td>MUGGY</td><td>5.62</td><td>5.20</td><td>4.6</td><td>417,240</td></tr>
+      <tr><td>HABIT</td><td>5.00</td><td>5.00</td><td>3.7</td><td>418,409</td></tr>
+    </tbody>
+  </table>
+  <p class="tab-note"><em>Note.</em> NG = Non-Guided; G = Guided. International averages sourced from the NYT Wordle Bot database (~400,000 players per word). The non-guided condition (M = 4.83) tracked international benchmarks more closely than the guided condition (M = 5.40).</p>
+</div>
+
+<!-- ── Figure 6 ── -->
+<div class="duo wide">
+  <div class="card">
+    <p class="fig-num">Figure 6</p>
+    <p class="ct">Mean turn difference — paired comparisons</p>
+    <p class="cs">Two-tailed paired <em>t</em>-tests &nbsp;·&nbsp; n = 20 pairs &nbsp;·&nbsp; negative values indicate guided sessions required more turns</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--purple)"></span>Significant</span>
+      <span><span class="dot" style="background:rgba(100,99,96,0.3)"></span>n.s.</span>
     </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Solved (n = 45)</span>
-      <span><span class="legend-dot" style="background:var(--coral);"></span>Not solved (n = 34)</span>
-    </div>
-    <div class="chart-wrap" style="height:180px;"><canvas id="q3"></canvas></div>
-    <p class="note">Independent samples <em>t</em>-test: t(77) = −3.28, p = .002**. Participants who solved their Wordle rated it 0.72 points easier on average (2.93 vs. 3.65), indicating that perceived difficulty tracks actual performance.</p>
+    <div class="cw" style="height:200px"><canvas id="c4"></canvas></div>
+    <p class="cn">W2–W3 was highly significant (p = .006**). W1–W3 (p = .077), W2–W4 (p = .149), and W1–W2 (p = .143) did not reach significance. Stable baseline (W1 vs. W2) confirms word randomisation successfully minimised order effects.</p>
   </div>
 </div>
 
-<!-- Q Row 3: W2 strategy ratings -->
-<div class="chart-grid single" style="margin-top:20px;">
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 10</p>
-      <p class="chart-title">Mean strategy agreement ratings for W2 (unguided)</p>
-      <p class="chart-sub">Scale: 1 = strongly disagree → 5 = strongly agree &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--purple);"></span>Mean agreement</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="q4"></canvas></div>
-    <p class="note">Colour feedback was the most strongly endorsed strategy (mean = 3.95; 80% agreed or strongly agreed). Neither vowel-rich starts nor minimising letter overlap significantly predicted guess count (both p > .10).</p>
-  </div>
-</div>
-
-<!-- Q Row 4: Strategy response distributions -->
-<div class="chart-grid single" style="margin-top:20px;">
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 11</p>
-      <p class="chart-title">Strategy agreement rating distributions for W2 (unguided)</p>
-      <p class="chart-sub">Count per rating level (1–5) for each strategy &nbsp;·&nbsp; n = 20</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:#C84B28;"></span>1 – Strongly disagree</span>
-      <span><span class="legend-dot" style="background:#E8956D;"></span>2 – Disagree</span>
-      <span><span class="legend-dot" style="background:#9e9d98;"></span>3 – Neutral</span>
-      <span><span class="legend-dot" style="background:#6EC4A7;"></span>4 – Agree</span>
-      <span><span class="legend-dot" style="background:#1D9E75;"></span>5 – Strongly agree</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="q5"></canvas></div>
-    <p class="note">Colour feedback shows strong right-skew (16 of 20 agreed/strongly agreed). Letter overlap minimisation had the most disagreement (7 rated 2). Vowel-rich start responses were evenly spread across all five ratings.</p>
-  </div>
-</div>
-
-<!-- Q Row 5: Guidance compliance + usefulness -->
-<div class="chart-grid" style="margin-top:20px;">
-
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 12</p>
-      <p class="chart-title">Self-reported guidance compliance for W3 and W4</p>
-      <p class="chart-sub">Scale: 1 = did not follow → 4 = fully followed &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20 per session</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--teal);"></span>W3 &amp; W4 (identical)</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="q6"></canvas></div>
-    <p class="note">Compliance was high and identical across both guided sessions (mean = 3.55, SD = 0.76). Seventy percent of participants rated themselves as fully following the guidance (rating 4) in both W3 and W4.</p>
-  </div>
-
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 13</p>
-      <p class="chart-title">Perceived usefulness of guidance for W3 and W4</p>
-      <p class="chart-sub">Scale: 1 = very unhelpful → 5 = very helpful &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20 per session</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Guided sessions</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="q7"></canvas></div>
-    <p class="note">Perceived usefulness increased from W3 (M = 2.95) to W4 (M = 3.40), with the proportion rating guidance helpful or very helpful rising from 40% to 60%. This suggests participants found the strategy more beneficial after practising it once.</p>
-  </div>
-
-</div>
-
-<!-- Q Row 6: Usefulness distribution -->
-<div class="chart-grid single" style="margin-top:20px;">
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 14</p>
-      <p class="chart-title">Usefulness rating distributions for W3 and W4</p>
-      <p class="chart-sub">Count per rating level (1–5) &nbsp;·&nbsp; n = 20 per session</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:#C84B28;"></span>1 – Very unhelpful</span>
-      <span><span class="legend-dot" style="background:#E8956D;"></span>2 – Unhelpful</span>
-      <span><span class="legend-dot" style="background:#9e9d98;"></span>3 – Neutral</span>
-      <span><span class="legend-dot" style="background:#6EC4A7;"></span>4 – Helpful</span>
-      <span><span class="legend-dot" style="background:#1D9E75;"></span>5 – Very helpful</span>
-    </div>
-    <div class="chart-wrap" style="height:200px;"><canvas id="q8"></canvas></div>
-    <p class="note">W4 shows a clear shift toward helpful ratings: the proportion rating 4 or 5 rose from 40% (W3) to 60% (W4), while ratings of 1 dropped from 4 to 3. Participants appeared to find guidance more useful with repeated exposure.</p>
-  </div>
-</div>
-
-<!-- Q Row 7: Correlations -->
-<div class="chart-grid single" style="margin-top:20px;">
-  <div class="chart-card">
-    <div class="chart-meta">
-      <p class="fig-label">Figure 15</p>
-      <p class="chart-title">Correlations between guidance variables and performance outcomes</p>
-      <p class="chart-sub">W3 and W4 pooled &nbsp;·&nbsp; r / r<sub>pb</sub> values shown &nbsp;·&nbsp; n = 40</p>
-    </div>
-    <div class="legend">
-      <span><span class="legend-dot" style="background:var(--teal);"></span>Significant (p &lt; .05)</span>
-      <span><span class="legend-dot" style="background:rgba(100,99,96,0.3);"></span>Non-significant</span>
-    </div>
-    <div class="chart-wrap" style="height:260px;"><canvas id="q9"></canvas></div>
-    <p class="note">Guidance compliance was the only significant predictor: higher compliance strongly predicted solving (r<sub>pb</sub> = .44, p = .005**). Perceived usefulness showed only a non-significant trend toward fewer guesses (r = −.28, p = .079). These findings suggest that following the strategy matters more than believing in it.</p>
-  </div>
+<!-- ── Table 3 ── -->
+<div class="tab-wrap">
+  <p class="tab-cap"><strong>Table 3.</strong> Two-tailed paired <em>t</em>-test results for turn rate comparisons.</p>
+  <table class="apa-table">
+    <thead>
+      <tr>
+        <th>Pair</th><th><em>M</em> diff</th><th><em>SD</em></th><th><em>t</em>(19)</th><th><em>p</em> (two-tailed)</th><th>Cohen&#8217;s <em>d</em></th><th>95% CI (<em>d</em>)</th><th>Sig.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>W1 &#8722; W2</td><td>+0.45</td><td>1.32</td><td>1.528</td><td>.143</td><td>0.342</td><td>[&#8722;0.11, 0.79]</td><td class="ns">n.s.</td></tr>
+      <tr><td>W1 &#8722; W3</td><td>&#8722;0.55</td><td>1.32</td><td>&#8722;1.868</td><td>.077</td><td>&#8722;0.418</td><td>[&#8722;0.87, 0.04]</td><td class="ns">n.s.</td></tr>
+      <tr><td>W2 &#8722; W3</td><td>&#8722;1.00</td><td>1.45</td><td>&#8722;3.082</td><td>.006</td><td>&#8722;0.689</td><td>[&#8722;1.18, &#8722;0.20]</td><td class="sig">** <em>p</em> &lt; .01</td></tr>
+      <tr><td>W2 &#8722; W4</td><td>&#8722;0.60</td><td>1.79</td><td>&#8722;1.500</td><td>.149</td><td>&#8722;0.335</td><td>[&#8722;0.79, 0.12]</td><td class="ns">n.s.</td></tr>
+    </tbody>
+  </table>
+  <p class="tab-note"><em>Note.</em> All tests are two-tailed. Negative mean differences indicate guided sessions required more turns than the comparison session. df = 19 for all comparisons.</p>
 </div>
 
 
+<!-- ═══════════════════════════════════════════
+     SECTION 02 — QUESTIONNAIRE ANALYSIS
+     Figures 7–16
+═══════════════════════════════════════════ -->
+<h2 class="nat-h1">02 &nbsp;— &nbsp;Questionnaire Analysis &nbsp;<span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:12px;color:var(--tt);">Figures 7–16</span></h2>
+
+<h3 class="nat-h2">Perceived difficulty</h3>
+
+<!-- ── Figures 7 & 8 ── -->
+<div class="duo">
+  <div class="card">
+    <p class="fig-num">Figure 7</p>
+    <p class="ct">Perceived difficulty by Wordle session</p>
+    <p class="cs">1 = very easy → 5 = very difficult &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; W1 n = 19 (P3 N/A)</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
+      <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
+    </div>
+    <div class="cw" style="height:190px"><canvas id="q1"></canvas></div>
+    <p class="cn">Difficulty was stable across all four sessions (range: 3.15–3.32). Guided sessions were not perceived as notably easier or harder, confirming condition differences cannot be attributed to word difficulty.</p>
+  </div>
+  <div class="card">
+    <p class="fig-num">Figure 8</p>
+    <p class="ct">Perceived difficulty by secret word</p>
+    <p class="cs">Sorted hardest → easiest &nbsp;·&nbsp; 95% CI shown</p>
+    <div class="cw" style="height:190px"><canvas id="q2"></canvas></div>
+    <p class="cn">MUGGY was rated hardest (4.17) and had the second-lowest solve rate. PITCH and SPARE were rated easiest and had the highest solve rates.</p>
+  </div>
+</div>
+
+<!-- ── Figure 9 ── -->
+<div class="duo wide">
+  <div class="card">
+    <p class="fig-num">Figure 9</p>
+    <p class="ct">Solve rate and perceived difficulty by secret word</p>
+    <p class="cs">Bars = overall solve rate (%) &nbsp;·&nbsp; Line = mean difficulty (1–5) &nbsp;·&nbsp; sorted easiest → hardest solve</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--purple)"></span>Solve rate (%)</span>
+      <span><span class="dot" style="background:var(--amber);border-radius:50%"></span>Mean difficulty</span>
+    </div>
+    <div class="cw" style="height:220px"><canvas id="c6"></canvas></div>
+    <p class="cn">RATTY had the highest solve rate (83%) despite an above-average difficulty rating (3.50). OMEGA had the lowest solve rate (20%) and high difficulty (3.87). MUGGY showed the strongest alignment between perceived difficulty and poor solve rate.</p>
+  </div>
+</div>
+
+<!-- ── Figure 10 ── -->
+<div class="duo wide">
+  <div class="card">
+    <p class="fig-num">Figure 10</p>
+    <p class="ct">Perceived difficulty by solve outcome</p>
+    <p class="cs">Independent-samples <em>t</em>-test &nbsp;·&nbsp; <em>t</em>(77) = &#8722;3.28, <em>p</em> = .002** &nbsp;·&nbsp; 95% CI shown</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--teal)"></span>Solved</span>
+      <span><span class="dot" style="background:var(--coral)"></span>Not solved</span>
+    </div>
+    <div class="cw" style="height:175px"><canvas id="q3"></canvas></div>
+    <p class="cn">Participants who solved their Wordle rated it significantly easier (<em>M</em> = 2.93, <em>SD</em> = 1.10) than those who did not (<em>M</em> = 3.65, <em>SD</em> = 0.73) — a significant difference of 0.72 points. Perceived difficulty tracks actual performance.</p>
+  </div>
+</div>
+
+<h3 class="nat-h2">Natural strategy (W2 unguided)</h3>
+
+<!-- ── Figures 11 & 12 ── -->
+<div class="duo wide">
+  <div class="card">
+    <p class="fig-num">Figure 11</p>
+    <p class="ct">W2 natural strategy — mean agreement</p>
+    <p class="cs">1 = strongly disagree → 5 = strongly agree &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--purple)"></span>Mean agreement</span>
+    </div>
+    <div class="cw" style="height:175px"><canvas id="q4"></canvas></div>
+    <p class="cn">Colour feedback was the dominant natural strategy (<em>M</em> = 3.95; 80% agreed or strongly agreed). Minimising letter overlap (<em>M</em> = 3.05) and starting with vowel-rich words (<em>M</em> = 3.20) were more evenly split near neutral.</p>
+  </div>
+</div>
+
+<div class="duo wide" style="margin-top:0">
+  <div class="card">
+    <p class="fig-num">Figure 12</p>
+    <p class="ct">W2 strategy — full response distributions</p>
+    <p class="cs">Count per rating level (1–5) for each strategy question &nbsp;·&nbsp; n = 20</p>
+    <div class="leg">
+      <span><span class="dot" style="background:#C84B28"></span>1 – Strongly disagree</span>
+      <span><span class="dot" style="background:#E8956D"></span>2 – Disagree</span>
+      <span><span class="dot" style="background:#9e9d98"></span>3 – Neutral</span>
+      <span><span class="dot" style="background:#6EC4A7"></span>4 – Agree</span>
+      <span><span class="dot" style="background:#1D9E75"></span>5 – Strongly agree</span>
+    </div>
+    <div class="cw" style="height:175px"><canvas id="q5"></canvas></div>
+    <p class="cn">Colour feedback shows strong right-skew (16 of 20 agreed or strongly agreed). Letter overlap had the most disagreement (7 rated 2). Vowel-rich start responses were evenly spread across all five ratings.</p>
+  </div>
+</div>
+
+<h3 class="nat-h2">Guidance compliance and perceived usefulness</h3>
+
+<!-- ── Figures 13 & 14 ── -->
+<div class="duo">
+  <div class="card">
+    <p class="fig-num">Figure 13</p>
+    <p class="ct">Guidance compliance — W3 and W4</p>
+    <p class="cs">1 = did not follow → 4 = fully followed &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--teal)"></span>W3 &amp; W4</span>
+    </div>
+    <div class="cw" style="height:185px"><canvas id="q6"></canvas></div>
+    <p class="cn">Compliance was high and identical across both sessions (<em>M</em> = 3.55; 70% fully followed). Self-reported compliance was consistent regardless of whether the puzzle was solved.</p>
+  </div>
+  <div class="card">
+    <p class="fig-num">Figure 14</p>
+    <p class="ct">Perceived usefulness of guidance — W3 and W4</p>
+    <p class="cs">1 = very unhelpful → 5 = very helpful &nbsp;·&nbsp; 95% CI shown &nbsp;·&nbsp; n = 20</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--teal)"></span>Guided sessions</span>
+    </div>
+    <div class="cw" style="height:185px"><canvas id="q7"></canvas></div>
+    <p class="cn">Perceived usefulness rose from W3 (<em>M</em> = 2.95; 40% helpful) to W4 (<em>M</em> = 3.40; 60% helpful), consistent with participants finding the strategy more intuitive after a practice session.</p>
+  </div>
+</div>
+
+<!-- ── Figure 15 ── -->
+<div class="duo wide">
+  <div class="card">
+    <p class="fig-num">Figure 15</p>
+    <p class="ct">Usefulness rating distributions — W3 vs. W4</p>
+    <p class="cs">Count per rating level (1–5) &nbsp;·&nbsp; n = 20 per session</p>
+    <div class="leg">
+      <span><span class="dot" style="background:#C84B28"></span>1 – Very unhelpful</span>
+      <span><span class="dot" style="background:#E8956D"></span>2 – Unhelpful</span>
+      <span><span class="dot" style="background:#9e9d98"></span>3 – Neutral</span>
+      <span><span class="dot" style="background:#6EC4A7"></span>4 – Helpful</span>
+      <span><span class="dot" style="background:#1D9E75"></span>5 – Very helpful</span>
+    </div>
+    <div class="cw" style="height:195px"><canvas id="q8"></canvas></div>
+    <p class="cn">W4 shows a clear shift toward helpful ratings: those rating 4 or 5 rose from 40% (W3) to 60% (W4), while ratings of 1 dropped from 4 to 3.</p>
+  </div>
+</div>
+
+<!-- ── Figure 16 ── -->
+<div class="duo wide">
+  <div class="card">
+    <p class="fig-num">Figure 16</p>
+    <p class="ct">Guidance and usefulness correlations with outcomes</p>
+    <p class="cs">W3 and W4 pooled (n = 40) &nbsp;·&nbsp; teal = significant &nbsp;·&nbsp; gray = n.s.</p>
+    <div class="leg">
+      <span><span class="dot" style="background:var(--teal)"></span>Significant (<em>p</em> &lt; .05)</span>
+      <span><span class="dot" style="background:rgba(100,99,96,0.3)"></span>Non-significant</span>
+    </div>
+    <div class="cw" style="height:185px"><canvas id="q9"></canvas></div>
+    <p class="cn">Compliance → solved is the only significant correlation (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005**). Perceived usefulness → guesses showed a non-significant trend (<em>p</em> = .079). These findings suggest that following the strategy matters more than believing in it.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 03 — FIGURE 17
+     OMEGA case study
+═══════════════════════════════════════════ -->
+<h2 class="nat-h1">03 &nbsp;— &nbsp;Case Study &nbsp;<span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:12px;color:var(--tt);">Figure 17</span></h2>
+
+<h3 class="nat-h2">OMEGA — a coincidental edge case scenario</h3>
+
+<div class="duo wide">
+  <div class="card">
+    <p class="fig-num">Figure 17</p>
+    <p class="ct">The full prescribed sequence applied to target word OMEGA</p>
+    <p class="cs">LOOIE → SAURY → CHANT → BIDED → PRIMP &nbsp;·&nbsp; all five starter guesses yield only yellow and gray tiles &nbsp;·&nbsp; no green letter registers until solving</p>
+
+    <div class="fig17-board-wrap" style="margin-top:16px;">
+
+      <!-- Wordle board -->
+      <div>
+        <div class="fig17-board">
+          <!-- LOOIE: L=gray, O=yellow, O=gray, I=gray, E=yellow -->
+          <div class="fig17-row">
+            <div class="fig17-cell gray">L</div>
+            <div class="fig17-cell yellow">O</div>
+            <div class="fig17-cell gray">O</div>
+            <div class="fig17-cell gray">I</div>
+            <div class="fig17-cell yellow">E</div>
+          </div>
+          <!-- SAURY: S=gray, A=yellow, U=gray, R=gray, Y=gray -->
+          <div class="fig17-row">
+            <div class="fig17-cell gray">S</div>
+            <div class="fig17-cell yellow">A</div>
+            <div class="fig17-cell gray">U</div>
+            <div class="fig17-cell gray">R</div>
+            <div class="fig17-cell gray">Y</div>
+          </div>
+          <!-- CHANT: C=gray, H=gray, A=yellow, N=gray, T=gray -->
+          <div class="fig17-row">
+            <div class="fig17-cell gray">C</div>
+            <div class="fig17-cell gray">H</div>
+            <div class="fig17-cell yellow">A</div>
+            <div class="fig17-cell gray">N</div>
+            <div class="fig17-cell gray">T</div>
+          </div>
+          <!-- BIDED: B=gray, I=gray, D=gray, E=yellow, D=gray -->
+          <div class="fig17-row">
+            <div class="fig17-cell gray">B</div>
+            <div class="fig17-cell gray">I</div>
+            <div class="fig17-cell gray">D</div>
+            <div class="fig17-cell yellow">E</div>
+            <div class="fig17-cell gray">D</div>
+          </div>
+          <!-- PRIMP: P=gray, R=gray, I=gray, M=yellow, P=gray -->
+          <div class="fig17-row">
+            <div class="fig17-cell gray">P</div>
+            <div class="fig17-cell gray">R</div>
+            <div class="fig17-cell gray">I</div>
+            <div class="fig17-cell yellow">M</div>
+            <div class="fig17-cell gray">P</div>
+          </div>
+          <!-- Row 6: empty (participant must now solve) -->
+          <div class="fig17-row">
+            <div class="fig17-cell empty"></div>
+            <div class="fig17-cell empty"></div>
+            <div class="fig17-cell empty"></div>
+            <div class="fig17-cell empty"></div>
+            <div class="fig17-cell empty"></div>
+          </div>
+        </div>
+
+        <!-- Keyboard state -->
+        <div class="fig17-kbd" aria-hidden="true">
+          <div class="fig17-kbd-row">
+            <div class="fig17-key">Q</div>
+            <div class="fig17-key">W</div>
+            <div class="fig17-key yellow">E</div>
+            <div class="fig17-key used">R</div>
+            <div class="fig17-key used">T</div>
+            <div class="fig17-key used">Y</div>
+            <div class="fig17-key used">U</div>
+            <div class="fig17-key used">I</div>
+            <div class="fig17-key yellow">O</div>
+            <div class="fig17-key used">P</div>
+          </div>
+          <div class="fig17-kbd-row">
+            <div class="fig17-key yellow">A</div>
+            <div class="fig17-key used">S</div>
+            <div class="fig17-key used">D</div>
+            <div class="fig17-key">F</div>
+            <div class="fig17-key">G</div>
+            <div class="fig17-key used">H</div>
+            <div class="fig17-key">J</div>
+            <div class="fig17-key">K</div>
+            <div class="fig17-key used">L</div>
+          </div>
+          <div class="fig17-kbd-row">
+            <div class="fig17-key wide">ENTER</div>
+            <div class="fig17-key">Z</div>
+            <div class="fig17-key">X</div>
+            <div class="fig17-key used">C</div>
+            <div class="fig17-key">V</div>
+            <div class="fig17-key used">B</div>
+            <div class="fig17-key used">N</div>
+            <div class="fig17-key yellow">M</div>
+            <div class="fig17-key wide">&#9003;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Descriptive text -->
+      <div class="fig17-prose">
+        <p>The full prescribed sequence (LOOIE → SAURY → CHANT → BIDED → PRIMP) applied to OMEGA. Every guess yields only yellow and gray tiles — no green letter ever registers across all five starter words, requiring participants to override the goal-gradient instinct for all five turns before solving on the sixth.</p>
+        <p>From a goal-gradient perspective, this is maximally counterintuitive: participants are told to act as though moving away from their goal at the very moment yellow tiles signal proximity to it. This illustrates the core tension in Dixon et al. (2024): the strategy demands deliberate thwart-like behaviour as its central mechanism.</p>
+        <p>OMEGA was one of six target words randomly drawn from the 300 New York Times daily Wordles released before the cutoff date. Its alignment with the prescribed sequence was incidental, not selected.</p>
+
+        <div style="margin-top:14px;">
+          <p style="font-style:normal;font-weight:600;font-size:12px;color:var(--tp);margin-bottom:6px;">Prescribed sequence applied:</p>
+          <div class="seq-badge">
+            <span class="seq-word active">LOOIE</span>
+            <span style="color:var(--tt);font-size:11px;align-self:center;">→</span>
+            <span class="seq-word active">SAURY</span>
+            <span style="color:var(--tt);font-size:11px;align-self:center;">→</span>
+            <span class="seq-word active">CHANT</span>
+            <span style="color:var(--tt);font-size:11px;align-self:center;">→</span>
+            <span class="seq-word active">BIDED</span>
+            <span style="color:var(--tt);font-size:11px;align-self:center;">→</span>
+            <span class="seq-word active">PRIMP</span>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(107,94,214,0.06);border:.5px solid rgba(107,94,214,0.18);border-radius:6px;">
+          <p style="font-style:normal;font-size:11.5px;color:var(--ts);margin-bottom:0;">
+            <strong style="color:var(--purple);font-size:11px;letter-spacing:.05em;text-transform:uppercase;">Result for OMEGA</strong><br>
+            All guided participants reached 6 turns (ceiling). Mean guided turns = 6.00 vs. non-guided mean = 5.17. This word alone accounts for a significant portion of the guided condition&#8217;s elevated turn rate.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="cn" style="margin-top:18px;">P19 (excluded under OD1) left an explicit written note: <em>&#8220;First guess being one with a double &#8216;O&#8217; seems unhelpful.&#8221;</em> A pilot-test participant independently shared the same objection. Both rejected LOOIE despite the guidance, directly illustrating purposeful non-compliance driven by intuitive resistance. Dixon et al.&#8217;s goal-gradient framework predicts exactly this: prescribing deliberate exclusion of visually proximate yellow information conflicts with the emotional approach-motivation that drives natural Wordle strategy.</p>
+  </div>
+</div>
+
+</div><!-- /.page -->
+
+<!-- ═══════════════════════════════════════════
+     CHART SCRIPTS
+═══════════════════════════════════════════ -->
 <script>
-/* ─── shared helpers ──────────────────────────────────────── */
-const C = {
-  teal:   '#1D9E75', tealF:  'rgba(29,158,117,0.13)',
-  purple: '#6B5ED6', purpleF:'rgba(107,94,214,0.13)',
-  coral:  '#C84B28', coralF: 'rgba(200,75,40,0.13)',
-  amber:  '#B06D10', amberF: 'rgba(176,109,16,0.13)',
-  gray:   '#888780', grayF:  'rgba(100,99,96,0.12)',
-  grid:   'rgba(0,0,0,0.05)',
-  text:   '#6b6a66',
-  primary:'#1a1917'
+const C={
+  teal:'#1D9E75',tealF:'rgba(29,158,117,0.12)',
+  purple:'#6B5ED6',purpleF:'rgba(107,94,214,0.12)',
+  coral:'#C84B28',coralF:'rgba(200,75,40,0.12)',
+  amber:'#B06D10',
+  gray:'#888780',grayF:'rgba(100,99,96,0.10)',
+  grid:'rgba(0,0,0,0.045)',text:'#6b6a66',primary:'#1a1917'
 };
 
-const base = (yLabel='', xLabel='', extra={}) => ({
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { display: false },
-    tooltip: {
-      backgroundColor: '#fff',
-      borderColor: 'rgba(0,0,0,0.1)',
-      borderWidth: 1,
-      titleColor: C.primary,
-      bodyColor: C.text,
-      padding: 10,
-      cornerRadius: 6
+function base(yL,xL){
+  return{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{backgroundColor:'#fff',borderColor:'rgba(0,0,0,0.08)',borderWidth:.5,titleColor:C.primary,bodyColor:C.text,padding:10,cornerRadius:6}
     },
-    ...extra
-  },
-  scales: {
-    x: {
-      grid: { color: C.grid },
-      ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 } },
-      title: xLabel ? { display: true, text: xLabel, color: C.text, font: { size: 11 } } : { display: false }
-    },
-    y: {
-      grid: { color: C.grid },
-      ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 } },
-      title: yLabel ? { display: true, text: yLabel, color: C.text, font: { size: 11 } } : { display: false }
+    scales:{
+      x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},title:xL?{display:true,text:xL,color:C.text,font:{size:11}}:{display:false}},
+      y:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},title:yL?{display:true,text:yL,color:C.text,font:{size:11}}:{display:false}}
     }
-  }
-});
+  };
+}
 
-/* draws whisker CI on vertical bar charts */
-function ciPlugin(datasets_ci) {
-  return {
-    id: 'ciV',
-    afterDatasetsDraw(chart) {
-      const ctx = chart.ctx;
-      datasets_ci.forEach(({ di, cis, color }) => {
-        const meta = chart.getDatasetMeta(di);
-        cis.forEach((ci, i) => {
-          if (!ci || !meta.data[i]) return;
-          const x  = meta.data[i].x;
-          const yT = chart.scales.y.getPixelForValue(ci[1]);
-          const yB = chart.scales.y.getPixelForValue(ci[0]);
-          ctx.save();
-          ctx.strokeStyle = color; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.moveTo(x, yT); ctx.lineTo(x, yB); ctx.stroke();
-          [yT, yB].forEach(yy => {
-            ctx.beginPath(); ctx.moveTo(x-4, yy); ctx.lineTo(x+4, yy); ctx.stroke();
-          });
+function ciV(dci){
+  return{
+    id:'ciV'+Math.random(),
+    afterDatasetsDraw(chart){
+      const ctx=chart.ctx;
+      dci.forEach(({di,cis,color})=>{
+        const meta=chart.getDatasetMeta(di);
+        cis.forEach((ci,i)=>{
+          if(!ci||!meta.data[i])return;
+          const x=meta.data[i].x,yT=chart.scales.y.getPixelForValue(ci[1]),yB=chart.scales.y.getPixelForValue(ci[0]);
+          ctx.save();ctx.strokeStyle=color;ctx.lineWidth=1.5;
+          ctx.beginPath();ctx.moveTo(x,yT);ctx.lineTo(x,yB);ctx.stroke();
+          [yT,yB].forEach(yy=>{ctx.beginPath();ctx.moveTo(x-4,yy);ctx.lineTo(x+4,yy);ctx.stroke();});
           ctx.restore();
         });
       });
@@ -576,484 +644,214 @@ function ciPlugin(datasets_ci) {
   };
 }
 
-/* draws whisker CI on horizontal bar charts */
-function ciHPlugin(datasets_ci) {
-  return {
-    id: 'ciH',
-    afterDatasetsDraw(chart) {
-      const ctx = chart.ctx;
-      datasets_ci.forEach(({ di, cis, color }) => {
-        const meta = chart.getDatasetMeta(di);
-        cis.forEach((ci, i) => {
-          if (!ci || !meta.data[i]) return;
-          const y  = meta.data[i].y;
-          const xL = chart.scales.x.getPixelForValue(ci[0]);
-          const xR = chart.scales.x.getPixelForValue(ci[1]);
-          ctx.save();
-          ctx.strokeStyle = color; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.moveTo(xL, y); ctx.lineTo(xR, y); ctx.stroke();
-          [xL, xR].forEach(xx => {
-            ctx.beginPath(); ctx.moveTo(xx, y-4); ctx.lineTo(xx, y+4); ctx.stroke();
-          });
-          ctx.restore();
-        });
-      });
-    }
-  };
-}
-
-/* ─── C1 — Mean turns ─────────────────────────────────────── */
-new Chart(document.getElementById('c1'), {
-  type: 'bar',
-  data: {
-    labels: ['W1','W2','W3','W4'],
-    datasets: [{
-      data: [5.05, 4.6, 5.6, 5.2],
-      backgroundColor: [C.purpleF, C.purpleF, C.tealF, C.tealF],
-      borderColor:     [C.purple,  C.purple,  C.teal,  C.teal ],
-      borderWidth: 1.5, borderRadius: 4
-    }]
-  },
-  plugins: [ciPlugin([{ di:0, cis: [[4.45,5.65],[3.90,5.30],[5.36,5.84],[4.60,5.80]], color: C.gray }])],
-  options: { ...base('Mean turns'), scales: { ...base().scales,
-    y: { ...base().scales.y, min: 3, max: 6,
-         ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 }, stepSize: 1 } }
-  }}
-});
-
-/* ─── C2 — Elapsed minutes + CI ──────────────────────────── */
-const timeCI = [[3.94,6.38],[2.98,5.91],[2.81,5.54],[2.53,4.52]];
-new Chart(document.getElementById('c2'), {
-  type: 'bar',
-  data: {
-    labels: ['W1','W2','W3','W4'],
-    datasets: [{
-      data: [5.16, 4.45, 4.17, 3.53],
-      backgroundColor: [C.purpleF, C.purpleF, C.tealF, C.tealF],
-      borderColor:     [C.purple,  C.purple,  C.teal,  C.teal ],
-      borderWidth: 1.5, borderRadius: 4
-    }]
-  },
-  plugins: [ciPlugin([{ di:0, cis: timeCI, color: C.gray }])],
-  options: { ...base('Minutes'), scales: { ...base().scales,
-    y: { ...base().scales.y, min: 0, max: 8,
-         ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 } } }
-  }}
-});
-
-/* ─── C3 — Cohen's d (horizontal) ───────────────────────── */
-const dVals = [0.34, -0.42, -0.69, -0.34];
-const dCI   = [[-0.11,0.79],[-0.87,0.04],[-1.18,-0.20],[-0.79,0.12]];
-const dCH = {
-  id: 'cohend_ci',
-  afterDatasetsDraw(chart) {
-    const ctx = chart.ctx;
-    dCI.forEach((ci, i) => {
-      const meta = chart.getDatasetMeta(0);
-      if (!meta.data[i]) return;
-      const y = meta.data[i].y;
-      const xL = chart.scales.x.getPixelForValue(ci[0]);
-      const xR = chart.scales.x.getPixelForValue(ci[1]);
-      ctx.save(); ctx.strokeStyle = C.gray; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.moveTo(xL, y); ctx.lineTo(xR, y); ctx.stroke();
-      [xL, xR].forEach(xx => { ctx.beginPath(); ctx.moveTo(xx,y-4); ctx.lineTo(xx,y+4); ctx.stroke(); });
-      ctx.restore();
-    });
-  }
-};
-new Chart(document.getElementById('c3'), {
-  type: 'bar',
-  data: {
-    labels: ['W1−W2','W1−W3','W2−W3','W2−W4'],
-    datasets: [{
-      data: dVals,
-      backgroundColor: dVals.map(v => v >= 0 ? C.tealF : C.coralF),
-      borderColor:     dVals.map(v => v >= 0 ? C.teal  : C.coral),
-      borderWidth: 1.5, borderRadius: 4
-    }]
-  },
-  plugins: [dCH],
-  options: {
-    indexAxis: 'y',
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, tooltip: base().plugins.tooltip },
-    scales: {
-      x: { grid: { color: C.grid }, ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 } },
-           min: -1.5, max: 1.1,
-           title: { display: true, text: "Cohen's d", color: C.text, font: { size: 11 } } },
-      y: { grid: { color:'transparent' }, ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 } } }
-    }
-  }
-});
-
-/* ─── C4 — t-test mean differences ──────────────────────── */
-const sigColor   = [C.grayF, C.purpleF, C.purpleF, C.grayF];
-const sigBorder  = [C.gray,  C.purple,  C.purple,  C.gray ];
-new Chart(document.getElementById('c4'), {
-  type: 'bar',
-  data: {
-    labels: ['W1−W2\nn.s.','W1−W3\n* p<.05','W2−W3\n** p<.01','W2−W4\nn.s.'],
-    datasets: [{
-      data: [0.45, -0.55, -1.0, -0.6],
-      backgroundColor: sigColor,
-      borderColor:     sigBorder,
-      borderWidth: 1.5, borderRadius: 4
-    }]
-  },
-  options: { ...base('Mean diff (turns)'), scales: { ...base().scales,
-    y: { ...base().scales.y, min: -1.5, max: 0.8,
-         ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 } } }
-  }}
-});
-
-/* ─── C5 — Solved vs Not Solved time ────────────────────── */
-const sv  = [3.71, 4.19, 2.79, 4.11, 3.25];
-const nsv = [5.34, 6.50, 5.93, 4.39, 3.80];
-const svCI  = [[3.04,4.37],[2.95,5.44],[1.35,4.22],[2.51,5.70],[2.18,4.32]];
-const nsvCI = [[4.24,6.44],[4.13,8.86],[3.70,8.16],[0,9.37],[1.75,5.85]];
-const c5ci = {
-  id:'c5ci',
-  afterDatasetsDraw(chart) {
-    const ctx = chart.ctx;
-    [[0,svCI,C.teal],[1,nsvCI,C.coral]].forEach(([di,cis,col]) => {
-      const meta = chart.getDatasetMeta(di);
-      cis.forEach((ci,i) => {
-        if (!meta.data[i]) return;
-        const x = meta.data[i].x;
-        const yT = chart.scales.y.getPixelForValue(ci[1]);
-        const yB = chart.scales.y.getPixelForValue(Math.max(ci[0],0));
-        ctx.save(); ctx.strokeStyle = col; ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.moveTo(x,yT); ctx.lineTo(x,yB); ctx.stroke();
-        [yT,yB].forEach(yy=>{ ctx.beginPath(); ctx.moveTo(x-4,yy); ctx.lineTo(x+4,yy); ctx.stroke(); });
-        ctx.restore();
-      });
-    });
-  }
-};
-new Chart(document.getElementById('c5'), {
-  type: 'bar',
-  data: {
-    labels: ['Overall','W1','W2','W3','W4'],
-    datasets: [
-      { label:'Solved',     data: sv,  backgroundColor: C.tealF,  borderColor: C.teal,  borderWidth:1.5, borderRadius:3 },
-      { label:'Not solved', data: nsv, backgroundColor: C.coralF, borderColor: C.coral, borderWidth:1.5, borderRadius:3 }
-    ]
-  },
-  plugins: [c5ci],
-  options: { ...base('Minutes'), scales: { ...base().scales,
-    y: { ...base().scales.y, min: 0, max: 11,
-         ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 } } }
-  }}
-});
-
-/* ─── C6 — Secret word solve rate + difficulty ───────────── */
-new Chart(document.getElementById('c6'), {
-  type: 'bar',
-  data: {
-    labels: ['OMEGA','MUGGY','HABIT','SPARE','PITCH','RATTY'],
-    datasets: [
-      { label:'Solve rate (%)', data:[20,38.5,61.5,69.2,71.4,83.3],
-        backgroundColor: C.purpleF, borderColor: C.purple, borderWidth:1.5, borderRadius:3, yAxisID:'y' },
-      { label:'Difficulty', data:[3.87,4.17,3.0,2.54,2.43,3.5],
-        type:'line', borderColor: C.amber, backgroundColor:'transparent',
-        borderWidth:2, pointRadius:4, pointBackgroundColor: C.amber,
-        yAxisID:'y2', tension:0.3 }
-    ]
-  },
-  options: {
-    responsive:true, maintainAspectRatio:false,
-    plugins: { legend:{display:false}, tooltip: base().plugins.tooltip },
-    scales: {
-      x: { grid:{color:C.grid}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} },
-      y: { grid:{color:C.grid}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}, callback:v=>v+'%'}, min:0, max:100,
-           title:{display:true, text:'Solve rate (%)', color:C.text, font:{size:11}} },
-      y2:{ position:'right', grid:{drawOnChartArea:false},
-           ticks:{color:C.amber, font:{family:"'DM Sans', sans-serif", size:11}}, min:1, max:5,
-           title:{display:true, text:'Difficulty (1–5)', color:C.amber, font:{size:11}} }
-    }
-  }
-});
-
-/* ─── C7 — Guided vs Non-Guided turns (horizontal, capped 6) */
-new Chart(document.getElementById('c7'), {
-  type: 'bar',
-  data: {
-    labels: ['OMEGA','RATTY','PITCH','SPARE','MUGGY','HABIT'],
-    datasets: [
-      { label:'Non-guided', data:[5.17,3.86,5.14,4.14,5.62,5.0],
-        backgroundColor: C.purpleF, borderColor: C.purple, borderWidth:1.5, borderRadius:3 },
-      { label:'Guided',     data:[6.0, 5.0, 5.71,5.17,5.2, 5.0],
-        backgroundColor: C.tealF,   borderColor: C.teal,   borderWidth:1.5, borderRadius:3 }
-    ]
-  },
-  options: {
-    indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    plugins: { legend:{display:false}, tooltip: base().plugins.tooltip },
-    scales: {
-      x: { grid:{color:C.grid}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}},
-           min:2, max:6,
-           title:{display:true, text:'Mean turns', color:C.text, font:{size:11}} },
-      y: { grid:{color:'transparent'}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} }
-    }
-  }
-});
-
-/* ─── Q1 — Perceived difficulty by session ──────────────── */
-const diffCI = [[2.89,3.74],[2.75,3.85],[2.69,3.61],[2.71,3.69]];
-new Chart(document.getElementById('q1'), {
-  type: 'bar',
-  data: {
-    labels: ['W1','W2','W3','W4'],
-    datasets: [{
-      data: [3.32, 3.30, 3.15, 3.20],
-      backgroundColor: [C.purpleF, C.purpleF, C.tealF, C.tealF],
-      borderColor:     [C.purple,  C.purple,  C.teal,  C.teal ],
-      borderWidth:1.5, borderRadius:4
-    }]
-  },
-  plugins: [ciPlugin([{di:0, cis:diffCI, color:C.gray}])],
-  options: { ...base('Mean difficulty (1–5)'), scales: { ...base().scales,
-    y: { ...base().scales.y, min:1, max:5,
-         ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} }
-  }}
-});
-
-/* ─── Q2 — Perceived difficulty by word ─────────────────── */
-const wordDiffCI = [[3.71,4.62],[3.51,4.22],[2.99,4.01],[2.57,3.43],[1.95,3.12],[1.89,2.97]];
-new Chart(document.getElementById('q2'), {
-  type: 'bar',
-  data: {
-    labels: ['MUGGY','OMEGA','RATTY','HABIT','SPARE','PITCH'],
-    datasets: [{
-      data: [4.17, 3.87, 3.50, 3.00, 2.54, 2.43],
-      backgroundColor: C.purpleF, borderColor: C.purple, borderWidth:1.5, borderRadius:4
-    }]
-  },
-  plugins: [ciPlugin([{di:0, cis:wordDiffCI, color:C.gray}])],
-  options: { ...base('Mean difficulty (1–5)'), scales: { ...base().scales,
-    y: { ...base().scales.y, min:1, max:5,
-         ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} }
-  }}
-});
-
-/* ─── Q3 — Solved vs Not Solved difficulty ──────────────── */
-const diffSolvedCI = [[2.60,3.26],[3.39,3.90]];
-const q3ci = {
-  id:'q3ci',
-  afterDatasetsDraw(chart) {
-    const ctx = chart.ctx;
-    diffSolvedCI.forEach((ci, i) => {
-      const meta = chart.getDatasetMeta(0);
-      if (!meta.data[i]) return;
-      const x  = meta.data[i].x;
-      const yT = chart.scales.y.getPixelForValue(ci[1]);
-      const yB = chart.scales.y.getPixelForValue(ci[0]);
-      const col = i === 0 ? C.teal : C.coral;
-      ctx.save(); ctx.strokeStyle = col; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.moveTo(x, yT); ctx.lineTo(x, yB); ctx.stroke();
-      [yT, yB].forEach(yy => {
-        ctx.beginPath(); ctx.moveTo(x-4, yy); ctx.lineTo(x+4, yy); ctx.stroke();
-      });
-      ctx.restore();
-    });
-  }
-};
-new Chart(document.getElementById('q3'), {
-  type: 'bar',
-  data: {
-    labels: ['Solved','Not Solved'],
-    datasets: [{
-      data: [2.93, 3.65],
-      backgroundColor: [C.tealF, C.coralF],
-      borderColor:     [C.teal,  C.coral ],
-      borderWidth: 1.5, borderRadius: 4
-    }]
-  },
-  plugins: [q3ci],
-  options: { ...base('Mean difficulty (1–5)'), scales: { ...base().scales,
-    y: { ...base().scales.y, min: 1, max: 5,
-         ticks: { color: C.text, font: { family: "'DM Sans', sans-serif", size: 11 } } }
-  }}
-});
-
-/* ─── Q4 — W2 strategy means (horizontal) ───────────────── */
-const stratLabels = ['Colour feedback\nfrom prev. guesses','Minimised letter\noverlap','Vowel-rich /\ncommon-letter start'];
-const stratCI = [[3.46,4.44],[2.58,3.52],[2.66,3.74]];
-const q4ci = {
-  id:'q4ci',
-  afterDatasetsDraw(chart) {
-    const ctx = chart.ctx;
-    stratCI.forEach((ci,i)=>{
-      const meta = chart.getDatasetMeta(0);
-      if (!meta.data[i]) return;
-      const y = meta.data[i].y;
-      const xL = chart.scales.x.getPixelForValue(ci[0]);
-      const xR = chart.scales.x.getPixelForValue(ci[1]);
-      ctx.save(); ctx.strokeStyle=C.gray; ctx.lineWidth=1.5;
-      ctx.beginPath(); ctx.moveTo(xL,y); ctx.lineTo(xR,y); ctx.stroke();
-      [xL,xR].forEach(xx=>{ ctx.beginPath(); ctx.moveTo(xx,y-4); ctx.lineTo(xx,y+4); ctx.stroke(); });
-      ctx.restore();
-    });
-  }
-};
-new Chart(document.getElementById('q4'), {
+/* C1 — Mean turns */
+new Chart(document.getElementById('c1'),{
   type:'bar',
-  data: {
-    labels: stratLabels,
-    datasets:[{ data:[3.95,3.05,3.20],
-      backgroundColor: C.purpleF, borderColor: C.purple, borderWidth:1.5, borderRadius:4 }]
-  },
+  data:{labels:['W1','W2','W3','W4'],datasets:[{data:[5.05,4.6,5.6,5.2],backgroundColor:[C.purpleF,C.purpleF,C.tealF,C.tealF],borderColor:[C.purple,C.purple,C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},
+  plugins:[ciV([{di:0,cis:[[4.45,5.65],[3.90,5.30],[5.36,5.84],[4.60,5.80]],color:C.gray}])],
+  options:{...base('Mean turns'),scales:{...base().scales,y:{...base().scales.y,min:3,max:6,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11},stepSize:1}}}}
+});
+
+/* C2 — Elapsed minutes */
+new Chart(document.getElementById('c2'),{
+  type:'bar',
+  data:{labels:['W1','W2','W3','W4'],datasets:[{data:[5.16,4.45,4.17,3.53],backgroundColor:[C.purpleF,C.purpleF,C.tealF,C.tealF],borderColor:[C.purple,C.purple,C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},
+  plugins:[ciV([{di:0,cis:[[3.94,6.38],[2.98,5.91],[2.81,5.54],[2.53,4.52]],color:C.gray}])],
+  options:{...base('Minutes'),scales:{...base().scales,y:{...base().scales.y,min:0,max:8,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
+});
+
+/* C3 — Cohen's d (horizontal) */
+const dVals=[0.34,-0.42,-0.69,-0.34],dCI=[[-0.11,0.79],[-0.87,0.04],[-1.18,-0.20],[-0.79,0.12]];
+const dCH={id:'dCH',afterDatasetsDraw(chart){
+  const ctx=chart.ctx;
+  dCI.forEach((ci,i)=>{
+    const meta=chart.getDatasetMeta(0);if(!meta.data[i])return;
+    const y=meta.data[i].y,xL=chart.scales.x.getPixelForValue(ci[0]),xR=chart.scales.x.getPixelForValue(ci[1]);
+    ctx.save();ctx.strokeStyle=C.gray;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(xL,y);ctx.lineTo(xR,y);ctx.stroke();
+    [xL,xR].forEach(xx=>{ctx.beginPath();ctx.moveTo(xx,y-4);ctx.lineTo(xx,y+4);ctx.stroke();});
+    ctx.restore();
+  });
+}};
+new Chart(document.getElementById('c3'),{
+  type:'bar',
+  data:{labels:['W1\u2212W2','W1\u2212W3','W2\u2212W3','W2\u2212W4'],datasets:[{data:dVals,backgroundColor:dVals.map(v=>v>=0?C.tealF:C.coralF),borderColor:dVals.map(v=>v>=0?C.teal:C.coral),borderWidth:1.5,borderRadius:4}]},
+  plugins:[dCH],
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:-1.5,max:1.1,title:{display:true,text:"Cohen's d",color:C.text,font:{size:11}}},y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
+});
+
+/* C4 — t-test mean diffs */
+new Chart(document.getElementById('c4'),{
+  type:'bar',
+  data:{labels:['W1\u2212W2\nn.s.','W1\u2212W3\nn.s.','W2\u2212W3\n** p<.01','W2\u2212W4\nn.s.'],datasets:[{data:[0.45,-0.55,-1.0,-0.6],backgroundColor:[C.grayF,C.grayF,C.purpleF,C.grayF],borderColor:[C.gray,C.gray,C.purple,C.gray],borderWidth:1.5,borderRadius:4}]},
+  options:{...base('Mean diff (turns)'),scales:{...base().scales,y:{...base().scales.y,min:-1.5,max:0.8,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
+});
+
+/* C5 — Solved vs Not Solved time */
+const sv=[3.71,4.19,2.79,4.11,3.25],nsv=[5.34,6.50,5.93,4.39,3.80];
+const svCI=[[3.04,4.37],[2.95,5.44],[1.35,4.22],[2.51,5.70],[2.18,4.32]];
+const nsvCI=[[4.24,6.44],[4.13,8.86],[3.70,8.16],[0,9.37],[1.75,5.85]];
+const c5ci={id:'c5ci',afterDatasetsDraw(chart){
+  const ctx=chart.ctx;
+  [[0,svCI,C.teal],[1,nsvCI,C.coral]].forEach(([di,cis,col])=>{
+    const meta=chart.getDatasetMeta(di);
+    cis.forEach((ci,i)=>{
+      if(!meta.data[i])return;
+      const x=meta.data[i].x,yT=chart.scales.y.getPixelForValue(ci[1]),yB=chart.scales.y.getPixelForValue(Math.max(ci[0],0));
+      ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(x,yT);ctx.lineTo(x,yB);ctx.stroke();
+      [yT,yB].forEach(yy=>{ctx.beginPath();ctx.moveTo(x-4,yy);ctx.lineTo(x+4,yy);ctx.stroke();});
+      ctx.restore();
+    });
+  });
+}};
+new Chart(document.getElementById('c5'),{
+  type:'bar',
+  data:{labels:['Overall','W1','W2','W3','W4'],datasets:[
+    {label:'Solved',data:sv,backgroundColor:C.tealF,borderColor:C.teal,borderWidth:1.5,borderRadius:3},
+    {label:'Not solved',data:nsv,backgroundColor:C.coralF,borderColor:C.coral,borderWidth:1.5,borderRadius:3}
+  ]},
+  plugins:[c5ci],
+  options:{...base('Minutes'),scales:{...base().scales,y:{...base().scales.y,min:0,max:11,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
+});
+
+/* C6 — Solve rate + difficulty by word */
+new Chart(document.getElementById('c6'),{
+  type:'bar',
+  data:{labels:['OMEGA','MUGGY','HABIT','SPARE','PITCH','RATTY'],datasets:[
+    {label:'Solve rate (%)',data:[20,38.5,61.5,69.2,71.4,83.3],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:3,yAxisID:'y'},
+    {label:'Difficulty',data:[3.87,4.17,3.0,2.54,2.43,3.5],type:'line',borderColor:C.amber,backgroundColor:'transparent',borderWidth:2,pointRadius:4,pointBackgroundColor:C.amber,yAxisID:'y2',tension:0.3}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{
+    x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}},
+    y:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11},callback:v=>v+'%'},min:0,max:100,title:{display:true,text:'Solve rate (%)',color:C.text,font:{size:11}}},
+    y2:{position:'right',grid:{drawOnChartArea:false},ticks:{color:C.amber,font:{family:"'DM Sans',sans-serif",size:11}},min:1,max:5,title:{display:true,text:'Difficulty (1\u20135)',color:C.amber,font:{size:11}}}
+  }}
+});
+
+/* C7 — Turn rate by word */
+new Chart(document.getElementById('c7'),{
+  type:'bar',
+  data:{labels:['OMEGA','RATTY','PITCH','SPARE','MUGGY','HABIT'],datasets:[
+    {label:'Non-guided',data:[5.17,3.86,5.14,4.14,5.62,5.0],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:3},
+    {label:'Guided',data:[6.0,5.0,5.71,5.17,5.2,5.0],backgroundColor:C.tealF,borderColor:C.teal,borderWidth:1.5,borderRadius:3}
+  ]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{
+    x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:2,max:6,title:{display:true,text:'Mean turns',color:C.text,font:{size:11}}},
+    y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}
+  }}
+});
+
+/* Q1 — Difficulty by session */
+new Chart(document.getElementById('q1'),{
+  type:'bar',
+  data:{labels:['W1','W2','W3','W4'],datasets:[{data:[3.32,3.30,3.15,3.20],backgroundColor:[C.purpleF,C.purpleF,C.tealF,C.tealF],borderColor:[C.purple,C.purple,C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},
+  plugins:[ciV([{di:0,cis:[[2.89,3.74],[2.75,3.85],[2.69,3.61],[2.71,3.69]],color:C.gray}])],
+  options:{...base('Mean difficulty (1\u20135)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
+});
+
+/* Q2 — Difficulty by word */
+new Chart(document.getElementById('q2'),{
+  type:'bar',
+  data:{labels:['MUGGY','OMEGA','RATTY','HABIT','SPARE','PITCH'],datasets:[{data:[4.17,3.87,3.50,3.00,2.54,2.43],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:4}]},
+  plugins:[ciV([{di:0,cis:[[3.71,4.62],[3.51,4.22],[2.99,4.01],[2.57,3.43],[1.95,3.12],[1.89,2.97]],color:C.gray}])],
+  options:{...base('Mean difficulty (1\u20135)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
+});
+
+/* Q3 — Difficulty solved vs not */
+const diffSolvedCI=[[2.60,3.26],[3.39,3.90]];
+const q3ci={id:'q3ci',afterDatasetsDraw(chart){
+  const ctx=chart.ctx;
+  diffSolvedCI.forEach((ci,i)=>{
+    const meta=chart.getDatasetMeta(0);if(!meta.data[i])return;
+    const x=meta.data[i].x,yT=chart.scales.y.getPixelForValue(ci[1]),yB=chart.scales.y.getPixelForValue(ci[0]),col=i===0?C.teal:C.coral;
+    ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(x,yT);ctx.lineTo(x,yB);ctx.stroke();
+    [yT,yB].forEach(yy=>{ctx.beginPath();ctx.moveTo(x-4,yy);ctx.lineTo(x+4,yy);ctx.stroke();});
+    ctx.restore();
+  });
+}};
+new Chart(document.getElementById('q3'),{
+  type:'bar',
+  data:{labels:['Solved','Not Solved'],datasets:[{data:[2.93,3.65],backgroundColor:[C.tealF,C.coralF],borderColor:[C.teal,C.coral],borderWidth:1.5,borderRadius:4}]},
+  plugins:[q3ci],
+  options:{...base('Mean difficulty (1\u20135)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
+});
+
+/* Q4 — Strategy means (horizontal) */
+const stratCI=[[3.46,4.44],[2.58,3.52],[2.66,3.74]];
+const q4ci={id:'q4ci',afterDatasetsDraw(chart){
+  const ctx=chart.ctx;
+  stratCI.forEach((ci,i)=>{
+    const meta=chart.getDatasetMeta(0);if(!meta.data[i])return;
+    const y=meta.data[i].y,xL=chart.scales.x.getPixelForValue(ci[0]),xR=chart.scales.x.getPixelForValue(ci[1]);
+    ctx.save();ctx.strokeStyle=C.gray;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(xL,y);ctx.lineTo(xR,y);ctx.stroke();
+    [xL,xR].forEach(xx=>{ctx.beginPath();ctx.moveTo(xx,y-4);ctx.lineTo(xx,y+4);ctx.stroke();});
+    ctx.restore();
+  });
+}};
+new Chart(document.getElementById('q4'),{
+  type:'bar',
+  data:{labels:['Colour feedback\nfrom prev. guesses','Minimised letter\noverlap','Vowel-rich /\ncommon-letter start'],datasets:[{data:[3.95,3.05,3.20],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:4}]},
   plugins:[q4ci],
-  options:{
-    indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:base().plugins.tooltip},
-    scales:{
-      x:{ grid:{color:C.grid}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}}, min:1, max:5,
-          title:{display:true, text:'Mean agreement (1–5)', color:C.text, font:{size:11}} },
-      y:{ grid:{color:'transparent'}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} }
-    }
-  }
-});
-
-/* ─── Q5 — Strategy response distributions (stacked) ────── */
-const stackColors = ['#C84B28','#E8956D','#9e9d98','#6EC4A7','#1D9E75'];
-const stackLabels = ['1 – Strongly disagree','2 – Disagree','3 – Neutral','4 – Agree','5 – Strongly agree'];
-const stratRows = {
-  'Colour feedback':     [1,1,2,10,6],
-  'Min. letter overlap': [0,7,7, 4,2],
-  'Vowel-rich start':    [1,5,6, 5,3]
-};
-new Chart(document.getElementById('q5'), {
-  type:'bar',
-  data:{
-    labels: Object.keys(stratRows),
-    datasets: [0,1,2,3,4].map(i=>({
-      label: stackLabels[i],
-      data: Object.values(stratRows).map(r=>r[i]),
-      backgroundColor: stackColors[i],
-      borderRadius: i===0?4:0,
-      borderSkipped: false
-    }))
-  },
-  options:{
-    indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:base().plugins.tooltip},
-    scales:{
-      x:{ stacked:true, grid:{color:C.grid}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}},
-          title:{display:true, text:'Count', color:C.text, font:{size:11}} },
-      y:{ stacked:true, grid:{color:'transparent'}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} }
-    }
-  }
-});
-
-/* ─── Q6 — Guidance compliance W3 & W4 ──────────────────── */
-const compCI = [[3.19,3.91],[3.19,3.91]];
-new Chart(document.getElementById('q6'), {
-  type:'bar',
-  data:{
-    labels:['W3','W4'],
-    datasets:[{ data:[3.55,3.55],
-      backgroundColor:C.tealF, borderColor:C.teal, borderWidth:1.5, borderRadius:4 }]
-  },
-  plugins:[ciPlugin([{di:0, cis:compCI, color:C.gray}])],
-  options:{ ...base('Mean compliance (1–4)'), scales:{ ...base().scales,
-    y:{ ...base().scales.y, min:1, max:4,
-        ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} }
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{
+    x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:1,max:5,title:{display:true,text:'Mean agreement (1\u20135)',color:C.text,font:{size:11}}},
+    y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}
   }}
 });
 
-/* ─── Q7 — Perceived usefulness W3 & W4 ─────────────────── */
-const usefulCI = [[2.30,3.60],[2.77,4.03]];
-new Chart(document.getElementById('q7'), {
+/* Q5 — Strategy distributions (stacked) */
+const stkC=['#C84B28','#E8956D','#9e9d98','#6EC4A7','#1D9E75'];
+const stkL=['1 \u2013 Strongly disagree','2 \u2013 Disagree','3 \u2013 Neutral','4 \u2013 Agree','5 \u2013 Strongly agree'];
+const stratRows={'Colour feedback':[1,1,2,10,6],'Min.\nletter overlap':[0,7,7,4,2],'Vowel-rich start':[1,5,6,5,3]};
+new Chart(document.getElementById('q5'),{
   type:'bar',
-  data:{
-    labels:['W3','W4'],
-    datasets:[{ data:[2.95,3.40],
-      backgroundColor: [C.tealF, C.tealF],
-      borderColor:     [C.teal,  C.teal ],
-      borderWidth:1.5, borderRadius:4 }]
-  },
-  plugins:[ciPlugin([{di:0, cis:usefulCI, color:C.gray}])],
-  options:{ ...base('Mean usefulness (1–5)'), scales:{ ...base().scales,
-    y:{ ...base().scales.y, min:1, max:5,
-        ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} }
+  data:{labels:Object.keys(stratRows),datasets:[0,1,2,3,4].map(i=>({label:stkL[i],data:Object.values(stratRows).map(r=>r[i]),backgroundColor:stkC[i],borderRadius:i===0?4:0,borderSkipped:false}))},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{
+    x:{stacked:true,grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},title:{display:true,text:'Count',color:C.text,font:{size:11}}},
+    y:{stacked:true,grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}
   }}
 });
 
-/* ─── Q8 — Usefulness distributions (stacked) ───────────── */
-const usefulRows = { 'W3':[4,4,4,5,3], 'W4':[3,2,3,8,4] };
-new Chart(document.getElementById('q8'), {
+/* Q6 — Compliance */
+new Chart(document.getElementById('q6'),{
   type:'bar',
-  data:{
-    labels:['W3','W4'],
-    datasets:[0,1,2,3,4].map(i=>({
-      label: ['1 – Very unhelpful','2 – Unhelpful','3 – Neutral','4 – Helpful','5 – Very helpful'][i],
-      data: Object.values(usefulRows).map(r=>r[i]),
-      backgroundColor: stackColors[i],
-      borderRadius: i===0?4:0,
-      borderSkipped:false
-    }))
-  },
-  options:{
-    responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:base().plugins.tooltip},
-    scales:{
-      x:{ grid:{color:C.grid}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}} },
-      y:{ stacked:true, grid:{color:C.grid}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}},
-          title:{display:true, text:'Count', color:C.text, font:{size:11}} }
-    }
-  }
+  data:{labels:['W3','W4'],datasets:[{data:[3.55,3.55],backgroundColor:C.tealF,borderColor:C.teal,borderWidth:1.5,borderRadius:4}]},
+  plugins:[ciV([{di:0,cis:[[3.19,3.91],[3.19,3.91]],color:C.gray}])],
+  options:{...base('Mean compliance (1\u20134)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:4,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
 });
 
-/* ─── Q9 — Correlations dot plot ────────────────────────── */
-const corrLabels = [
-  'Compliance → solved\n(r_pb = .436, p = .005**)',
-  'Usefulness → guesses',
-  'Compliance → guesses',
-  'Usefulness → solved (Y/N)'
-];
-const corrVals  = [0.436, -0.281, -0.063, 0.176];
-const corrSig   = [true,  false,  false,  false ];
-const corrPVals = ['p = .005**','p = .079','p = .701','p = .278'];
-const q9ci_plugin = {
-  id:'q9ci',
-  afterDatasetsDraw(chart){
-    const ctx=chart.ctx;
-    corrLabels.forEach((_,i)=>{
-      const meta=chart.getDatasetMeta(0);
-      if(!meta.data[i]) return;
-      const y=meta.data[i].y;
-      const xV=chart.scales.x.getPixelForValue(corrVals[i]);
-      ctx.save();
-      ctx.fillStyle = corrSig[i] ? C.teal : C.gray;
-      ctx.beginPath(); ctx.arc(xV,y,5,0,Math.PI*2); ctx.fill();
-      ctx.restore();
-    });
-  }
-};
-new Chart(document.getElementById('q9'), {
+/* Q7 — Usefulness */
+new Chart(document.getElementById('q7'),{
   type:'bar',
-  data:{
-    labels: corrLabels,
-    datasets:[{
-      data: corrVals,
-      backgroundColor: corrVals.map((_,i)=> corrSig[i] ? C.tealF : C.grayF),
-      borderColor:     corrVals.map((_,i)=> corrSig[i] ? C.teal  : C.gray ),
-      borderWidth:1.5, borderRadius:3
-    }]
-  },
-  options:{
-    indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{
-      ...base().plugins.tooltip,
-      callbacks:{ afterLabel:(ctx)=> corrPVals[ctx.dataIndex] }
-    }},
-    scales:{
-      x:{ grid:{color:C.grid}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:11}},
-          min:-0.6, max:0.7, title:{display:true, text:'r / r_pb', color:C.text, font:{size:11}} },
-      y:{ grid:{color:'transparent'}, ticks:{color:C.text, font:{family:"'DM Sans', sans-serif", size:10}} }
-    }
-  }
+  data:{labels:['W3','W4'],datasets:[{data:[2.95,3.40],backgroundColor:[C.tealF,C.tealF],borderColor:[C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},
+  plugins:[ciV([{di:0,cis:[[2.30,3.60],[2.77,4.03]],color:C.gray}])],
+  options:{...base('Mean usefulness (1\u20135)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}
+});
+
+/* Q8 — Usefulness distributions */
+const usefulRows={'W3':[4,4,4,5,3],'W4':[3,2,3,8,4]};
+new Chart(document.getElementById('q8'),{
+  type:'bar',
+  data:{labels:['W3','W4'],datasets:[0,1,2,3,4].map(i=>({label:stkL[i],data:Object.values(usefulRows).map(r=>r[i]),backgroundColor:stkC[i],borderRadius:i===0?4:0,borderSkipped:false}))},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{
+    x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}},
+    y:{stacked:true,grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},title:{display:true,text:'Count',color:C.text,font:{size:11}}}
+  }}
+});
+
+/* Q9 — Correlations */
+const corrLabels=['Compliance \u2192 solved (r_pb = .436)','Usefulness \u2192 guesses','Compliance \u2192 guesses','Usefulness \u2192 solved (Y/N)'];
+const corrVals=[0.436,-0.281,-0.063,0.176],corrSig=[true,false,false,false];
+const corrPVals=['p = .005**','p = .079','p = .701','p = .278'];
+new Chart(document.getElementById('q9'),{
+  type:'bar',
+  data:{labels:corrLabels,datasets:[{data:corrVals,backgroundColor:corrVals.map((_,i)=>corrSig[i]?C.tealF:C.grayF),borderColor:corrVals.map((_,i)=>corrSig[i]?C.teal:C.gray),borderWidth:1.5,borderRadius:3}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...base().plugins.tooltip,callbacks:{afterLabel:ctx=>corrPVals[ctx.dataIndex]}}},scales:{
+    x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:-0.6,max:0.7,title:{display:true,text:'r / r_pb',color:C.text,font:{size:11}}},
+    y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}
+  }}
 });
 </script>
 </body>

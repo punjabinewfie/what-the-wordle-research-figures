@@ -24,7 +24,6 @@
   body{background:var(--bg);color:var(--tp);font-family:var(--serif);font-size:17px;line-height:1.7;max-width:880px;margin:0 auto;}
   .page{padding:0 72px;border-bottom:none;position:relative;}
 
-  /* ---------- NATURE HEADER BLOCK ---------- */
   .nat-header{padding:64px 72px 36px;border-bottom:1px solid var(--border);margin-bottom:8px;}
   .paper-meta{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);margin-bottom:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
   .paper-meta .tag{background:var(--tealF);color:var(--accent);padding:3px 9px;border-radius:3px;font-weight:600;letter-spacing:.08em;}
@@ -36,23 +35,19 @@
   .affiliations sup{font-size:10px;font-weight:600;}
   .paper-meta-bottom{font-family:var(--sans);font-size:11.5px;color:var(--tt);line-height:1.6;}
 
-  /* ---------- HEADINGS ---------- */
   .nat-h1{font-family:var(--sans);font-size:13px;font-weight:700;text-align:left;color:var(--accent);margin:72px 0 18px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--border);}
   .nat-h2{font-family:var(--sans);font-size:18px;font-weight:600;text-align:left;color:var(--tp);margin:36px 0 12px;line-height:1.3;letter-spacing:-0.005em;padding-left:10px;border-left:2px solid var(--accent);}
   .nat-h3{font-family:var(--sans);font-size:13.5px;font-weight:600;font-style:normal;text-align:left;color:var(--ts);margin:26px 0 8px;line-height:1.3;letter-spacing:.04em;text-transform:uppercase;}
 
-  /* ---------- BODY PARAGRAPHS ---------- */
   p{margin-bottom:1em;}
   em{font-style:italic;}
   strong{font-weight:600;}
 
-  /* ---------- ABSTRACT ---------- */
   .abstract-block{margin:8px 0 12px;}
   .abstract-block .nat-h1{margin-top:32px;}
   .keywords{margin-top:14px;font-family:var(--sans);font-size:13px;color:var(--ts);}
   .keywords strong{font-weight:600;color:var(--tp);}
 
-  /* ---------- TABLES ---------- */
   .tab-cap{font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--tp);margin:32px 0 10px;}
   .tab-cap strong{font-weight:700;}
   .tab-note{font-family:var(--sans);font-size:12px;color:var(--ts);margin-top:12px;line-height:1.6;font-style:italic;}
@@ -74,7 +69,6 @@
   .sig{color:var(--purple);font-weight:600;}
   .ns{color:var(--tt);}
 
-  /* ---------- FIGURE CARDS ---------- */
   .duo{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin:24px 0 32px;}
   .duo.wide{grid-template-columns:1fr;}
   .duo.pl{grid-template-columns:55% 45%;}
@@ -93,20 +87,17 @@
   .cn{font-family:var(--sans);font-size:12px;color:var(--ts);margin-top:12px;line-height:1.6;font-style:italic;}
   .cn em{font-style:italic;font-weight:500;}
 
-  /* ---------- REFERENCES ---------- */
   .ref-list{list-style:none;padding:0;margin-top:14px;}
   .ref-list li{font-family:var(--serif);font-size:14.5px;line-height:1.7;padding:5px 0 5px 2em;text-indent:-2em;border-bottom:none;margin-bottom:6px;color:var(--tp);}
   .ref-list a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(29,158,117,0.25);}
   .ref-list a:hover{border-bottom-color:var(--accent);}
 
-  /* ---------- APPENDICES ---------- */
   .apx-num{font-family:var(--sans);font-size:13px;font-weight:700;text-align:left;color:var(--accent);margin:72px 0 6px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--border);}
   .apx-title{font-family:var(--sans);font-size:18px;font-weight:600;text-align:left;color:var(--tp);margin:14px 0 28px;line-height:1.3;padding-left:10px;border-left:2px solid var(--accent);}
 
   .paper-card{background:#ffffff;border-radius:4px;padding:48px 52px 52px;box-shadow:0 1px 4px rgba(0,0,0,0.08),0 0 0 .5px rgba(0,0,0,0.06);margin-top:8px;}
   .wordle-page{margin:40px 0;padding:36px 0 32px;background:transparent;border:none;border-bottom:.5px solid rgba(0,0,0,0.1);border-radius:0;}
   .wordle-page:last-child{border-bottom:none;}
-  .wordle-page+.wordle-page{margin-top:48px;}
   .wordle-number{font-family:var(--sans);font-size:28px;font-weight:500;letter-spacing:.04em;color:var(--tp);}
   .qr-block{text-align:right;}
   .qr-label{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--tt);margin-bottom:6px;}
@@ -135,13 +126,11 @@
   .ex-cell.x{background:#818384;color:#fff;border-color:#818384;}
   .ex-cell.y-a{background:#b59f3b;color:#fff;border-color:#b59f3b;}
 
-  .qr-table-wrap table{margin-top:20px;}
   .qr-responsive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:20px 0;}
   .qr-responsive-grid .qr-item{display:flex;flex-direction:column;align-items:center;gap:8px;}
   .qr-responsive-grid .qr-item img{width:100%;max-width:220px;height:auto;display:block;}
   .qr-responsive-grid .qr-item span{font-family:var(--sans);font-size:11px;color:var(--tt);letter-spacing:.06em;text-transform:uppercase;}
   @media(max-width:600px){.qr-responsive-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:380px){.qr-responsive-grid{grid-template-columns:1fr;}}
 
   .guess-line{display:inline-block;border-bottom:1.5px solid #1a1917;min-width:80px;height:1.2em;vertical-align:bottom;margin-left:4px;}
 
@@ -157,13 +146,11 @@
   .col-yellow{color:#b59f3b;font-weight:500;}
   .col-gray{color:#787c7e;font-weight:500;}
 
-  /* ---------- INLINE WRAP FIGURE ---------- */
   .wrap-fig{float:right;width:38%;max-width:300px;margin:6px 0 16px 28px;background:var(--surface);border:.5px solid var(--border);border-radius:10px;padding:18px 18px 14px;}
   .wrap-fig img{width:100%;height:auto;display:block;border-radius:4px;}
   .wrap-fig .ct{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--tp);margin-top:11px;margin-bottom:2px;line-height:1.4;}
   .wrap-fig .cn{font-family:var(--sans);font-size:11.5px;color:var(--ts);margin-top:6px;line-height:1.55;font-style:italic;}
 
-  /* Figure 17 — inline vector Wordle render */
   .fig17-board{margin:4px auto 12px;}
   .fig17-row{display:flex;gap:4px;margin-bottom:4px;justify-content:center;}
   .fig17-row:last-child{margin-bottom:0;}
@@ -180,21 +167,16 @@
   .fig17-key.yellow{background:#b59f3b;color:#fff;}
   @media(max-width:700px){
     .wrap-fig{float:none;width:100%;max-width:none;margin:18px 0;}
-  }
-
-  @media(max-width:700px){
     .page{padding:0 22px;}
     .nat-header{padding:32px 22px 28px;}
     .paper-title{font-size:30px;}
     .paper-subtitle{font-size:18px;}
     .duo,.duo.pl,.duo.pr{grid-template-columns:1fr;}
-    .wordle-page-header{flex-direction:column;}
   }
 </style>
 </head>
 <body>
 
-<!-- ===== NATURE-STYLE HEADER BLOCK ===== -->
 <header class="nat-header">
   <p class="paper-meta">
     <span class="tag">Research Paper</span>
@@ -211,7 +193,6 @@
   <p class="paper-meta-bottom">Supervisor: Dr. Richard Le Grand &nbsp;&middot;&nbsp; Ethics ID: KPU REB #2024-36 &nbsp;&middot;&nbsp; Course: PSYC 2400 Research Methods in Psychology</p>
 </header>
 
-<!-- ===== ABSTRACT ===== -->
 <div class="page">
   <div class="abstract-block">
     <h2 class="nat-h1">Abstract</h2>
@@ -219,7 +200,6 @@
     <p class="keywords"><strong>Keywords:</strong> Wordle &middot; game-based assessment &middot; fluid reasoning &middot; strategic guidance &middot; word puzzles &middot; problem-solving</p>
   </div>
 
-<!-- ===== INTRODUCTION ===== -->
   <h2 class="nat-h1">Introduction</h2>
 
   <p>Word games and puzzles are important in psychology for four major reasons: they are widely enjoyed by people and can provide large sample sizes for studies; they can reflect or represent specific cognitive constructs; they can be used to gamify testing situations that may otherwise be tedious; and they can be used to practice and improve different dimensions of verbal fluency and cognitive reserve. Word games vary in structure, which is important because some of these differences appear to be associated with the types of cognitive functions that correlate with puzzle proficiency. Studies on older word games, such as crosswords, focus heavily on human cognition, with explorations of how their relationship to cognitive reserves may be used to combat cognitive decline and dementia. Wordle, published in 2021 (Tracy, 2022), has recently been introduced to the academic literature in psychology and machine learning. These novel studies tend to have a different focus, exploring how the game functions and optimizing play for both machines and humans. We wish to explore this research gap using available academic resources on Wordle.</p>
@@ -242,7 +222,6 @@
 
   <p>Our goal is to design a preliminary test on the potential of Wordle as a structural puzzle measuring fluid reasoning ability. We hypothesize that providing logical, strategic guidance will <em>decrease</em> Wordle turn-rate by narrowing the problem-solving space and replacing inefficient natural strategies with a high-information starter sequence. If guidance reduces turn-rate while simultaneously improving solving success, this suggests that Wordle is more similar to cryptic crosswords than simple crosswords in that it is a quasi-algebraic game likely to require fluid reasoning. While this is not a definitive conclusion, it may provide a jumping-off point for future research on Wordle&#8217;s efficacy for cognitive testing and intervention.</p>
 
-<!-- ===== METHOD ===== -->
   <h2 class="nat-h1">Methodology</h2>
 
   <h3 class="nat-h2">Design</h3>
@@ -274,7 +253,6 @@
   <p>A pilot test was conducted to verify the methods that were to be employed in this experiment. Researchers developed focus groups of two participants each for the purposes of verifying the success of the proposed methodology. A total of eight participants participated in the pilot test, with ages ranging from the 20s to 60s. Older participants took more time to complete the Wordles they tried and stopped play before attempting strategically guided Wordles. The older participant time data from pilot testing was disregarded for the experiment due to the proposed experiment sample being of a much younger demographic; the younger pilot testing participants successfully completed the experiment in the final allotted time. The desertion rate of older participants attributed to frustration and stress was also disregarded due to the differences in age; it was assumed that differences in fluid and crystallized intelligence in the experiment sample compared to the pilot group were responsible for this.</p>
   <p>Additionally, participants that were similar in age and background to the sample group reported repetitiveness in the provided questionnaire; this feedback was taken into consideration and resulted in the questions being changed to reduce redundancy and increase participant engagement. A variety of participants reported a lack of usefulness regarding the guidance of words, specifically LOOIE; they did not find strategic guidance helpful or compatible with the task at hand. This opinion was carefully considered, but did not lead to the methodology being changed due to increased efficiency and accuracy for word guesses observed during pilot testing. In a similar vein, participants reported a lack of enjoyment while playing Wordle with strategic guidance and stated that the guidance took the fun out of the game. Although these opinions were valid, they were ultimately considered inconsequential to the outcome of this study. This experiment was focused primarily on the efficiency and accuracy of participants; participants, despite their repeated complaints, were solving more efficiently and accurately, which suggested that the proposed methodology for the experiment would prove successful.</p>
 
-<!-- ===== RESULTS ===== -->
   <h2 class="nat-h1">Results</h2>
 
   <p>The primary statistical analysis used in this study was a series of two-tailed paired-samples <em>t</em>-tests. Because this was a within-groups design &#8212; all participants completed both the non-guided (control) and guided (experimental) conditions &#8212; paired <em>t</em>-tests were appropriate for directly comparing each participant&#8217;s performance across conditions while controlling for individual differences. Although our original hypothesis was directional (we predicted that the guided condition would produce <em>fewer</em> turns than the non-guided condition, as the prescribed strategy sequence LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP was hypothesized to streamline the problem-solving process), descriptive statistics revealed the opposite pattern. We therefore report two-tailed tests to evaluate whether this unexpected reversal was statistically reliable. Effect sizes were calculated using Cohen&#8217;s <em>d</em> to assess practical significance alongside statistical significance.</p>
@@ -302,17 +280,20 @@
     </div>
     <div class="card">
       <p class="ct">Figure 2. Mean elapsed minutes per Wordle</p>
-      <p class="cs">95% CI shown &middot; n varies (W4: n = 14 due to missing timestamps)</p>
+      <!-- CHANGE 1: updated n note -->
+      <p class="cs">95% CI shown &middot; n varies by session: W1&thinsp;=&thinsp;19, W2&thinsp;=&thinsp;17, W3&thinsp;=&thinsp;17, W4&thinsp;=&thinsp;14 (missing timestamps)</p>
       <div class="leg">
         <span><span class="dot" style="background:var(--purple)"></span>Non-guided</span>
         <span><span class="dot" style="background:var(--teal)"></span>Guided</span>
       </div>
       <div class="cw" style="height:200px"><canvas id="c2"></canvas></div>
-      <p class="cn">Consistent downward trend (5.16 &#8594; 3.53 min). No paired comparison reached significance; reduced n in W4 limits statistical power for time analyses.</p>
+      <!-- CHANGE 2: updated figure note -->
+      <p class="cn">Consistent downward trend (5.16 &#8594; 3.53 min). No paired comparison reached significance; n varies by session due to missing timestamps, limiting statistical power for time analyses.</p>
     </div>
   </div>
 
-  <p>With operational definitions applied, all 20 participants completed all four Wordle sessions. The non-guided sessions averaged 5.05 (<em>SD</em> = 1.28) and 4.60 (<em>SD</em> = 1.50) turns for W1 and W2 respectively; the guided sessions averaged 5.60 (<em>SD</em> = 0.50) and 5.20 (<em>SD</em> = 1.28) turns for W3 and W4. W3&#8217;s markedly compressed standard deviation reflects how the prescribed sequence constrained all participants to a near-identical guess count. Elapsed time showed a consistent downward trend (5.16 &#8594; 4.45 &#8594; 4.17 &#8594; 3.53 min), though no paired time comparison reached significance.</p>
+  <!-- CHANGE 3: added elapsed time n sentence -->
+  <p>With operational definitions applied, all 20 participants completed all four Wordle sessions. The non-guided sessions averaged 5.05 (<em>SD</em> = 1.28) and 4.60 (<em>SD</em> = 1.50) turns for W1 and W2 respectively; the guided sessions averaged 5.60 (<em>SD</em> = 0.50) and 5.20 (<em>SD</em> = 1.28) turns for W3 and W4. W3&#8217;s markedly compressed standard deviation reflects how the prescribed sequence constrained all participants to a near-identical guess count. Elapsed time showed a consistent downward trend (5.16 &#8594; 4.45 &#8594; 4.17 &#8594; 3.53 min), though no paired time comparison reached significance. Elapsed time analyses used reduced samples due to missing timestamps: W1 (n&thinsp;=&thinsp;19), W2 (n&thinsp;=&thinsp;17), W3 (n&thinsp;=&thinsp;17), and W4 (n&thinsp;=&thinsp;14); one participant had no timestamps recorded across any session.</p>
 
   <p class="tab-cap"><strong>Table 1. Mean turns and elapsed time per session.</strong> 95% confidence intervals shown for turn counts.</p>
   <table class="apa-table">
@@ -324,12 +305,13 @@
       <tr><td>W4</td><td>Guided</td><td>5.20</td><td>1.28</td><td>[4.60, 5.80]</td><td>3.53</td><td>20</td></tr>
     </tbody>
   </table>
-  <p class="tab-note">W3 shows the highest mean turns and lowest SD; elapsed time declined monotonically across sessions.</p>
+  <!-- CHANGE 4: updated Table 1 note with elapsed time n -->
+  <p class="tab-note">Elapsed time <em>n</em> varies by session (W1&thinsp;=&thinsp;19, W2&thinsp;=&thinsp;17, W3&thinsp;=&thinsp;17, W4&thinsp;=&thinsp;14); participants with missing start or end timestamps were excluded from that session&#8217;s time analysis. W3 shows the highest mean turns and lowest SD; elapsed time declined monotonically across sessions.</p>
 
   <div class="duo wide">
     <div class="card">
       <p class="ct">Figure 3. Average completion time: solved vs. not solved</p>
-      <p class="cs">95% CI shown &middot; overall and by session</p>
+      <p class="cs">95% CI shown &middot; overall and by session &middot; solved: n = 39, not solved: n = 28 (time observations only)</p>
       <div class="leg">
         <span><span class="dot" style="background:var(--teal)"></span>Solved</span>
         <span><span class="dot" style="background:var(--coral)"></span>Not solved</span>
@@ -458,10 +440,10 @@
     </div>
     <div class="card" style="width:100%;box-sizing:border-box;">
       <p class="ct">Figure 10. Perceived difficulty: solved vs. not solved</p>
-      <p class="cs">t(77) = &#8722;3.28, p = .002** &middot; 95% CI shown</p>
+      <p class="cs">t(77) = &#8722;3.28, p = .002** &middot; 95% CI shown &middot; solved: n = 45, not solved: n = 34</p>
       <div class="leg">
-        <span><span class="dot" style="background:var(--teal)"></span>Solved</span>
-        <span><span class="dot" style="background:var(--coral)"></span>Not solved</span>
+        <span><span class="dot" style="background:var(--teal)"></span>Solved (n = 45)</span>
+        <span><span class="dot" style="background:var(--coral)"></span>Not solved (n = 34)</span>
       </div>
       <div class="cw" style="height:175px"><canvas id="q3"></canvas></div>
       <p class="cn">Solvers rated their puzzle 0.72 points easier on average (2.93 vs. 3.65).</p>
@@ -557,29 +539,28 @@ const c5ci={id:'c5ci',afterDatasetsDraw(chart){const ctx=chart.ctx;[[0,svCI,C.te
 new Chart(document.getElementById('c5'),{type:'bar',data:{labels:['Overall','W1','W2','W3','W4'],datasets:[{label:'Solved',data:sv,backgroundColor:C.tealF,borderColor:C.teal,borderWidth:1.5,borderRadius:3},{label:'Not solved',data:nsv,backgroundColor:C.coralF,borderColor:C.coral,borderWidth:1.5,borderRadius:3}]},plugins:[c5ci],options:{...base('Minutes'),scales:{...base().scales,y:{...base().scales.y,min:0,max:11,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
 const dVals=[0.34,-0.42,-0.69,-0.34],dCI=[[-0.11,0.79],[-0.87,0.04],[-1.18,-0.20],[-0.79,0.12]];
 const dCH={id:'dCH',afterDatasetsDraw(chart){const ctx=chart.ctx;dCI.forEach((ci,i)=>{const meta=chart.getDatasetMeta(0);if(!meta.data[i])return;const y=meta.data[i].y,xL=chart.scales.x.getPixelForValue(ci[0]),xR=chart.scales.x.getPixelForValue(ci[1]);ctx.save();ctx.strokeStyle=C.gray;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(xL,y);ctx.lineTo(xR,y);ctx.stroke();[xL,xR].forEach(xx=>{ctx.beginPath();ctx.moveTo(xx,y-4);ctx.lineTo(xx,y+4);ctx.stroke();});ctx.restore();});}};
-new Chart(document.getElementById('c3'),{type:'bar',data:{labels:['W1−W2','W1−W3','W2−W3','W2−W4'],datasets:[{data:dVals,backgroundColor:dVals.map(v=>v>=0?C.tealF:C.coralF),borderColor:dVals.map(v=>v>=0?C.teal:C.coral),borderWidth:1.5,borderRadius:4}]},plugins:[dCH],options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:-1.5,max:1.1,title:{display:true,text:"Cohen's d",color:C.text,font:{size:11}}},y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
-new Chart(document.getElementById('c4'),{type:'bar',data:{labels:['W1−W2\nn.s.','W1−W3\nn.s.','W2−W3\n** p<.01','W2−W4\nn.s.'],datasets:[{data:[0.45,-0.55,-1.0,-0.6],backgroundColor:[C.grayF,C.grayF,C.purpleF,C.grayF],borderColor:[C.gray,C.gray,C.purple,C.gray],borderWidth:1.5,borderRadius:4}]},options:{...base('Mean diff (turns)'),scales:{...base().scales,y:{...base().scales.y,min:-1.5,max:0.8,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
+new Chart(document.getElementById('c3'),{type:'bar',data:{labels:['W1\u2212W2','W1\u2212W3','W2\u2212W3','W2\u2212W4'],datasets:[{data:dVals,backgroundColor:dVals.map(v=>v>=0?C.tealF:C.coralF),borderColor:dVals.map(v=>v>=0?C.teal:C.coral),borderWidth:1.5,borderRadius:4}]},plugins:[dCH],options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:-1.5,max:1.1,title:{display:true,text:"Cohen's d",color:C.text,font:{size:11}}},y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
+new Chart(document.getElementById('c4'),{type:'bar',data:{labels:['W1\u2212W2\nn.s.','W1\u2212W3\nn.s.','W2\u2212W3\n** p<.01','W2\u2212W4\nn.s.'],datasets:[{data:[0.45,-0.55,-1.0,-0.6],backgroundColor:[C.grayF,C.grayF,C.purpleF,C.grayF],borderColor:[C.gray,C.gray,C.purple,C.gray],borderWidth:1.5,borderRadius:4}]},options:{...base('Mean diff (turns)'),scales:{...base().scales,y:{...base().scales.y,min:-1.5,max:0.8,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
 new Chart(document.getElementById('c7'),{type:'bar',data:{labels:['OMEGA','RATTY','PITCH','SPARE','MUGGY','HABIT'],datasets:[{label:'Non-guided',data:[5.17,3.86,5.14,4.14,5.62,5.0],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:3},{label:'Guided',data:[6.0,5.0,5.71,5.17,5.2,5.0],backgroundColor:C.tealF,borderColor:C.teal,borderWidth:1.5,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:2,max:6,title:{display:true,text:'Mean turns',color:C.text,font:{size:11}}},y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
-new Chart(document.getElementById('q1'),{type:'bar',data:{labels:['W1','W2','W3','W4'],datasets:[{data:[3.32,3.30,3.15,3.20],backgroundColor:[C.purpleF,C.purpleF,C.tealF,C.tealF],borderColor:[C.purple,C.purple,C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[2.89,3.74],[2.75,3.85],[2.69,3.61],[2.71,3.69]],color:C.gray}])],options:{...base('Mean difficulty (1–5)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
-new Chart(document.getElementById('q2'),{type:'bar',data:{labels:['MUGGY','OMEGA','RATTY','HABIT','SPARE','PITCH'],datasets:[{data:[4.17,3.87,3.50,3.00,2.54,2.43],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[3.71,4.62],[3.51,4.22],[2.99,4.01],[2.57,3.43],[1.95,3.12],[1.89,2.97]],color:C.gray}])],options:{...base('Mean difficulty (1–5)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
+new Chart(document.getElementById('q1'),{type:'bar',data:{labels:['W1','W2','W3','W4'],datasets:[{data:[3.32,3.30,3.15,3.20],backgroundColor:[C.purpleF,C.purpleF,C.tealF,C.tealF],borderColor:[C.purple,C.purple,C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[2.89,3.74],[2.75,3.85],[2.69,3.61],[2.71,3.69]],color:C.gray}])],options:{...base('Mean difficulty (1\u20135)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
+new Chart(document.getElementById('q2'),{type:'bar',data:{labels:['MUGGY','OMEGA','RATTY','HABIT','SPARE','PITCH'],datasets:[{data:[4.17,3.87,3.50,3.00,2.54,2.43],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[3.71,4.62],[3.51,4.22],[2.99,4.01],[2.57,3.43],[1.95,3.12],[1.89,2.97]],color:C.gray}])],options:{...base('Mean difficulty (1\u20135)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
 const diffSolvedCI=[[2.60,3.26],[3.39,3.90]];
 const q3ci={id:'q3ci',afterDatasetsDraw(chart){const ctx=chart.ctx;diffSolvedCI.forEach((ci,i)=>{const meta=chart.getDatasetMeta(0);if(!meta.data[i])return;const x=meta.data[i].x,yT=chart.scales.y.getPixelForValue(ci[1]),yB=chart.scales.y.getPixelForValue(ci[0]),col=i===0?C.teal:C.coral;ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x,yT);ctx.lineTo(x,yB);ctx.stroke();[yT,yB].forEach(yy=>{ctx.beginPath();ctx.moveTo(x-4,yy);ctx.lineTo(x+4,yy);ctx.stroke();});ctx.restore();});}};
-new Chart(document.getElementById('q3'),{type:'bar',data:{labels:['Solved','Not Solved'],datasets:[{data:[2.93,3.65],backgroundColor:[C.tealF,C.coralF],borderColor:[C.teal,C.coral],borderWidth:1.5,borderRadius:4}]},plugins:[q3ci],options:{...base('Mean difficulty (1–5)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
+new Chart(document.getElementById('q3'),{type:'bar',data:{labels:['Solved','Not Solved'],datasets:[{data:[2.93,3.65],backgroundColor:[C.tealF,C.coralF],borderColor:[C.teal,C.coral],borderWidth:1.5,borderRadius:4}]},plugins:[q3ci],options:{...base('Mean difficulty (1\u20135)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
 const stratCI=[[3.46,4.44],[2.58,3.52],[2.66,3.74]];
 const q4ci={id:'q4ci',afterDatasetsDraw(chart){const ctx=chart.ctx;stratCI.forEach((ci,i)=>{const meta=chart.getDatasetMeta(0);if(!meta.data[i])return;const y=meta.data[i].y,xL=chart.scales.x.getPixelForValue(ci[0]),xR=chart.scales.x.getPixelForValue(ci[1]);ctx.save();ctx.strokeStyle=C.gray;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(xL,y);ctx.lineTo(xR,y);ctx.stroke();[xL,xR].forEach(xx=>{ctx.beginPath();ctx.moveTo(xx,y-4);ctx.lineTo(xx,y+4);ctx.stroke();});ctx.restore();});}};
-new Chart(document.getElementById('q4'),{type:'bar',data:{labels:['Colour feedback\nfrom prev. guesses','Minimised letter\noverlap','Vowel-rich /\ncommon-letter start'],datasets:[{data:[3.95,3.05,3.20],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:4}]},plugins:[q4ci],options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:1,max:5,title:{display:true,text:'Mean agreement (1–5)',color:C.text,font:{size:11}}},y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
-const stkC=['#C84B28','#E8956D','#9e9d98','#6EC4A7','#1D9E75'],stkL=['1 – Strongly disagree','2 – Disagree','3 – Neutral','4 – Agree','5 – Strongly agree'],stratRows={'Colour feedback':[1,1,2,10,6],'Min.\nletter overlap':[0,7,7,4,2],'Vowel-rich start':[1,5,6,5,3]};
+new Chart(document.getElementById('q4'),{type:'bar',data:{labels:['Colour feedback\nfrom prev. guesses','Minimised letter\noverlap','Vowel-rich /\ncommon-letter start'],datasets:[{data:[3.95,3.05,3.20],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:4}]},plugins:[q4ci],options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:1,max:5,title:{display:true,text:'Mean agreement (1\u20135)',color:C.text,font:{size:11}}},y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
+const stkC=['#C84B28','#E8956D','#9e9d98','#6EC4A7','#1D9E75'],stkL=['1 \u2013 Strongly disagree','2 \u2013 Disagree','3 \u2013 Neutral','4 \u2013 Agree','5 \u2013 Strongly agree'],stratRows={'Colour feedback':[1,1,2,10,6],'Min.\nletter overlap':[0,7,7,4,2],'Vowel-rich start':[1,5,6,5,3]};
 new Chart(document.getElementById('q5'),{type:'bar',data:{labels:Object.keys(stratRows),datasets:[0,1,2,3,4].map(i=>({label:stkL[i],data:Object.values(stratRows).map(r=>r[i]),backgroundColor:stkC[i],borderRadius:i===0?4:0,borderSkipped:false}))},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{stacked:true,grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},title:{display:true,text:'Count',color:C.text,font:{size:11}}},y:{stacked:true,grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
-new Chart(document.getElementById('q6'),{type:'bar',data:{labels:['W3','W4'],datasets:[{data:[3.55,3.55],backgroundColor:C.tealF,borderColor:C.teal,borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[3.19,3.91],[3.19,3.91]],color:C.gray}])],options:{...base('Mean compliance (1–4)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:4,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
-new Chart(document.getElementById('q7'),{type:'bar',data:{labels:['W3','W4'],datasets:[{data:[2.95,3.40],backgroundColor:[C.tealF,C.tealF],borderColor:[C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[2.30,3.60],[2.77,4.03]],color:C.gray}])],options:{...base('Mean usefulness (1–5)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
+new Chart(document.getElementById('q6'),{type:'bar',data:{labels:['W3','W4'],datasets:[{data:[3.55,3.55],backgroundColor:C.tealF,borderColor:C.teal,borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[3.19,3.91],[3.19,3.91]],color:C.gray}])],options:{...base('Mean compliance (1\u20134)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:4,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
+new Chart(document.getElementById('q7'),{type:'bar',data:{labels:['W3','W4'],datasets:[{data:[2.95,3.40],backgroundColor:[C.tealF,C.tealF],borderColor:[C.teal,C.teal],borderWidth:1.5,borderRadius:4}]},plugins:[ciV([{di:0,cis:[[2.30,3.60],[2.77,4.03]],color:C.gray}])],options:{...base('Mean usefulness (1\u20135)'),scales:{...base().scales,y:{...base().scales.y,min:1,max:5,ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
 const usefulRows={'W3':[4,4,4,5,3],'W4':[3,2,3,8,4]};
 new Chart(document.getElementById('q8'),{type:'bar',data:{labels:Object.keys(usefulRows),datasets:[0,1,2,3,4].map(i=>({label:stkL[i],data:Object.values(usefulRows).map(r=>r[i]),backgroundColor:stkC[i],borderRadius:i===0?4:0,borderSkipped:false}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}},y:{stacked:true,grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},title:{display:true,text:'Count',color:C.text,font:{size:11}}}}}});
-new Chart(document.getElementById('c6'),{type:'bar',data:{labels:['OMEGA','MUGGY','HABIT','SPARE','PITCH','RATTY'],datasets:[{label:'Solve rate (%)',data:[20,38.5,61.5,69.2,71.4,83.3],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:3,yAxisID:'y'},{label:'Difficulty',data:[3.87,4.17,3.0,2.54,2.43,3.5],type:'line',borderColor:C.amber,backgroundColor:'transparent',borderWidth:2,pointRadius:4,pointBackgroundColor:C.amber,yAxisID:'y2',tension:0.3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}},y:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11},callback:v=>v+'%'},min:0,max:100,title:{display:true,text:'Solve rate (%)',color:C.text,font:{size:11}}},y2:{position:'right',grid:{drawOnChartArea:false},ticks:{color:C.amber,font:{family:"'DM Sans',sans-serif",size:11}},min:1,max:5,title:{display:true,text:'Difficulty (1–5)',color:C.amber,font:{size:11}}}}}});
-const corrLabels=['Compliance → solved (r_pb = .436)','Usefulness → guesses','Compliance → guesses','Usefulness → solved (Y/N)'],corrVals=[0.436,-0.281,-0.063,0.176],corrSig=[true,false,false,false],corrPVals=['p = .005**','p = .079','p = .701','p = .278'];
+new Chart(document.getElementById('c6'),{type:'bar',data:{labels:['OMEGA','MUGGY','HABIT','SPARE','PITCH','RATTY'],datasets:[{label:'Solve rate (%)',data:[20,38.5,61.5,69.2,71.4,83.3],backgroundColor:C.purpleF,borderColor:C.purple,borderWidth:1.5,borderRadius:3,yAxisID:'y'},{label:'Difficulty',data:[3.87,4.17,3.0,2.54,2.43,3.5],type:'line',borderColor:C.amber,backgroundColor:'transparent',borderWidth:2,pointRadius:4,pointBackgroundColor:C.amber,yAxisID:'y2',tension:0.3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:base().plugins.tooltip},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}},y:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11},callback:v=>v+'%'},min:0,max:100,title:{display:true,text:'Solve rate (%)',color:C.text,font:{size:11}}},y2:{position:'right',grid:{drawOnChartArea:false},ticks:{color:C.amber,font:{family:"'DM Sans',sans-serif",size:11}},min:1,max:5,title:{display:true,text:'Difficulty (1\u20135)',color:C.amber,font:{size:11}}}}}});
+const corrLabels=['Compliance \u2192 solved (r_pb = .436)','Usefulness \u2192 guesses','Compliance \u2192 guesses','Usefulness \u2192 solved (Y/N)'],corrVals=[0.436,-0.281,-0.063,0.176],corrSig=[true,false,false,false],corrPVals=['p = .005**','p = .079','p = .701','p = .278'];
 new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,datasets:[{data:corrVals,backgroundColor:corrVals.map((_,i)=>corrSig[i]?C.tealF:C.grayF),borderColor:corrVals.map((_,i)=>corrSig[i]?C.teal:C.gray),borderWidth:1.5,borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...base().plugins.tooltip,callbacks:{afterLabel:ctx=>corrPVals[ctx.dataIndex]}}},scales:{x:{grid:{color:C.grid},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}},min:-0.6,max:0.7,title:{display:true,text:'r / r_pb',color:C.text,font:{size:11}}},y:{grid:{color:'transparent'},ticks:{color:C.text,font:{family:"'DM Sans',sans-serif",size:11}}}}}});
 </script>
 
-<!-- ===== DISCUSSION ===== -->
   <h2 class="nat-h1">Discussion</h2>
 
   <p>The present study examined whether strategic guidance derived from Anderson and Meyer&#8217;s (2022) reinforcement learning model would <em>decrease</em> Wordle turn rates among university students while improving solve success. Contrary to our hypothesis, guidance significantly <em>increased</em> turn rate in the first guided session (W2 vs. W3), and the same directional pattern appeared as a non-significant trend in the other comparisons. A consistent downward trend in completion time was observed across W1&#8211;W4 (5.16 &#8594; 4.45 &#8594; 4.17 &#8594; 3.53 min; see Figures 2&#8211;3), though no individual paired <em>t</em>-test reached significance. These results are not without meaning. Taken together with the questionnaire data, they surface a set of unanswered questions and important qualifications to the existing literature examined in the introduction.</p>
@@ -596,7 +577,8 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
 
   <p>The questionnaire data from Wordle 2 (unguided) reveals that participants already exhibited behaviours broadly consistent with Achaa-Amankwaa and colleagues&#8217; entropy framework. Colour feedback from previous guesses was the dominant natural strategy (<em>M</em> = 3.95, <em>SD</em> = 1.05; 80% agreement; see Figures 11&#8211;12), while starting with vowel-rich words and minimizing letter overlap were more evenly split near neutral (40% and 30% agreement respectively; see Figure 12). Without any instruction, university-level participants were already partially applying information-efficient strategies &#8212; the very behaviours Achaa-Amankwaa et al. associated with higher Wordle proficiency.</p>
 
-  <p>The puzzle is why participants who reported minimizing overlap did not perform notably better. In fact, the positive trend for overlap-minimization suggests that those who claimed to avoid overlap may have paradoxically used more guesses, possibly by over-eliminating. Why, then, did impose a formal entropy-maximizing strategy through guidance not producing the expected gains? Part of the answer may lie in a cultural and linguistic context. Achaa-Amankwaa et al.&#8217;s study is grounded entirely in a German-language Wordle, with German entropy examples and a German-speaking adult pilot sample. The distribution of common letters, vowel positions, and consonant cluster patterns differs substantially between German and English. Our participants were predominantly English-speaking Canadian university students playing a New York Times English Wordle with words like MUGGY, PITCH, and RATTY &#8212; words that reflect English phonotactic constraints. Whether entropy-based thinking as a cognitive behaviour is scaffolded by one&#8217;s native linguistic intuitions about a specific language remains an open empirical question.</p>
+  <!-- CHANGE 5: "did imposing...not produce" grammar fix -->
+  <p>The puzzle is why participants who reported minimizing overlap did not perform notably better. In fact, the positive trend for overlap-minimization suggests that those who claimed to avoid overlap may have paradoxically used more guesses, possibly by over-eliminating. Why, then, did imposing a formal entropy-maximizing strategy through guidance not produce the expected gains? Part of the answer may lie in a cultural and linguistic context. Achaa-Amankwaa et al.&#8217;s study is grounded entirely in a German-language Wordle, with German entropy examples and a German-speaking adult pilot sample. The distribution of common letters, vowel positions, and consonant cluster patterns differs substantially between German and English. Our participants were predominantly English-speaking Canadian university students playing a New York Times English Wordle with words like MUGGY, PITCH, and RATTY &#8212; words that reflect English phonotactic constraints. Whether entropy-based thinking as a cognitive behaviour is scaffolded by one&#8217;s native linguistic intuitions about a specific language remains an open empirical question.</p>
 
   <p>Achaa-Amankwaa et al. predict that Wordle proficiency loads primarily on crystallized intelligence (Gc) and retrieval ability (Gr), with a moderate contribution from fluid intelligence (Gf). A useful way to conceptualize this: Gc is the library &#8212; the larger it is, the more words and linguistic rules a player has available to draw on. Gr is the search engine &#8212; how quickly information is retrieved. Gf is processing power &#8212; capacity to run complex conditional logic in real time. Our participant pool likely brought moderate Gc in English but limited strategic Gf scaffolding. Guidance was designed to compensate by providing Gf-equivalent output externally. That this intervention failed to produce consistent turn-rate reductions suggests the interface between an external rule and a player&#8217;s crystallized linguistic knowledge is more fraught than anticipated. Participants who reported complying with guidance were significantly more likely to solve the puzzle (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005; see Figure 16), but high self-reported compliance (<em>M</em> = 3.55, 70% fully followed; see Figure 13) did not translate into fewer guesses. Compliance as reported and compliance as enacted may have diverged: participants followed the starter&#8217;s words but were unable to execute the branching logic adaptively in the game. Gf played a role &#8212; but in how well participants could interpret the rule, not simply whether they tried to follow it.</p>
 
@@ -614,13 +596,15 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
 
   <p>Dixon and colleagues demonstrate that Wordle is not merely a cognitive task but an emotionally driven one, where approach and thwarted outcomes produce measurable differences in motivation, positive affect, and frustration. Our study indirectly observed this dynamic between Wordle 3 and Wordle 4. Of note, P19 &#8212; excluded under OD1 &#8212; left an explicit written note on their raw data sheet: <em>&#8220;First guess being one with a double &#8216;O&#8217; seems unhelpful.&#8221;</em> This mirrors the experience of a pilot-test participant who shared the same anecdote and similarly rejected the prescribed starting word, directly illustrating purposeful non-compliance driven by intuitive resistance to the guidance.</p>
 
-  <p><figure class="wrap-fig"><div class="fig17-board" role="img" aria-label="Wordle grid showing the prescribed sequence (LOOIE, SAURY, CHANT, BIDED, PRIMP) applied to OMEGA, with all five guesses producing only yellow and gray tiles and no greens."><div class="fig17-row"><div class="fig17-cell gray">L</div><div class="fig17-cell yellow">O</div><div class="fig17-cell gray">O</div><div class="fig17-cell gray">I</div><div class="fig17-cell yellow">E</div></div><div class="fig17-row"><div class="fig17-cell gray">S</div><div class="fig17-cell yellow">A</div><div class="fig17-cell gray">U</div><div class="fig17-cell gray">R</div><div class="fig17-cell gray">Y</div></div><div class="fig17-row"><div class="fig17-cell gray">C</div><div class="fig17-cell gray">H</div><div class="fig17-cell yellow">A</div><div class="fig17-cell gray">N</div><div class="fig17-cell gray">T</div></div><div class="fig17-row"><div class="fig17-cell gray">B</div><div class="fig17-cell gray">I</div><div class="fig17-cell gray">D</div><div class="fig17-cell yellow">E</div><div class="fig17-cell gray">D</div></div><div class="fig17-row"><div class="fig17-cell gray">P</div><div class="fig17-cell gray">R</div><div class="fig17-cell gray">I</div><div class="fig17-cell yellow">M</div><div class="fig17-cell gray">P</div></div><div class="fig17-row"><div class="fig17-cell empty"></div><div class="fig17-cell empty"></div><div class="fig17-cell empty"></div><div class="fig17-cell empty"></div><div class="fig17-cell empty"></div></div></div><div class="fig17-kbd" aria-hidden="true"><div class="fig17-kbd-row"><div class="fig17-key">Q</div><div class="fig17-key">W</div><div class="fig17-key yellow">E</div><div class="fig17-key used">R</div><div class="fig17-key used">T</div><div class="fig17-key used">Y</div><div class="fig17-key used">U</div><div class="fig17-key used">I</div><div class="fig17-key yellow">O</div><div class="fig17-key used">P</div></div><div class="fig17-kbd-row"><div class="fig17-key yellow">A</div><div class="fig17-key used">S</div><div class="fig17-key used">D</div><div class="fig17-key">F</div><div class="fig17-key">G</div><div class="fig17-key used">H</div><div class="fig17-key">J</div><div class="fig17-key">K</div><div class="fig17-key used">L</div></div><div class="fig17-kbd-row"><div class="fig17-key wide">ENTER</div><div class="fig17-key">Z</div><div class="fig17-key">X</div><div class="fig17-key used">C</div><div class="fig17-key">V</div><div class="fig17-key used">B</div><div class="fig17-key used">N</div><div class="fig17-key yellow">M</div><div class="fig17-key wide">&#9003;</div></div></div><p class="ct">Figure 17. OMEGA, a coincidental edge case scenario.</p><p class="cn">The full prescribed sequence (LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP) applied to OMEGA. Every guess yields only yellow and gray tiles &#8212; no green letter ever registers, requiring participants to override the goal-gradient instinct for all five turns before solving. OMEGA was one of six target words randomly drawn from the 300 New York Times daily Wordles released before the cutoff date; its alignment with the prescribed sequence was incidental, not selected.</p></figure>This finding ties directly onto Dixon et al.&#8217;s goal-gradient framework. The &#8220;if only yellows, EXCLUDE&#8221; step (Appendix D) requires players to deliberately ignore yellow tiles they have just guessed until a green tile appears. From a goal-gradient perspective, this is quite counterintuitive: participants are being asked to act as though they are moving away from their goal at the very moment they can see they are approaching it. Dixon et al. show that approach outcomes &#8212; new coloured tiles &#8212; trigger significantly higher positive affect and motivation, while thwarted outcomes produce frustration and motivational drops. Our strategic guidance precisely prescribed that: a sequence of deliberate thwart-like moves as the core mechanism, instructing participants to continue down the five-word list until a green letter registers, even when yellow and repeat letters are being revealed. This is especially evident with OMEGA, for which the full prescribed list &#8212; LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP &#8212; coincidentally yielded all yellow and gray letters (see Figure 17).</p>
+  <!-- CHANGE 7: "ties directly to" (not "onto") -->
+  <p><figure class="wrap-fig"><div class="fig17-board" role="img" aria-label="Wordle grid showing LOOIE SAURY CHANT BIDED PRIMP applied to OMEGA with all yellow and gray tiles."><div class="fig17-row"><div class="fig17-cell gray">L</div><div class="fig17-cell yellow">O</div><div class="fig17-cell gray">O</div><div class="fig17-cell gray">I</div><div class="fig17-cell yellow">E</div></div><div class="fig17-row"><div class="fig17-cell gray">S</div><div class="fig17-cell yellow">A</div><div class="fig17-cell gray">U</div><div class="fig17-cell gray">R</div><div class="fig17-cell gray">Y</div></div><div class="fig17-row"><div class="fig17-cell gray">C</div><div class="fig17-cell gray">H</div><div class="fig17-cell yellow">A</div><div class="fig17-cell gray">N</div><div class="fig17-cell gray">T</div></div><div class="fig17-row"><div class="fig17-cell gray">B</div><div class="fig17-cell gray">I</div><div class="fig17-cell gray">D</div><div class="fig17-cell yellow">E</div><div class="fig17-cell gray">D</div></div><div class="fig17-row"><div class="fig17-cell gray">P</div><div class="fig17-cell gray">R</div><div class="fig17-cell gray">I</div><div class="fig17-cell yellow">M</div><div class="fig17-cell gray">P</div></div><div class="fig17-row"><div class="fig17-cell empty"></div><div class="fig17-cell empty"></div><div class="fig17-cell empty"></div><div class="fig17-cell empty"></div><div class="fig17-cell empty"></div></div></div><div class="fig17-kbd" aria-hidden="true"><div class="fig17-kbd-row"><div class="fig17-key">Q</div><div class="fig17-key">W</div><div class="fig17-key yellow">E</div><div class="fig17-key used">R</div><div class="fig17-key used">T</div><div class="fig17-key used">Y</div><div class="fig17-key used">U</div><div class="fig17-key used">I</div><div class="fig17-key yellow">O</div><div class="fig17-key used">P</div></div><div class="fig17-kbd-row"><div class="fig17-key yellow">A</div><div class="fig17-key used">S</div><div class="fig17-key used">D</div><div class="fig17-key">F</div><div class="fig17-key">G</div><div class="fig17-key used">H</div><div class="fig17-key">J</div><div class="fig17-key">K</div><div class="fig17-key used">L</div></div><div class="fig17-kbd-row"><div class="fig17-key wide">ENTER</div><div class="fig17-key">Z</div><div class="fig17-key">X</div><div class="fig17-key used">C</div><div class="fig17-key">V</div><div class="fig17-key used">B</div><div class="fig17-key used">N</div><div class="fig17-key yellow">M</div><div class="fig17-key wide">&#9003;</div></div></div><p class="ct">Figure 17. OMEGA, a coincidental edge case scenario.</p><p class="cn">The full prescribed sequence (LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP) applied to OMEGA. Every guess yields only yellow and gray tiles &#8212; no green letter ever registers, requiring participants to override the goal-gradient instinct for all five turns before solving. OMEGA was one of six target words randomly drawn from the 300 New York Times daily Wordles released before the cutoff date; its alignment with the prescribed sequence was incidental, not selected.</p></figure>This finding ties directly to Dixon et al.&#8217;s goal-gradient framework. The &#8220;if only yellows, EXCLUDE&#8221; step (Appendix D) requires players to deliberately ignore yellow tiles they have just guessed until a green tile appears. From a goal-gradient perspective, this is quite counterintuitive: participants are being asked to act as though they are moving away from their goal at the very moment they can see they are approaching it. Dixon et al. show that approach outcomes &#8212; new coloured tiles &#8212; trigger significantly higher positive affect and motivation, while thwarted outcomes produce frustration and motivational drops. Our strategic guidance precisely prescribed that: a sequence of deliberate thwart-like moves as the core mechanism, instructing participants to continue down the five-word list until a green letter registers, even when yellow and repeat letters are being revealed. This is especially evident with OMEGA, for which the full prescribed list &#8212; LOOIE &#8594; SAURY &#8594; CHANT &#8594; BIDED &#8594; PRIMP &#8212; coincidentally yielded all yellow and gray letters (see Figure 17).</p>
 
   <p>Taken together with the Loibl and Rummel (2014) analysis and P19&#8217;s written refusal, the guidance was not only cognitively demanding &#8212; it was also emotionally aversive. This is consistent with the perceived usefulness rating in Wordle 3 (<em>M</em> = 2.95; see Figure 14), which is below the neutral midpoint.</p>
 
   <h3 class="nat-h2">Synthesis</h3>
 
-  <p>Taken together, these studies converge on a consistent explanation of the pattern of results. Anderson and Meyer&#8217;s strategy &#8212; while validated across 10,000 simulations &#8212; requires a form of real-time conditional reasoning that Loibl and Rummel&#8217;s framework suggests cannot be implemented through a dense written sheet mid-experiment. The emotional aversion documented by Dixon et al. explains both P19&#8217;s written refusal, pilot testers anecdotes, and the broader attrition between Wordle 3 and 4. The cultural specificity raised by Achaa-Amankwaa et al. questions whether an entropy-based strategy derived from German morphology transfers cleanly to English-language play.</p>
+  <!-- CHANGE 6: pilot testers' apostrophe -->
+  <p>Taken together, these studies converge on a consistent explanation of the pattern of results. Anderson and Meyer&#8217;s strategy &#8212; while validated across 10,000 simulations &#8212; requires a form of real-time conditional reasoning that Loibl and Rummel&#8217;s framework suggests cannot be implemented through a dense written sheet mid-experiment. The emotional aversion documented by Dixon et al. explains both P19&#8217;s written refusal, pilot testers&#8217; anecdotes, and the broader attrition between Wordle 3 and 4. The cultural specificity raised by Achaa-Amankwaa et al. questions whether an entropy-based strategy derived from German morphology transfers cleanly to English-language play.</p>
 
   <p>The strongest finding from the guided sessions &#8212; that compliance predicted solving success (<em>r</em><sub>pb</sub> = .436, <em>p</em> = .005; see Figure 16) even as the guided condition produced significantly more turns overall &#8212; suggests the guidance had a real but narrow effect: it served as a completion aid for participants who could execute it well enough, without improving the efficiency of their search process.</p>
 
@@ -638,20 +622,22 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
 
   <p>This study was also required to adhere to a time limit. Despite permission to continue past the originally stipulated duration, participants may have felt time pressure that resulted in altered performance. The setting of a university classroom, combined with the student background of the participants, may have added undue stress. Pre-testing procedures showed variable range in time taken, yet the experimental design did not change to add more time past the 40-minute limit.</p>
 
+  <!-- CHANGE 9: new counterbalancing paragraph -->
+  <p>A further design limitation is the absence of counterbalancing. All participants completed non-guided sessions (W1, W2) before guided sessions (W3, W4) by necessity of the manipulation, meaning condition order was fixed rather than randomized across participants. As a result, any improvement or decline attributable to general practice with the Wordle interface, fatigue across the session, or time-on-task effects cannot be fully disentangled from the effect of strategic guidance. A between-groups design, or a condition in which some participants received guidance for W1 and W2 and withheld it for W3 and W4, would help isolate the guidance effect from sequence confounds in future replications.</p>
+
   <p>Minor methodological revisions could address several of these limitations in future replications. With the removal of the custom Wordle tool by the New York Times, participants could use the originally selected guidance words adapted from Anderson and Meyer (2022), eliminating complaints regarding the usefulness of the guidance words and the Wordle Bot word bank constraint. The issue of bombardment, undue stress, and the time limit could be reduced through the restructuring of experimental materials and instruction of delivery. An interactive visual representation for both how to play Wordle and how to employ the strategic guidance &#8212; replacing Appendices B and D &#8212; would reduce reading demands and provide more time for gameplay. Ideally, an alternative Wordle in the primary language of multilingual participants would have been made available; in lieu of that, an additional self-report question would help control confounds associated with second language skills and performance.</p>
 
   <p>Further research on this topic is essential, not only because there is limited empirical data surrounding Wordle, but because some questions still remain unanswered. A study currently under review by Achaa-Amankwaa et al. (2025) attempts to observe whether Wordle functions as a reliable measure of verbal ability and seeks answers to whether a primary form of intelligence or retrieval ability drives performance. A key aspect that became known upon reviewing raw data was the intensity of emotions during gameplay. Emotions, although important in the context of Wordle by coloured feedback and goal gradients (Dixon et al., 2024), were not the primary focus of this study. A future study with a revised questionnaire targeting participant emotions and internal mechanisms rather than perceived performance would add meaningfully to the existing literature.</p>
 
-<!-- ===== CONCLUSION ===== -->
   <h2 class="nat-h1">Conclusion</h2>
 
   <p>The goal of this study was to design a preliminary test on the potential of Wordle as a structural puzzle measuring fluid reasoning ability. It was hypothesized that strategic guidance would decrease Wordle turn-rate while improving solve success, suggesting that Wordle is more similar to cryptic crosswords than simple crosswords in that it was more likely to require fluid reasoning rather than crystallized intelligence. Yet, the data contradicted our central hypothesis. Strategic guidance significantly increased turn rate rather than decreasing it as predicted, yet compliance with the prescribed strategy predicted solving accuracy.</p>
 
-  <p>This dissociation carries a more specific implication than a simple null result. Guidance helped participants finish the puzzle without improving how efficiently they searched &#8212; suggesting that fluid reasoning is involved in Wordle, but specifically in the speed and elegance of solving rather than in whether a player can complete it at all. Wordle may sit on a Gc&#8211;Gf continuum where crystallized intelligence provides access to the game and fluid reasoning governs mastery of it. The guidance, by helping completion without improving efficiency, inadvertently traced the outline of exactly that distinction.</p>
+  <!-- CHANGE 8: softened fluid reasoning claim -->
+  <p>This dissociation carries a more specific implication than a simple null result. Guidance helped participants finish the puzzle without improving how efficiently they searched &#8212; consistent with a role for fluid reasoning in the speed and elegance of solving rather than in whether a player can complete it at all, though this interpretation must remain tentative given that fluid reasoning was not directly measured in this study. If this pattern holds under direct assessment, Wordle may sit on a Gc&#8211;Gf continuum where crystallized intelligence provides access to the game and fluid reasoning governs mastery of it. The guidance, by helping completion without improving efficiency, is consistent with that distinction &#8212; but future research with validated Gf measures is needed to test it directly.</p>
 
   <p>Future research should address whether this pattern holds with larger samples and refined guidance delivery &#8212; and more broadly, whether Wordle performance reflects fluid intelligence, crystallized intelligence, or retrieval ability as its primary cognitive driver.</p>
 
-<!-- ===== REFERENCES ===== -->
   <h2 class="nat-h1">References</h2>
   <ul class="ref-list">
     <li>Achaa-Amankwaa, P., Walter, J., &amp; Schroeders, U. (2025). <em>Wordle: A game-based assessment of verbal ability?</em> PsyArXiv. <a href="https://osf.io/preprints/psyarxiv/pa89m_v3">https://osf.io/preprints/psyarxiv/pa89m_v3</a></li>
@@ -664,15 +650,14 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     <li>Hambrick, D. Z., Salthouse, T. A., &amp; Meinz, E. J. (1999). Predictors of crossword puzzle proficiency and moderators of age&#8211;cognition relations. <em>Journal of Experimental Psychology: General, 128</em>(2), 131&#8211;164. <a href="https://doi.org/10.1037//0096-3445.128.2.131">https://doi.org/10.1037//0096-3445.128.2.131</a></li>
     <li>Koranda, M. J., Zettersten, M., &amp; MacDonald, M. C. (2022). Good-enough production: Selecting easier words instead of more accurate ones. <em>Psychological Science, 33</em>(9), 1440&#8211;1451. <a href="https://doi.org/10.1177/09567976221089603">https://doi.org/10.1177/09567976221089603</a></li>
     <li>Loibl, K., &amp; Rummel, N. (2014). The impact of guidance during problem-solving prior to instruction on students&#8217; inventions and learning outcomes. <em>Instructional Science, 42</em>(3), 305&#8211;326. <a href="https://doi.org/10.1007/s11251-013-9282-5">https://doi.org/10.1007/s11251-013-9282-5</a></li>
-    <li>McLaren, M. (2023, March 27). Today&#8217;s Wordle marks the start of a new era for the game &#8212; here&#8217;s why. <em>TechRadar.</em> <a href="https://www.techradar.com/news/todays-wordle-marks-the-start-of-a-new-era-for-the-game-heres-why">https://www.techradar.com/news/todays-wordle-marks-the-start-of-a-new-era-for-the-game-heres-why</a></li>
+    <li>McLaren, M. (2023, March 27). Today&#8217;s Wordle marks the start of a new era for the game &#8212; here&#8217;s why. <em>TechRadar.</em> <a href="https://www.techradar.com/news/todays-wordle-marks-the-start-of-a-new-era-for-the-game-heres-why">https://www.techradar.com</a></li>
     <li>Murphy, M., Spillane, K., Cully, J., Navarro-Pardo, E., &amp; Moret-Tatay, C. (2016). Can word puzzles be tailored to improve different dimensions of verbal fluency? A report of an intervention study. <em>Journal of Psychology, 150</em>(6), 743&#8211;754. <a href="https://doi.org/10.1080/00223980.2016.1182887">https://doi.org/10.1080/00223980.2016.1182887</a></li>
     <li>New York Times. (n.d.). <em>Wordle Bot F.A.Q.</em> <a href="https://www.nytimes.com/interactive/2024/02/16/upshot/wordlebot-faq.html">https://www.nytimes.com/interactive/2024/02/16/upshot/wordlebot-faq.html</a></li>
-    <li>Tracy, M. (2022, January 31). The New York Times buys Wordle. <em>The New York Times.</em> <a href="https://www.nytimes.com/2022/01/31/business/media/new-york-times-wordle.html">https://www.nytimes.com/2022/01/31/business/media/new-york-times-wordle.html</a></li>
-    <li>Victor, D. (2022, January 3). Wordle is a love story. <em>The New York Times.</em> <a href="https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html">https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html</a></li>
-    <li>Yin, O. (2022, January 16). Here lies Wordle: 2021&#8211;2027 (full answer list). <em>Medium.</em> <a href="https://medium.com/@owenyin/here-lies-wordle-2021-2027-full-answer-list-52017ee99e86">https://medium.com/@owenyin/here-lies-wordle-2021-2027-full-answer-list-52017ee99e86</a></li>
+    <li>Tracy, M. (2022, January 31). The New York Times buys Wordle. <em>The New York Times.</em> <a href="https://www.nytimes.com/2022/01/31/business/media/new-york-times-wordle.html">https://www.nytimes.com</a></li>
+    <li>Victor, D. (2022, January 3). Wordle is a love story. <em>The New York Times.</em> <a href="https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html">https://www.nytimes.com</a></li>
+    <li>Yin, O. (2022, January 16). Here lies Wordle: 2021&#8211;2027 (full answer list). <em>Medium.</em> <a href="https://medium.com/@owenyin/here-lies-wordle-2021-2027-full-answer-list-52017ee99e86">https://medium.com/@owenyin</a></li>
   </ul>
 
-<!-- ===== APPENDIX A ===== -->
   <h2 class="apx-num">Appendix A</h2>
   <p class="apx-title">Wordle 1&#8211;4 workbook pages</p>
 
@@ -682,20 +667,18 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
         <div class="wordle-number" style="margin-bottom:10px;">WORDLE #1</div>
-        <div class="wordle-grid-wrap">
-        <div class="wordle-grid">
+        <div class="wordle-grid-wrap"><div class="wordle-grid">
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
-        </div>
-        </div>
+        </div></div>
       </div>
       <div class="qr-block" style="flex-shrink:0;">
         <p class="qr-label">QR Code:</p>
-        <img src="QR_CODE__1___OMEGA.png" alt="QR Code">
+        <img src="QR_CODE__1___OMEGA.png" alt="QR Code #1 — OMEGA">
         <div class="qr-time">Time started: <span class="time-line"></span><br>Time ended: <span class="time-line"></span></div>
       </div>
     </div>
@@ -705,9 +688,7 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
         <li>Did you successfully complete the Wordle? ( YES / NO )</li>
         <li>How many guesses did you take? (1&#8211;6) <span class="guess-line"></span></li>
         <li>How difficult was this Wordle?
-          <div class="scale-row">
-            <span>1 = Very easy</span><span>2 = Easy</span><span>3 = Neutral</span><span>4 = Difficult</span><span>5 = Very difficult</span>
-          </div>
+          <div class="scale-row"><span>1 = Very easy</span><span>2 = Easy</span><span>3 = Neutral</span><span>4 = Difficult</span><span>5 = Very difficult</span></div>
         </li>
       </ol>
     </div>
@@ -720,20 +701,18 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
         <div class="wordle-number" style="margin-bottom:10px;">WORDLE #2</div>
-        <div class="wordle-grid-wrap">
-        <div class="wordle-grid">
+        <div class="wordle-grid-wrap"><div class="wordle-grid">
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
-        </div>
-        </div>
+        </div></div>
       </div>
       <div class="qr-block" style="flex-shrink:0;">
         <p class="qr-label">QR Code:</p>
-        <img src="QR_CODE__1___OMEGA.png" alt="QR Code">
+        <img src="QR_CODE__2___MUGGY.png" alt="QR Code #2 — MUGGY">
         <div class="qr-time">Time started: <span class="time-line"></span><br>Time ended: <span class="time-line"></span></div>
       </div>
     </div>
@@ -743,9 +722,7 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
         <li>Did you successfully complete the Wordle? ( YES / NO )</li>
         <li>How many guesses did you take? (1&#8211;6) <span class="guess-line"></span></li>
         <li>How difficult was this Wordle?
-          <div class="scale-row">
-            <span>1 = Very easy</span><span>2 = Easy</span><span>3 = Neutral</span><span>4 = Difficult</span><span>5 = Very difficult</span>
-          </div>
+          <div class="scale-row"><span>1 = Very easy</span><span>2 = Easy</span><span>3 = Neutral</span><span>4 = Difficult</span><span>5 = Very difficult</span></div>
         </li>
       </ol>
       <div class="extra-questions">
@@ -772,20 +749,18 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
         <div class="wordle-number" style="margin-bottom:10px;">WORDLE #3</div>
-        <div class="wordle-grid-wrap">
-        <div class="wordle-grid">
+        <div class="wordle-grid-wrap"><div class="wordle-grid">
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
-        </div>
-        </div>
+        </div></div>
       </div>
       <div class="qr-block" style="flex-shrink:0;">
         <p class="qr-label">QR Code:</p>
-        <img src="QR_CODE__1___OMEGA.png" alt="QR Code">
+        <img src="QR_CODE__3___RATTY.png" alt="QR Code #3 — RATTY">
         <div class="qr-time">Time started: <span class="time-line"></span><br>Time ended: <span class="time-line"></span></div>
       </div>
     </div>
@@ -819,20 +794,18 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
       <div>
         <div class="wordle-number" style="margin-bottom:10px;">WORDLE #4</div>
-        <div class="wordle-grid-wrap">
-        <div class="wordle-grid">
+        <div class="wordle-grid-wrap"><div class="wordle-grid">
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
         <div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div><div class="wc"></div>
-        </div>
-        </div>
+        </div></div>
       </div>
       <div class="qr-block" style="flex-shrink:0;">
         <p class="qr-label">QR Code:</p>
-        <img src="QR_CODE__1___OMEGA.png" alt="QR Code">
+        <img src="QR_CODE__4___SPARE.png" alt="QR Code #4 — SPARE">
         <div class="qr-time">Time started: <span class="time-line"></span><br>Time ended: <span class="time-line"></span></div>
       </div>
     </div>
@@ -860,7 +833,6 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   </div>
   </div>
 
-<!-- ===== APPENDIX B ===== -->
   <h2 class="apx-num">Appendix B</h2>
   <p class="apx-title">Wordle instruction sheet</p>
   <div class="paper-card">
@@ -869,53 +841,29 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     <h2>How to Play Wordle</h2>
     <p><strong>The goal of the game is to guess the secret word within 6 attempts.</strong> Start with any five-letter English word that is found in a standard English dictionary. After each attempt, you will receive feedback based on which letters are in the secret word.</p>
     <p style="font-family:var(--sans);font-size:14px;font-weight:500;margin-bottom:12px;"><strong>Below is an example of how Wordle works:</strong></p>
-
     <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
       <div style="display:flex;align-items:center;gap:16px;">
-        <div class="ex-row" style="margin:0;flex-shrink:0;">
-          <div class="ex-cell x">Q</div><div class="ex-cell x">U</div><div class="ex-cell x">I</div><div class="ex-cell x">C</div><div class="ex-cell x">K</div>
-        </div>
-        <span style="font-family:var(--sans);font-size:13.5px;color:var(--tp);">
-          &#8592; <span class="col-gray">QUICK</span> has <span class="col-gray">all grey letters</span> which are not apart of the secret word
-        </span>
+        <div class="ex-row" style="margin:0;flex-shrink:0;"><div class="ex-cell x">Q</div><div class="ex-cell x">U</div><div class="ex-cell x">I</div><div class="ex-cell x">C</div><div class="ex-cell x">K</div></div>
+        <span style="font-family:var(--sans);font-size:13.5px;color:var(--tp);">&#8592; <span class="col-gray">QUICK</span> has <span class="col-gray">all grey letters</span> which are not apart of the secret word</span>
       </div>
       <div style="display:flex;align-items:center;gap:16px;">
-        <div class="ex-row" style="margin:0;flex-shrink:0;">
-          <div class="ex-cell y-a">L</div><div class="ex-cell x">U</div><div class="ex-cell x">M</div><div class="ex-cell x">P</div><div class="ex-cell y-a">S</div>
-        </div>
-        <span style="font-family:var(--sans);font-size:13.5px;color:var(--tp);">
-          &#8592; <span class="col-yellow">L</span><span class="col-gray">UMP</span><span class="col-yellow">S</span> has <span class="col-yellow">two yellow letters</span> which are in the secret word, but in the wrong position
-        </span>
+        <div class="ex-row" style="margin:0;flex-shrink:0;"><div class="ex-cell y-a">L</div><div class="ex-cell x">U</div><div class="ex-cell x">M</div><div class="ex-cell x">P</div><div class="ex-cell y-a">S</div></div>
+        <span style="font-family:var(--sans);font-size:13.5px;color:var(--tp);">&#8592; <span class="col-yellow">L</span><span class="col-gray">UMP</span><span class="col-yellow">S</span> has <span class="col-yellow">two yellow letters</span> which are in the secret word, but in the wrong position</span>
       </div>
       <div style="display:flex;align-items:center;gap:16px;">
-        <div class="ex-row" style="margin:0;flex-shrink:0;">
-          <div class="ex-cell g">S</div><div class="ex-cell y-a">A</div><div class="ex-cell y-a">L</div><div class="ex-cell g">T</div><div class="ex-cell x">Y</div>
-        </div>
-        <span style="font-family:var(--sans);font-size:13.5px;color:var(--tp);">
-          &#8592; <span class="col-green">S</span><span class="col-yellow">AL</span><span class="col-green">T</span><span class="col-gray">Y</span> has <span class="col-green">two green letters</span> which are in the secret word <em>AND</em> in the correct position
-        </span>
+        <div class="ex-row" style="margin:0;flex-shrink:0;"><div class="ex-cell g">S</div><div class="ex-cell y-a">A</div><div class="ex-cell y-a">L</div><div class="ex-cell g">T</div><div class="ex-cell x">Y</div></div>
+        <span style="font-family:var(--sans);font-size:13.5px;color:var(--tp);">&#8592; <span class="col-green">S</span><span class="col-yellow">AL</span><span class="col-green">T</span><span class="col-gray">Y</span> has <span class="col-green">two green letters</span> which are in the secret word <em>AND</em> in the correct position</span>
       </div>
       <div style="display:flex;align-items:center;gap:16px;">
-        <div class="ex-row" style="margin:0;flex-shrink:0;">
-          <div class="ex-cell g">S</div><div class="ex-cell g">L</div><div class="ex-cell g">A</div><div class="ex-cell g">T</div><div class="ex-cell g">E</div>
-        </div>
-        <span style="font-family:var(--sans);font-size:13.5px;color:var(--tp);">
-          &#8592; <span class="col-green">SLATE</span> is the secret word, guessed in 4/6 attempts
-        </span>
+        <div class="ex-row" style="margin:0;flex-shrink:0;"><div class="ex-cell g">S</div><div class="ex-cell g">L</div><div class="ex-cell g">A</div><div class="ex-cell g">T</div><div class="ex-cell g">E</div></div>
+        <span style="font-family:var(--sans);font-size:13.5px;color:var(--tp);">&#8592; <span class="col-green">SLATE</span> is the secret word, guessed in 4/6 attempts</span>
       </div>
     </div>
-
     <div style="display:flex;flex-direction:row;gap:32px;align-items:center;">
       <div class="kbd-wrap" style="flex-shrink:0;margin:0;">
-        <div class="kbd-row">
-          <span class="key used-gray">Q</span><span class="key">W</span><span class="key used-green">E</span><span class="key">R</span><span class="key used-green">T</span><span class="key used-gray">Y</span><span class="key used-gray">U</span><span class="key used-gray">I</span><span class="key">O</span><span class="key used-gray">P</span>
-        </div>
-        <div class="kbd-row">
-          <span class="key used-green">A</span><span class="key used-green">S</span><span class="key">D</span><span class="key">F</span><span class="key">G</span><span class="key">H</span><span class="key">J</span><span class="key used-gray">K</span><span class="key used-green">L</span>
-        </div>
-        <div class="kbd-row">
-          <span class="key wide" style="font-size:10px;">ENTER</span><span class="key">Z</span><span class="key">X</span><span class="key used-gray">C</span><span class="key">V</span><span class="key">B</span><span class="key">N</span><span class="key used-gray">M</span><span class="key wide">&#9003;</span>
-        </div>
+        <div class="kbd-row"><span class="key used-gray">Q</span><span class="key">W</span><span class="key used-green">E</span><span class="key">R</span><span class="key used-green">T</span><span class="key used-gray">Y</span><span class="key used-gray">U</span><span class="key used-gray">I</span><span class="key">O</span><span class="key used-gray">P</span></div>
+        <div class="kbd-row"><span class="key used-green">A</span><span class="key used-green">S</span><span class="key">D</span><span class="key">F</span><span class="key">G</span><span class="key">H</span><span class="key">J</span><span class="key used-gray">K</span><span class="key used-green">L</span></div>
+        <div class="kbd-row"><span class="key wide" style="font-size:10px;">ENTER</span><span class="key">Z</span><span class="key">X</span><span class="key used-gray">C</span><span class="key">V</span><span class="key">B</span><span class="key">N</span><span class="key used-gray">M</span><span class="key wide">&#9003;</span></div>
       </div>
       <div style="font-family:var(--sans);font-size:13.5px;line-height:1.75;color:var(--tp);">
         <p><strong>Wordle</strong> uses an on-screen keyboard to enter guesses and give feedback. It shows which letters you&#8217;ve used, which are in the word (<span class="col-yellow">yellow</span> or <span class="col-green">green</span>), and which are not (<span class="col-gray">grey</span>).</p>
@@ -924,7 +872,6 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   </div>
   </div>
 
-<!-- ===== APPENDIX C ===== -->
   <h2 class="apx-num">Appendix C</h2>
   <p class="apx-title">QR code set for selected Wordles</p>
   <div class="paper-card">
@@ -954,40 +901,24 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
   </div>
   </div>
 
-<!-- ===== APPENDIX D ===== -->
   <h2 class="apx-num">Appendix D</h2>
   <p class="apx-title">Strategic guidance instruction sheet</p>
   <div class="paper-card" style="margin-bottom:88px;">
     <p style="font-size:11px;color:var(--tt);font-family:var(--sans);font-style:italic;margin-bottom:20px;"><em>Note.</em> Font has been adjusted for consistency.</p>
     <div style="font-family:var(--sans);color:var(--tp);">
       <h1 style="font-family:var(--sans);font-size:26px;font-weight:700;margin:0 0 24px;color:var(--tp);">Optimal Wordle Strategy: A 3-Step Guide</h1>
-
       <p style="font-size:15px;font-weight:700;margin:0 0 4px;color:var(--tp);">STEP 1: The high-information start</p>
       <p style="font-size:15px;line-height:1.6;margin:0 0 10px;color:var(--tp);">Begin your game by using words from the following statistically optimized list <strong>IN ORDER</strong>:</p>
-      <ol style="font-size:15px;font-weight:700;margin:0 0 14px 28px;color:var(--tp);line-height:1.9;">
-        <li>LOOIE</li>
-        <li>SAURY</li>
-        <li>CHANT</li>
-        <li>BIDED</li>
-        <li>PRIMP</li>
-      </ol>
+      <ol style="font-size:15px;font-weight:700;margin:0 0 14px 28px;color:var(--tp);line-height:1.9;"><li>LOOIE</li><li>SAURY</li><li>CHANT</li><li>BIDED</li><li>PRIMP</li></ol>
       <p style="font-size:15px;line-height:1.6;margin:0 0 20px;color:var(--tp);">Always type &#8220;LOOIE&#8221; for your very first guess. <strong>Your primary goal is to reveal a <span style="color:#538d4e;">green letter</span>.</strong></p>
-
       <p style="font-size:15px;font-weight:700;margin:0 0 4px;color:var(--tp);">Step 2: If only <span style="color:#b59f3b;">Yellow(s)</span>, EXCLUDE:</p>
       <p style="font-size:15px;line-height:1.6;margin:0 0 12px;color:var(--tp);">If your guess <strong>shows only <span style="color:#b59f3b;">yellow letters</span></strong> (zero <span style="color:#538d4e;">green letters</span>), you must <strong>temporarily ignore them.</strong> Do not try to rearrange your yellow letters into a new word.</p>
       <p style="font-size:15px;line-height:1.6;margin:0 0 20px;color:var(--tp);">Instead, <strong>guess the next word on the list</strong> (e.g., &#8220;SAURY&#8221;). Continue moving down the list if you continue to only receive <span style="color:#b59f3b;">yellow letters</span>.</p>
-
       <p style="font-size:15px;font-weight:700;margin:0 0 4px;color:var(--tp);">Step 3: If <span style="color:#538d4e;">Green</span>, SOLVE:</p>
       <p style="font-size:15px;line-height:1.6;margin:0 0 20px;color:var(--tp);">As soon as you reveal <strong>at least one <span style="color:#538d4e;">green letter</span></strong> (even on your first guess, and even if you have no <span style="color:#b59f3b;">yellows</span>), completely abandon the list above and <strong>start solving.</strong></p>
-
       <p style="font-size:15px;font-weight:700;margin:0 0 10px;color:var(--tp);">Common edge cases &amp; quick fixes:</p>
       <table style="width:100%;border-collapse:collapse;font-size:14px;font-family:var(--sans);">
-        <thead>
-          <tr>
-            <th style="border:1.5px solid var(--tp);padding:10px 16px;font-weight:700;text-align:center;">SITUATION:</th>
-            <th style="border:1.5px solid var(--tp);padding:10px 16px;font-weight:700;text-align:center;">WHAT TO DO:</th>
-          </tr>
-        </thead>
+        <thead><tr><th style="border:1.5px solid var(--tp);padding:10px 16px;font-weight:700;text-align:center;">SITUATION:</th><th style="border:1.5px solid var(--tp);padding:10px 16px;font-weight:700;text-align:center;">WHAT TO DO:</th></tr></thead>
         <tbody>
           <tr><td style="border:1.5px solid var(--tp);padding:10px 16px;text-align:center;">2&#8211;3 yellows, no green</td><td style="border:1.5px solid var(--tp);padding:10px 16px;text-align:center;">Step 2: EXCLUDE</td></tr>
           <tr><td style="border:1.5px solid var(--tp);padding:10px 16px;text-align:center;">Green on turn 1</td><td style="border:1.5px solid var(--tp);padding:10px 16px;text-align:center;">Step 3: SOLVE</td></tr>
@@ -998,7 +929,6 @@ new Chart(document.getElementById('q9'),{type:'bar',data:{labels:corrLabels,data
     </div>
   </div>
 
-</div><!-- /.page -->
-
+</div>
 </body>
 </html>
